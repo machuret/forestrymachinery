@@ -1,0 +1,317 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   Forestry Machinery Guide — "Heavy Steel & Timber" design system
+   Graphite steel ground, safety-amber signal, chainsaw-green accent.
+   ------------------------------------------------------------------ */
+
+@theme {
+  --color-steel-950: #08090a;
+  --color-steel-900: #0e100f;
+  --color-steel-850: #141715;
+  --color-steel-800: #1b1f1c;
+  --color-steel-700: #262b27;
+  --color-steel-600: #363c37;
+  --color-steel-500: #4b524c;
+  --color-concrete: #8b918a;
+  --color-bone: #e9e7e1;
+  --color-moss-400: #9ccc65;
+  --color-moss-500: #7cb342;
+  --color-moss-600: #5c8a2e;
+  --color-hazard: #f5a623;
+  --color-hazard-dim: #b87a15;
+  --color-rust: #c4551e;
+
+  --font-display: var(--font-oswald), "Arial Narrow", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+}
+
+body {
+  background-color: var(--color-steel-950);
+  color: var(--color-bone);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Fine engineering grid, laid under everything. */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+
+/* Safety hazard stripes, used as rules and band edges. */
+.hazard-stripes {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--color-hazard) 0px,
+    var(--color-hazard) 12px,
+    var(--color-steel-950) 12px,
+    var(--color-steel-950) 24px
+  );
+}
+
+.hazard-stripes-dim {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(245, 166, 35, 0.55) 0px,
+    rgba(245, 166, 35, 0.55) 10px,
+    transparent 10px,
+    transparent 20px
+  );
+}
+
+/* Brushed-metal wash for hero and section plates. */
+.plate {
+  background-image:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.045) 0%, transparent 45%),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.014) 0px,
+      rgba(255, 255, 255, 0.014) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+}
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 0.98;
+  text-transform: uppercase;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-hazard);
+}
+
+.rule-heavy {
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-hazard) 0%, var(--color-hazard) 64px, var(--color-steel-700) 64px);
+}
+
+/* ------------------------------------------------------------------
+   Long-form article styling for the markdown-rendered guide bodies.
+   ------------------------------------------------------------------ */
+
+.prose-industrial {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: #cfd2cc;
+}
+
+.prose-industrial > * + * {
+  margin-top: 1.4em;
+}
+
+.prose-industrial h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: -0.005em;
+  line-height: 1.05;
+  font-size: clamp(1.65rem, 1.2rem + 1.6vw, 2.4rem);
+  color: var(--color-bone);
+  margin-top: 3.25em;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-steel-700);
+  position: relative;
+}
+
+.prose-industrial h2::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 64px;
+  height: 3px;
+  background: var(--color-hazard);
+}
+
+.prose-industrial h2:first-child {
+  margin-top: 0;
+}
+
+.prose-industrial h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 1.3rem;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  color: var(--color-moss-400);
+  margin-top: 2.4em;
+}
+
+.prose-industrial p strong,
+.prose-industrial li strong {
+  color: var(--color-bone);
+  font-weight: 600;
+}
+
+.prose-industrial a {
+  color: var(--color-moss-400);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(156, 204, 101, 0.4);
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.prose-industrial a:hover {
+  background-color: rgba(156, 204, 101, 0.12);
+  border-bottom-color: var(--color-moss-400);
+}
+
+.prose-industrial ul,
+.prose-industrial ol {
+  padding-left: 0;
+  list-style: none;
+}
+
+.prose-industrial li {
+  position: relative;
+  padding-left: 1.75rem;
+  margin-top: 0.7em;
+}
+
+.prose-industrial ul > li::before {
+  content: "";
+  position: absolute;
+  left: 0.1rem;
+  top: 0.72em;
+  width: 8px;
+  height: 8px;
+  background: var(--color-hazard);
+  transform: rotate(45deg);
+}
+
+.prose-industrial ol {
+  counter-reset: step;
+}
+
+.prose-industrial ol > li {
+  counter-increment: step;
+}
+
+.prose-industrial ol > li::before {
+  content: counter(step, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 0.12em;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-hazard);
+}
+
+/* Spec tables: the most industrial thing on the page. */
+.prose-industrial .table-wrap {
+  position: relative;
+  overflow-x: auto;
+  border: 1px solid var(--color-steel-700);
+  background: var(--color-steel-900);
+}
+
+.prose-industrial table {
+  width: 100%;
+  min-width: 34rem;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+}
+
+.prose-industrial thead th {
+  background: var(--color-steel-800);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-hazard);
+  text-align: left;
+  padding: 0.85rem 1rem;
+  border-bottom: 2px solid var(--color-steel-600);
+  white-space: nowrap;
+}
+
+.prose-industrial tbody td {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--color-steel-800);
+  vertical-align: top;
+}
+
+.prose-industrial tbody tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.018);
+}
+
+.prose-industrial tbody tr:hover {
+  background: rgba(245, 166, 35, 0.055);
+}
+
+.prose-industrial tbody td:first-child {
+  color: var(--color-bone);
+  font-weight: 600;
+}
+
+.prose-industrial blockquote {
+  border-left: 3px solid var(--color-moss-500);
+  padding: 0.25rem 0 0.25rem 1.25rem;
+  color: var(--color-concrete);
+  font-style: normal;
+}
+
+.prose-industrial hr {
+  border: 0;
+  height: 1px;
+  background: var(--color-steel-700);
+  margin: 2.5em 0;
+}
+
+.prose-industrial code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  background: var(--color-steel-800);
+  border: 1px solid var(--color-steel-700);
+  padding: 0.1em 0.35em;
+}
+
+/* FAQ disclosure */
+details.faq summary::-webkit-details-marker {
+  display: none;
+}
+
+details.faq[open] .faq-sign {
+  transform: rotate(45deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+::selection {
+  background: var(--color-hazard);
+  color: var(--color-steel-950);
+}

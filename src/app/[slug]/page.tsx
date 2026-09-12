@@ -203,6 +203,23 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
               </div>
             )}
 
+            <div className="mt-6 border border-steel-700 bg-steel-900 p-5">
+              <p className="font-mono text-[0.6rem] tracking-[0.18em] text-concrete uppercase">Work the numbers</p>
+              <ul className="mt-4 space-y-2.5">
+                {[
+                  ["/costs/", "What it costs to own"],
+                  ["/hire-vs-buy/", "Hire, buy or subcontract"],
+                  ["/compatibility/", "Will it fit your carrier?"],
+                ].map(([href, label]) => (
+                  <li key={href}>
+                    <Link href={href} className="text-[0.88rem] leading-snug text-moss-400 hover:text-hazard">
+                      {label} →
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
             {meta && meta.brands.length > 0 && (
               <div className="mt-6 border border-steel-700 bg-steel-900 p-5">
                 <p className="font-mono text-[0.6rem] tracking-[0.18em] text-concrete uppercase">Ranges covered</p>

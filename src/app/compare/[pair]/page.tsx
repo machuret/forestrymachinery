@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { PageHero } from "@/components/PageHero";
 import { Photograph } from "@/components/Photograph";
 import { JsonLd } from "@/components/JsonLd";
+import { Section, Checklist, RedFlags, NextSteps, Prose } from "@/components/content";
 import { COMPARISONS, comparison, type Side } from "@/lib/comparisons";
 import { categoryMeta } from "@/lib/categories";
 import { SITE, absoluteUrl } from "@/lib/site";
@@ -148,14 +149,90 @@ export default async function ComparisonPage({ params }: { params: Promise<{ pai
           </p>
         </section>
 
+        {/* Money */}
+        <Section
+          id="costs"
+          title="What they cost to own and run"
+          lead="The feature table settles capability. This settles the part that decides most purchases."
+        >
+          <div className="relative overflow-x-auto border border-steel-700 bg-steel-900">
+            <table className="w-full min-w-[44rem] border-collapse text-sm">
+              <thead>
+                <tr>
+                  {["Cost driver", c.a.name, c.b.name].map((h) => (
+                    <th
+                      key={h}
+                      className="border-l border-steel-700 bg-steel-800 px-4 py-4 text-left font-mono text-[0.62rem] tracking-[0.14em] text-hazard uppercase first:border-l-0"
+                    >
+                      {h}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {c.costs.map((r) => (
+                  <tr key={r.driver} className="border-t border-steel-800 transition-colors hover:bg-hazard/5">
+                    <th scope="row" className="px-4 py-4 text-left align-top font-semibold text-bone">
+                      {r.driver}
+                    </th>
+                    <td className="border-l border-steel-800 px-4 py-4 align-top text-concrete">{r.a}</td>
+                    <td className="border-l border-steel-800 px-4 py-4 align-top text-concrete">{r.b}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <Prose className="mt-6">
+            <p>
+              No purchase prices appear here, because attachment pricing moves with the exchange rate, the model inside
+              a range, rotation options and the carrier bracket. What moves the number is covered on the{" "}
+              <Link href="/costs/">attachment costs page</Link>, and the utilisation question that decides whether to
+              own either tool is on <Link href="/hire-vs-buy/">hire versus buy</Link>.
+            </p>
+          </Prose>
+        </Section>
+
+        {/* Scenarios */}
+        <Section
+          id="scenarios"
+          title="Three situations, three answers"
+          lead="Worked buyer cases rather than a restatement of the table above."
+        >
+          <div className="grid gap-px bg-steel-700 lg:grid-cols-3">
+            {c.scenarios.map((sc) => (
+              <div key={sc.label} className="bg-steel-950 p-6 sm:p-7">
+                <span className="font-mono text-[0.62rem] tracking-[0.18em] text-hazard uppercase">{sc.label}</span>
+                <p className="mt-4 text-[0.95rem] leading-relaxed text-bone/85">{sc.situation}</p>
+                <p className="mt-4 border-t border-steel-800 pt-4 text-[0.95rem] leading-relaxed text-concrete">
+                  {sc.answer}
+                </p>
+              </div>
+            ))}
+          </div>
+        </Section>
+
         {/* Both */}
         <section className="mt-16 border border-steel-700 bg-steel-900 p-6 sm:p-9">
           <p className="eyebrow">When the answer is both</p>
           <p className="mt-4 max-w-3xl text-[1.05rem] leading-relaxed text-bone/85">{c.bothWhen}</p>
         </section>
 
+        {/* Mistakes */}
+        <Section
+          id="mistakes"
+          title="How buyers get this choice wrong"
+          lead="Specific to this pairing, and all of them cheaper to avoid than to correct."
+        >
+          <RedFlags items={c.mistakes} />
+        </Section>
+
+        {/* Checklist */}
+        <Section id="checklist" title="Before you decide">
+          <Checklist title="Decision checklist" items={c.checklist} />
+        </Section>
+
         {/* FAQ */}
-        <section className="mt-16">
+        <section id="faq" className="mt-16 scroll-mt-28">
           <div className="rule-heavy" />
           <h2 className="display mt-5 text-3xl text-bone sm:text-4xl">Questions that follow</h2>
           <div className="mt-8 border-t border-steel-700">
@@ -173,6 +250,19 @@ export default async function ComparisonPage({ params }: { params: Promise<{ pai
             ))}
           </div>
         </section>
+
+        <Section id="next" title="Where to go next">
+          <NextSteps
+            items={[
+              { href: `/${c.a.slug}/`, label: `${c.a.name} guide`, why: "The full category guide: carrier match, hydraulics, running cost and limitations." },
+              { href: `/${c.b.slug}/`, label: `${c.b.name} guide`, why: "The same treatment for the other side of this comparison." },
+              { href: "/costs/", label: "What attachments cost", why: "The five cost lines behind either choice, and how to compare two quotes." },
+              { href: "/compatibility/", label: "What suits your carrier", why: "Check your machine before you shortlist either tool." },
+              { href: "/hire-vs-buy/", label: "Hire, buy or subcontract", why: "Whether you should own either one at your utilisation." },
+              { href: SITE.quotePath, label: "Request a quote", why: "Three numbers and we will shortlist models for your machine." },
+            ]}
+          />
+        </Section>
 
         {/* Other comparisons */}
         <nav aria-label="Other comparisons" className="mt-16 border-t border-steel-700 pt-8">

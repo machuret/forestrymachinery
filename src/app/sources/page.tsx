@@ -9,7 +9,7 @@ import { absoluteUrl, SITE } from "@/lib/site";
 export const metadata: Metadata = {
   title: { absolute: "Sources and Editorial Standards | Forestry Attachment Guide" },
   description:
-    "Every market, compliance and tax figure in these guides, with the source it came from: ABARES, IBISWorld, NSW DPI, WorkSafe Victoria, ISO, Standards Australia and the ATO.",
+    "Every market, compliance and tax figure in these forestry attachment guides, with the source it came from and how specifications are handled.",
   alternates: { canonical: absoluteUrl("/sources/") },
 };
 

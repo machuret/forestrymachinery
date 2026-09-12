@@ -3,7 +3,7 @@ page_type: category_guide
 suggested_slug: /grapple-saw-guide/
 h1: "Grapple Saws: The Attachment That Takes People Out of the Tree"
 meta_title: "Grapple Saws for Excavators | Buyer's Guide Australia"
-meta_description: Grapple saws cut and hold in one motion, from the ground. Full spec comparison, hydraulic requirements, rotator options and the commercial case for Australian arborists and contractors.
+meta_description: "Grapple saws for excavators: dual circuit requirements, carrier match, cassette and chain choice, running costs and the Australian buyer's checklist."
 primary_keyword: grapple saw
 secondary_keywords: excavator grapple saw, tree grapple saw attachment, OMEF GS series, Powerhand grapple saw, hydraulic chainsaw attachment
 search_intent: commercial investigation

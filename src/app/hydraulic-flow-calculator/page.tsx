@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
 import { JsonLd } from "@/components/JsonLd";
+import { Section, FaqBlock, NextSteps, type Qa } from "@/components/content";
 import { CircuitDiagram } from "@/components/diagrams/CircuitDiagram";
 import { CarrierBandChart } from "@/components/diagrams/CarrierBandChart";
 import { Matcher } from "./Matcher";
@@ -10,9 +11,40 @@ import { SITE, absoluteUrl } from "@/lib/site";
 export const metadata: Metadata = {
   title: { absolute: "Hydraulic Flow and Attachment Matching Calculator | Australia" },
   description:
-    "Enter your carrier's operating weight, auxiliary flow and fitted circuits, and see which forestry attachment categories actually suit it. Covers shears, grinders, mulchers, grapple saws, grabs, pruners and tillage tools.",
+    "Enter your excavator's weight, auxiliary flow and fitted circuits and see which forestry attachment categories it can actually run. Free, no sign-up.",
   alternates: { canonical: absoluteUrl("/hydraulic-flow-calculator/") },
 };
+
+const FAQS: Qa[] = [
+  {
+    q: "What is auxiliary hydraulic flow on an excavator?",
+    a: "The oil volume, in litres per minute, that the machine can send to an attachment circuit. It sets how fast a rotor, saw or motor actually runs. Flow sets speed; working pressure sets the force the tool can develop. An attachment supplied with too little flow does not fail dramatically, it just runs slowly enough to destroy the economics of the job.",
+  },
+  {
+    q: "Where do I find my excavator's auxiliary flow figure?",
+    a: "The machine plate, or the operator's manual for your specific configuration. Avoid the sales brochure, which often quotes maximum available pump flow rather than what is actually plumbed to the auxiliary circuit on your machine. If no reliable figure exists, a hydraulic technician can measure it with a flow meter in under an hour, and it is worth doing before a purchase rather than after.",
+  },
+  {
+    q: "What is a case drain and do I need one?",
+    a: "A third, low-pressure return line that takes internal leakage from a piston motor back to tank. Piston motors usually need one — grinders and cutters typically do. Running without it builds case pressure and kills motor seals, often inside a season, and it is rarely covered by warranty.",
+  },
+  {
+    q: "Can I add a circuit to my machine?",
+    a: "Usually yes, and it is a workshop job with a real cost that belongs in your purchase comparison. Adding a simple hammer line is straightforward; adding a second auxiliary circuit with solenoid control for a dual-circuit tool such as a grapple saw is more involved. Get that quote before you commit to the attachment.",
+  },
+  {
+    q: "Why does the calculator exclude a category instead of warning about it?",
+    a: "Because fitting a circuit is a real cost with a real lead time, not a footnote. If you have not listed a circuit on the machine, any attachment needing it is not available to you today, and treating that as a soft warning encourages buyers to discover the cost after they have committed.",
+  },
+  {
+    q: "How accurate are the flow windows used here?",
+    a: "They are indicative and labelled as such. The one flow figure published in these guides is the OMEF GS grapple saw range, which runs from 15 to 50 L/min on the smallest model up to 160 L/min on the largest. The windows narrow a shortlist; they do not replace a model-specific spec sheet, and nothing on this site invents a number to look more precise than it is.",
+  },
+  {
+    q: "My machine is right at the edge of a published range. What should I do?",
+    a: "Treat it as a model-selection question rather than a yes-or-no question. Inside a published range the correct model is set by your routine working diameter and your lift capacity at working radius, not by machine weight. At a boundary those two checks decide it, and a supplier who will not do that arithmetic with you is worth being cautious about.",
+  },
+];
 
 export default function FlowCalculatorPage() {
   return (
@@ -91,6 +123,31 @@ export default function FlowCalculatorPage() {
         </div>
       </section>
 
+      <Section id="faq" title="Frequently asked questions" className="mx-auto max-w-[88rem] px-4 sm:px-6 lg:px-10">
+        <FaqBlock items={FAQS} />
+      </Section>
+
+      <Section id="next" title="Where to go next" className="mx-auto max-w-[88rem] px-4 pb-8 sm:px-6 lg:px-10">
+        <NextSteps
+          items={[
+            { href: "/compatibility/", label: "Carrier size guide", why: "The same question answered band by band, with what opens up at each size." },
+            { href: "/costs/", label: "What attachments cost", why: "Once you know what fits, what it costs to own and run." },
+            { href: "/glossary/", label: "Glossary", why: "Case drain, hammer line, dual circuit and the rest, defined plainly." },
+          ]}
+        />
+      </Section>
+
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: FAQS.map((f) => ({
+            "@type": "Question",
+            name: f.q,
+            acceptedAnswer: { "@type": "Answer", text: typeof f.a === "string" ? f.a : f.q },
+          })),
+        }}
+      />
       <JsonLd
         data={{
           "@context": "https://schema.org",

@@ -3,7 +3,7 @@ page_type: category_guide
 suggested_slug: /tillage-guide/
 h1: "Tillage and Ground Preparation: Getting Paid for the Second Half of the Job"
 meta_title: "Tillage, Auger Drills and Soil Compactors for Excavators | Australia"
-meta_description: Excavator auger drills, soil compactors and tillage attachments for ground preparation after clearing. Full CPT compactor specs, auger sizing, and the commercial case for capturing follow-on scope.
+meta_description: "Excavator auger drills and soil compactors for ground preparation after clearing: carrier match, hydraulic demand and the rehabilitation revenue case."
 primary_keyword: tillage
 secondary_keywords: excavator auger drill, soil compactor attachment, ground preparation attachments, OMEF CPT series, excavator auger Australia
 search_intent: commercial investigation

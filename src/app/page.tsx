@@ -13,7 +13,7 @@ import { SITE, absoluteUrl } from "@/lib/site";
 export const metadata: Metadata = {
   title: { absolute: "Forestry Attachments Australia | Buyer's Guide & Category Index" },
   description:
-    "Match a forestry attachment to the excavator you already own. Eight category guides covering tree shears, stump grinders, mulchers, grapple saws, grabs, pruning heads and tillage tools, written for Australian contractors.",
+    "Match a forestry attachment to the excavator you already own. Eight category guides, costs, carrier sizing and comparisons for Australian contractors.",
   alternates: { canonical: absoluteUrl("/") },
 };
 
@@ -227,28 +227,40 @@ export default function HomePage() {
             <div className="grid gap-px bg-steel-700 sm:grid-cols-2">
               {[
                 {
-                  href: "/hydraulic-flow-calculator/",
+                  href: "/costs/",
                   code: "T1",
+                  title: "What they actually cost",
+                  body: "The five cost lines behind an attachment, what moves each one, and how to make two quotes that look nothing alike comparable.",
+                },
+                {
+                  href: "/hire-vs-buy/",
+                  code: "T2",
+                  title: "Hire, buy or subcontract",
+                  body: "Utilisation thresholds, the hidden costs on both sides, and four steps that turn the decision into arithmetic.",
+                },
+                {
+                  href: "/hydraulic-flow-calculator/",
+                  code: "T3",
                   title: "Will your machine run it?",
                   body: "Operating weight, auxiliary flow and the circuits you have fitted, against every published carrier range in the guide.",
                 },
                 {
                   href: "/cost-per-stump-calculator/",
-                  code: "T2",
+                  code: "T4",
                   title: "Cost per stump",
                   body: "Attachment capital, teeth, carrier, operator and fuel, divided by stumps per hour. The only honest comparison against a crew.",
                 },
                 {
                   href: "/cost-per-hectare-calculator/",
-                  code: "T3",
+                  code: "T5",
                   title: "Cost per hectare",
                   body: "Mulching and clearing priced properly: productivity, wear, mobilisation, overhead and margin resolved into a tender rate.",
                 },
                 {
                   href: "/compatibility/",
-                  code: "T4",
-                  title: "Compatibility matrix",
-                  body: "Every category against every carrier class on one reference table, with the circuit each one needs.",
+                  code: "T6",
+                  title: "Carrier size guide",
+                  body: "What a 3, 5, 8, 13, 20 or 30 tonne excavator can actually run, carrier class by carrier class.",
                 },
               ].map((t) => (
                 <Link key={t.href} href={t.href} className="group bg-steel-900 p-7 transition-colors hover:bg-steel-850">

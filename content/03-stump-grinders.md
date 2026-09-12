@@ -3,7 +3,7 @@ page_type: category_guide
 suggested_slug: /stump-grinder-guide/
 h1: "Stump Grinders for Excavators: Cost Per Stump Is the Only Metric That Matters"
 meta_title: "Excavator Stump Grinders | Buyer's Guide Australia"
-meta_description: Excavator-mounted stump grinders remove stumps in place with no spoil to cart. How to work out your real cost per stump, match a model to your machine, and know when a grinder beats a cutter.
+meta_description: "Excavator stump grinders in Australia: how cost per stump works, carrier and hydraulic requirements, tooth wear, and what to ask before you buy."
 primary_keyword: stump grinder
 secondary_keywords: excavator stump grinder, stump grinder attachment, Dipperfox stump grinder, stump removal Australia
 search_intent: commercial investigation

@@ -31,10 +31,10 @@ export function SiteHeader() {
 
         <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary">
           <Link
-            href="/guides/"
+            href="/forestry-machinery-guide/"
             className="font-mono text-[0.7rem] tracking-[0.16em] text-concrete uppercase transition-colors hover:text-hazard"
           >
-            Guides
+            The Guide
           </Link>
           <details className="group relative">
             <summary className="flex cursor-pointer list-none items-center gap-1.5 font-mono text-[0.7rem] tracking-[0.16em] text-concrete uppercase transition-colors hover:text-hazard">
@@ -67,10 +67,12 @@ export function SiteHeader() {
             </summary>
             <div className="absolute top-full right-0 mt-3 w-72 border border-steel-700 bg-steel-900 shadow-2xl shadow-black/60">
               {[
+                ["/costs/", "What they cost", "Cost drivers and quote comparison"],
+                ["/hire-vs-buy/", "Hire or buy?", "The utilisation decision"],
+                ["/compatibility/", "Carrier size guide", "What fits your excavator"],
                 ["/hydraulic-flow-calculator/", "Flow calculator", "Will your machine run it?"],
                 ["/cost-per-stump-calculator/", "Cost per stump", "Grinder economics"],
                 ["/cost-per-hectare-calculator/", "Cost per hectare", "Mulching tender rates"],
-                ["/compatibility/", "Compatibility matrix", "Every range on one table"],
               ].map(([href, label, note]) => (
                 <Link
                   key={href}

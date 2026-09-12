@@ -3,7 +3,7 @@ page_type: category_guide
 suggested_slug: /forestry-mulcher-guide/
 h1: "Forestry Mulchers: Buying by the Hectare, Not by the Brochure"
 meta_title: "Forestry Mulchers for Excavators | Buyer's Guide Australia"
-meta_description: Excavator mulchers, mowers and brush cutters explained for Australian contractors. Rotor choice, hydraulic requirements, tooth cost, and how to price mulching work per hectare.
+meta_description: "Forestry mulchers for excavators: rotor choice, hydraulic demand, carrier load, wear costs and how to price mulching work per hectare in Australia."
 primary_keyword: forestry mulchers
 secondary_keywords: excavator mulcher, forestry mulching attachment, brush cutter attachment, excavator mower, land clearing mulcher
 search_intent: commercial investigation

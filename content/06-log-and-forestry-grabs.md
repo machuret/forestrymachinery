@@ -3,7 +3,7 @@ page_type: category_guide
 suggested_slug: /log-grab-guide/
 h1: "Log and Forestry Grabs: The Highest-Utilisation Attachment You Will Own"
 meta_title: "Log Grabs and Forestry Grapples | Buyer's Guide Australia"
-meta_description: Forestry grabs, biomass grapples and log grapples for excavators. Open versus closed tips, tine count, rotator options, and why this is usually the first forestry attachment worth buying.
+meta_description: "Log and forestry grabs for excavators: tine count, rotators, carrier range and why it is the highest-utilisation attachment most contractors own."
 primary_keyword: log grab
 secondary_keywords: forestry grab, log grapple, biomass grapple, timber grab excavator, Powerhand EX series, OMEF PFIMX
 search_intent: commercial investigation

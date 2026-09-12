@@ -3,7 +3,7 @@ page_type: category_guide
 suggested_slug: /tree-shears-guide/
 h1: "Tree Shears: What They Do, What They Cost You, and When They Pay"
 meta_title: "Tree Shears for Excavators | Buyer's Guide Australia"
-meta_description: How excavator tree shears work, how to match one to your carrier, what drives running cost, and when a shear beats a chainsaw crew or a mulcher. Australian buyer's guide.
+meta_description: "How excavator tree shears work, how to match one to your carrier, what drives running cost, and when a shear beats a crew or a mulcher. AU guide."
 primary_keyword: tree shears
 secondary_keywords: excavator tree shear, tree shear attachment, felling head, tree cutting attachment Australia
 search_intent: commercial investigation

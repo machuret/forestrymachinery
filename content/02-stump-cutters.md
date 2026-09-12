@@ -3,7 +3,7 @@ page_type: category_guide
 suggested_slug: /stump-cutter-guide/
 h1: "Stump Cutters: The Attachment Most Buyers Confuse With a Stump Grinder"
 meta_title: "Stump Cutters for Excavators | Buyer's Guide Australia"
-meta_description: A stump cutter splits and sizes extracted stumps for chip and biomass. It is not a stump grinder. How to tell them apart, what a cutter earns, and how to size one to your excavator.
+meta_description: "What an excavator stump cutter actually does, why it is not a stump grinder, the carrier range it needs and when it earns its place on a clearing site."
 primary_keyword: stump cutter
 secondary_keywords: stump and root cutter, excavator stump cutter, stump splitter attachment, Trevi Benne WE series
 search_intent: commercial investigation

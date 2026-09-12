@@ -7,7 +7,7 @@ import { SITE, absoluteUrl } from "@/lib/site";
 export const metadata: Metadata = {
   title: { absolute: "Request a Forestry Attachment Quote | Machinery Specialist" },
   description:
-    "Send your carrier's operating weight, auxiliary flow and working pressure and get a matched forestry attachment shortlist. Tree shears, stump grinders, mulchers, grapple saws, grabs, pruning heads and tillage tools across Australia.",
+    "Send your carrier's operating weight, auxiliary flow and working pressure and get a matched forestry attachment shortlist. Supplied across Australia.",
   alternates: { canonical: absoluteUrl(SITE.quotePath) },
   robots: { index: true, follow: true },
 };

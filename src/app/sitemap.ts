@@ -19,10 +19,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const statics: MetadataRoute.Sitemap = ([
     { url: absoluteUrl("/"), changeFrequency: "monthly", priority: 1 },
-    { url: absoluteUrl("/guides/"), changeFrequency: "monthly", priority: 0.8 },
+    { url: absoluteUrl("/costs/"), changeFrequency: "monthly", priority: 0.9 },
+    { url: absoluteUrl("/hire-vs-buy/"), changeFrequency: "yearly", priority: 0.8 },
     { url: absoluteUrl("/compare/"), changeFrequency: "monthly", priority: 0.8 },
     { url: absoluteUrl("/brands/"), changeFrequency: "yearly", priority: 0.7 },
-    { url: absoluteUrl("/compatibility/"), changeFrequency: "yearly", priority: 0.7 },
+    { url: absoluteUrl("/compatibility/"), changeFrequency: "yearly", priority: 0.9 },
     { url: absoluteUrl("/hydraulic-flow-calculator/"), changeFrequency: "yearly", priority: 0.8 },
     { url: absoluteUrl("/cost-per-stump-calculator/"), changeFrequency: "yearly", priority: 0.8 },
     { url: absoluteUrl("/cost-per-hectare-calculator/"), changeFrequency: "yearly", priority: 0.8 },

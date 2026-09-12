@@ -1,9 +1,13 @@
 # Forestry Machinery Guide
 
-A Next.js site for the Machinery Specialist forestry attachment content cluster. Twenty-eight pages:
-one pillar guide, eight category guides, four head-to-head comparisons, four brand pages, three
-calculators, a compatibility matrix, a glossary, a sources page and a quote form — all statically
-generated, all cross-linked.
+A Next.js site for the Machinery Specialist forestry attachment content cluster. Twenty-nine pages
+and roughly 38,000 words of editorial content: one pillar guide, eight category guides, a costs
+guide, a hire-versus-buy guide, a carrier size guide, four head-to-head comparisons, four brand
+profiles, three calculators, a glossary, a sources page and a quote form — all statically generated,
+all cross-linked.
+
+`docs/seo-audit.md` holds the content audit this structure is built from: per-page word counts,
+commercial scoring, cannibalisation findings and the remaining production priority.
 
 ## Stack
 
@@ -70,7 +74,8 @@ Everything that is not markdown is a typed module, so the pages are thin:
 | `src/lib/glossary.ts` | ~38 terms, grouped, with the guide each links through to |
 | `src/lib/sources.ts` | Cited sources and the phrases that trigger them |
 | `src/lib/comparisons.ts` | The four head-to-head comparisons |
-| `src/lib/brands.ts` | Brand profiles and their series lists |
+| `src/lib/brands.ts` | Brand profiles, series lists, suitability, support and limitations |
+| `src/lib/carrier-bands.ts` | The six carrier classes and what each one can run |
 
 `src/lib/categories.ts` is deliberately separate from `src/lib/content.ts` — the latter imports
 `node:fs`, so a client component importing category metadata from it breaks the build.
@@ -80,14 +85,15 @@ Everything that is not markdown is a typed module, so the pages are thin:
 | Route | Source |
 |---|---|
 | `/` | `src/app/page.tsx` |
-| `/guides/` | Index of all nine guides |
 | `/forestry-machinery-guide/` and the eight `/…-guide/` pages | `src/app/[slug]/page.tsx`, from `content/` |
+| `/costs/` | What drives attachment cost, and how to compare quotes |
+| `/hire-vs-buy/` | Utilisation thresholds and the hire/buy/subcontract decision |
 | `/compare/` and `/compare/[pair]/` | Four comparisons, from `src/lib/comparisons.ts` |
 | `/brands/` and `/brands/[brand]/` | Four manufacturers, from `src/lib/brands.ts` |
 | `/hydraulic-flow-calculator/` | Which attachments a given carrier can actually run |
 | `/cost-per-stump-calculator/` | Grinder economics |
 | `/cost-per-hectare-calculator/` | Mulching tender rates, with a sensitivity table |
-| `/compatibility/` | Carrier compatibility matrix |
+| `/compatibility/` | Carrier size guide — what fits a 3, 5, 8, 13, 20 or 30 t excavator |
 | `/glossary/`, `/sources/` | Reference |
 | `/request-quote/` | Quote form |
 | `/sitemap.xml`, `/robots.txt` | Generated from the content index |
@@ -107,6 +113,22 @@ the dark ground.
 Diagrams are original inline SVG in `src/components/diagrams/`, each carrying information rather than
 decoration: the four hydraulic circuit types, every published carrier range on one log axis, and
 grinding versus cutting drawn side by side.
+
+## Content conventions
+
+Two rules hold across every page, and both are deliberate rather than incidental:
+
+- **No published prices.** Attachment pricing moves with the exchange rate, specification, rotation
+  options and the carrier bracket, so a figure published today is routinely wrong within a quarter.
+  Cost pages explain what drives the number instead, which stays true for longer and is more useful
+  to a buyer reading a quote.
+- **No claimed first-hand testing.** The site has not tested this equipment. Brand profiles carry a
+  visible disclosure saying so, and where a specification could not be verified it is omitted rather
+  than estimated.
+
+Long-form pages are assembled from the shared primitives in `src/components/content.tsx` — `Section`,
+`ShortAnswer`, `NumberedGrid`, `Checklist`, `RedFlags`, `FaqBlock`, `NextSteps` — so structure stays
+consistent and new pages do not drift from the design system.
 
 ## Running it
 

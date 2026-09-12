@@ -9,7 +9,7 @@ import { absoluteUrl } from "@/lib/site";
 export const metadata: Metadata = {
   title: { absolute: "Forestry Attachment Glossary | Hydraulics, Specs and Standards" },
   description:
-    "Plain definitions for the terms that decide a forestry attachment purchase: auxiliary flow, case drain, dual circuit, chain pitch, cost per stump, AS 4373, AS 4772 and ISO 8084.",
+    "Plain definitions for the terms that decide a forestry attachment purchase: auxiliary flow, case drain, dual circuit, chain pitch and AS 4373.",
   alternates: { canonical: absoluteUrl("/glossary/") },
 };
 

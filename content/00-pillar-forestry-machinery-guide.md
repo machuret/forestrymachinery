@@ -3,7 +3,7 @@ page_type: pillar
 suggested_slug: /forestry-machinery-guide/
 h1: "Forestry Machinery and Excavator Attachments: The Australian Buyer's Guide"
 meta_title: "Forestry Machinery Guide | Excavator Attachments Australia"
-meta_description: A commercial buyer's guide to forestry attachments in Australia. Tree shears, stump grinders, mulchers, grapple saws, grabs, pruners and tillage tools matched to carrier size, hydraulic flow and job type.
+meta_description: "A commercial buyer's guide to forestry attachments in Australia. Tree shears, grinders, mulchers, grapple saws and grabs matched to your carrier."
 primary_keyword: forestry machinery
 secondary_keywords: forestry attachments Australia, excavator forestry attachments, land clearing equipment, vegetation management equipment
 search_intent: commercial investigation
@@ -59,7 +59,7 @@ Everything else is detail.
 
 Attachment selection starts at the machine, not the catalogue. Every serious forestry attachment publishes an operating machine range, and those ranges are narrow for a reason. Undersize the carrier and you get tip-over risk, hydraulic starvation and a slow tool. Oversize it and you overload the attachment structure until something cracks.
 
-Write down three numbers before you call anyone: machine operating weight, auxiliary hydraulic flow in litres per minute, and available working pressure in bar. Most disappointing attachment purchases in this market trace back to a buyer who knew the first number and guessed the other two.
+Write down three numbers before you call anyone: machine operating weight, auxiliary hydraulic flow in litres per minute, and available working pressure in bar. The [carrier size guide](/compatibility/) sets out what each machine class can actually run. Most disappointing attachment purchases in this market trace back to a buyer who knew the first number and guessed the other two.
 
 ### 2. Does your hydraulic circuit actually support it?
 
@@ -82,7 +82,7 @@ A clean example: if you must remove the stump completely and cannot leave spoil,
 
 The honest utilisation test. Attachments are cheap compared to carriers, but they are not free, and an attachment doing 150 hours a year is usually a hire decision rather than a purchase decision.
 
-Rough guidance, and it is guidance rather than gospel: below about 200 hours a year, hire or subcontract. Between 200 and 500 hours, buy if the tool unlocks work you currently turn away. Above 500 hours, ownership almost always wins, and wear-part supply becomes more important than purchase price.
+Rough guidance, and it is guidance rather than gospel, worked through properly on [hire, buy or subcontract](/hire-vs-buy/): below about 200 hours a year, hire or subcontract. Between 200 and 500 hours, buy if the tool unlocks work you currently turn away. Above 500 hours, ownership almost always wins, and wear-part supply becomes more important than purchase price.
 
 ## What the total cost actually is
 
@@ -96,7 +96,7 @@ Purchase price is the number buyers focus on and the smallest part of the decisi
 
 **Downtime.** Parts availability in Australia is the difference between a two-day repair and a six-week one. This is the strongest argument for buying through a local distributor holding stock rather than importing direct on price.
 
-We have deliberately not published dollar figures in this guide. Attachment pricing in Australia moves with exchange rate, spec, rotation options and carrier bracket, and a published number would be wrong within a quarter. The framework above tells you what moves the number so you can interrogate a quote properly.
+We have deliberately not published dollar figures in this guide, and [what forestry attachments actually cost](/costs/) explains the five cost lines in full. Attachment pricing in Australia moves with exchange rate, spec, rotation options and carrier bracket, and a published number would be wrong within a quarter. The framework above tells you what moves the number so you can interrogate a quote properly.
 
 ## Tax treatment, stated accurately
 

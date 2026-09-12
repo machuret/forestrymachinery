@@ -45,10 +45,12 @@ export function SiteFooter() {
             <ul className="mt-5 space-y-2.5">
               {[
                 ["/forestry-machinery-guide/", "The buyer\u2019s guide"],
+                ["/costs/", "What attachments cost"],
+                ["/hire-vs-buy/", "Hire, buy or subcontract"],
                 ["/hydraulic-flow-calculator/", "Flow calculator"],
                 ["/cost-per-stump-calculator/", "Cost per stump calculator"],
                 ["/cost-per-hectare-calculator/", "Cost per hectare calculator"],
-                ["/compatibility/", "Carrier compatibility matrix"],
+                ["/compatibility/", "Carrier size guide"],
                 ["/compare/", "Attachment comparisons"],
                 ["/brands/", "Manufacturers"],
                 ["/glossary/", "Glossary"],

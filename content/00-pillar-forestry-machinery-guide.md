@@ -9,6 +9,7 @@ secondary_keywords: forestry attachments Australia, excavator forestry attachmen
 search_intent: commercial investigation
 word_count_target: 1800
 internal_links_out: 8
+last_reviewed: 2026-09-12
 ---
 
 # Forestry Machinery and Excavator Attachments: The Australian Buyer's Guide

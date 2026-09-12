@@ -2,6 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { CategoryGrid } from "@/components/CategoryGrid";
 import { HeroSchematic } from "@/components/HeroSchematic";
+import { Photograph } from "@/components/Photograph";
+import { BrandLogo } from "@/components/BrandLogo";
+import { CarrierBandChart } from "@/components/diagrams/CarrierBandChart";
+import { COMPARISONS } from "@/lib/comparisons";
+import { BRAND_PROFILES } from "@/lib/brands";
 import { JsonLd } from "@/components/JsonLd";
 import { SITE, absoluteUrl } from "@/lib/site";
 
@@ -59,8 +64,6 @@ const QUESTIONS = [
     a: "Below about 200 hours, hire. Between 200 and 500, buy if the tool unlocks work you currently turn away. Above 500, ownership almost always wins and wear-part supply beats purchase price.",
   },
 ];
-
-const BRANDS = ["OMEF", "Trevi Benne", "Dipperfox", "Powerhand"];
 
 export default function HomePage() {
   return (
@@ -206,16 +209,129 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* -------------------------------------------------------- Tools */}
+      <section className="border-t border-steel-700 bg-steel-900 plate">
+        <div className="mx-auto max-w-[88rem] px-4 py-20 sm:px-6 sm:py-28 lg:px-10">
+          <div className="grid gap-14 lg:grid-cols-[24rem_minmax(0,1fr)]">
+            <div>
+              <p className="eyebrow">Tools</p>
+              <h2 className="display mt-4 text-4xl leading-none text-bone sm:text-5xl">
+                Work the numbers before you call anyone
+              </h2>
+              <p className="mt-6 text-[0.97rem] leading-relaxed text-concrete">
+                Nothing here needs an email address. Enter your own figures, and the result is a URL you can paste into
+                a tender note or send to your accountant.
+              </p>
+            </div>
+
+            <div className="grid gap-px bg-steel-700 sm:grid-cols-2">
+              {[
+                {
+                  href: "/hydraulic-flow-calculator/",
+                  code: "T1",
+                  title: "Will your machine run it?",
+                  body: "Operating weight, auxiliary flow and the circuits you have fitted, against every published carrier range in the guide.",
+                },
+                {
+                  href: "/cost-per-stump-calculator/",
+                  code: "T2",
+                  title: "Cost per stump",
+                  body: "Attachment capital, teeth, carrier, operator and fuel, divided by stumps per hour. The only honest comparison against a crew.",
+                },
+                {
+                  href: "/cost-per-hectare-calculator/",
+                  code: "T3",
+                  title: "Cost per hectare",
+                  body: "Mulching and clearing priced properly: productivity, wear, mobilisation, overhead and margin resolved into a tender rate.",
+                },
+                {
+                  href: "/compatibility/",
+                  code: "T4",
+                  title: "Compatibility matrix",
+                  body: "Every category against every carrier class on one reference table, with the circuit each one needs.",
+                },
+              ].map((t) => (
+                <Link key={t.href} href={t.href} className="group bg-steel-900 p-7 transition-colors hover:bg-steel-850">
+                  <span className="font-mono text-[0.7rem] tracking-[0.2em] text-hazard">{t.code}</span>
+                  <h3 className="display mt-4 text-2xl leading-tight text-bone group-hover:text-hazard">{t.title}</h3>
+                  <p className="mt-3 text-[0.95rem] leading-relaxed text-concrete">{t.body}</p>
+                  <span className="mt-5 inline-flex items-center gap-2 font-mono text-[0.62rem] tracking-[0.16em] text-bone/70 uppercase group-hover:text-hazard">
+                    Open
+                    <span aria-hidden="true" className="transition-transform duration-200 group-hover:translate-x-1">
+                      →
+                    </span>
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* --------------------------------------------------- Comparisons */}
+      <section className="mx-auto max-w-[88rem] px-4 py-20 sm:px-6 sm:py-28 lg:px-10">
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <p className="eyebrow">Head to head</p>
+            <h2 className="display mt-4 max-w-2xl text-4xl leading-none text-bone sm:text-5xl">
+              Two names, one job, entirely different machines
+            </h2>
+          </div>
+          <Link
+            href="/compare/"
+            className="shrink-0 font-mono text-[0.68rem] tracking-[0.16em] text-hazard uppercase hover:text-moss-400"
+          >
+            All comparisons →
+          </Link>
+        </div>
+
+        <ul className="mt-12 grid gap-px bg-steel-700 sm:grid-cols-2">
+          {COMPARISONS.map((c) => (
+            <li key={c.slug}>
+              <Link href={`/compare/${c.slug}/`} className="group flex h-full flex-col bg-steel-950 p-6 transition-colors hover:bg-steel-900 sm:p-8">
+                <span className="grid grid-cols-2 gap-3">
+                  <Photograph photo={c.a.photo} ratio="4/3" bare sizes="(max-width: 640px) 45vw, 18rem" />
+                  <Photograph photo={c.b.photo} ratio="4/3" bare sizes="(max-width: 640px) 45vw, 18rem" />
+                </span>
+                <h3 className="display mt-6 text-2xl leading-tight text-bone group-hover:text-hazard">{c.title}</h3>
+                <p className="mt-3 text-[0.93rem] leading-relaxed text-concrete">{c.verdict.split(". ")[0]}.</p>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {/* ---------------------------------------------------- Band chart */}
+      <section className="border-t border-steel-700">
+        <div className="mx-auto max-w-[88rem] px-4 py-20 sm:px-6 lg:px-10">
+          <p className="eyebrow">Carrier match</p>
+          <h2 className="display mt-4 max-w-3xl text-4xl leading-none text-bone sm:text-5xl">
+            Find your machine on the axis and read down
+          </h2>
+          <div className="mt-10">
+            <CarrierBandChart />
+          </div>
+        </div>
+      </section>
+
       {/* ------------------------------------------------------- Brands */}
       <section className="border-y border-steel-700 bg-steel-900">
         <div className="mx-auto flex max-w-[88rem] flex-col gap-8 px-4 py-12 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-10">
-          <p className="font-mono text-[0.65rem] tracking-[0.2em] text-concrete uppercase">
-            Ranges referenced in these guides
-          </p>
-          <ul className="flex flex-wrap items-center gap-x-10 gap-y-4">
-            {BRANDS.map((b) => (
-              <li key={b} className="display text-2xl tracking-wide text-steel-500 sm:text-3xl">
-                {b}
+          <div>
+            <p className="font-mono text-[0.65rem] tracking-[0.2em] text-concrete uppercase">
+              Ranges referenced in these guides
+            </p>
+            <Link
+              href="/brands/"
+              className="mt-3 inline-flex items-center gap-2 font-mono text-[0.65rem] tracking-[0.14em] text-hazard uppercase hover:text-moss-400"
+            >
+              Compare the manufacturers →
+            </Link>
+          </div>
+          <ul className="flex flex-wrap items-center gap-4">
+            {BRAND_PROFILES.map((b) => (
+              <li key={b.slug}>
+                <BrandLogo slug={b.slug} href={`/brands/${b.slug}/`} />
               </li>
             ))}
           </ul>

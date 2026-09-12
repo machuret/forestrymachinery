@@ -8,6 +8,7 @@ primary_keyword: tillage
 secondary_keywords: excavator auger drill, soil compactor attachment, ground preparation attachments, OMEF CPT series, excavator auger Australia
 search_intent: commercial investigation
 parent_page: /forestry-machinery-guide/
+last_reviewed: 2026-09-12
 ---
 
 # Tillage and Ground Preparation: Getting Paid for the Second Half of the Job

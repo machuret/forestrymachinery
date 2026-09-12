@@ -8,6 +8,7 @@ primary_keyword: mechanical pruning
 secondary_keywords: hydraulic hedge trimmer excavator, pruning cutting bar, forestry pruner attachment, disc hedge trimmer, roadside vegetation trimming
 search_intent: commercial investigation
 parent_page: /forestry-machinery-guide/
+last_reviewed: 2026-09-12
 ---
 
 # Mechanical Pruning: The Category That Sells Recurring Revenue

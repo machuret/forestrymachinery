@@ -31,10 +31,10 @@ export function SiteHeader() {
 
         <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary">
           <Link
-            href="/forestry-machinery-guide/"
+            href="/guides/"
             className="font-mono text-[0.7rem] tracking-[0.16em] text-concrete uppercase transition-colors hover:text-hazard"
           >
-            The Guide
+            Guides
           </Link>
           <details className="group relative">
             <summary className="flex cursor-pointer list-none items-center gap-1.5 font-mono text-[0.7rem] tracking-[0.16em] text-concrete uppercase transition-colors hover:text-hazard">
@@ -55,10 +55,39 @@ export function SiteHeader() {
             </div>
           </details>
           <Link
-            href="/compatibility/"
+            href="/compare/"
             className="font-mono text-[0.7rem] tracking-[0.16em] text-concrete uppercase transition-colors hover:text-hazard"
           >
-            Compatibility
+            Compare
+          </Link>
+          <details className="group relative">
+            <summary className="flex cursor-pointer list-none items-center gap-1.5 font-mono text-[0.7rem] tracking-[0.16em] text-concrete uppercase transition-colors hover:text-hazard">
+              Tools
+              <span aria-hidden="true" className="text-[0.6rem]">▾</span>
+            </summary>
+            <div className="absolute top-full right-0 mt-3 w-72 border border-steel-700 bg-steel-900 shadow-2xl shadow-black/60">
+              {[
+                ["/hydraulic-flow-calculator/", "Flow calculator", "Will your machine run it?"],
+                ["/cost-per-stump-calculator/", "Cost per stump", "Grinder economics"],
+                ["/cost-per-hectare-calculator/", "Cost per hectare", "Mulching tender rates"],
+                ["/compatibility/", "Compatibility matrix", "Every range on one table"],
+              ].map(([href, label, note]) => (
+                <Link
+                  key={href}
+                  href={href}
+                  className="block border-b border-steel-800 px-4 py-3 last:border-b-0 hover:bg-steel-800"
+                >
+                  <span className="display block text-[0.9rem] text-bone">{label}</span>
+                  <span className="mt-0.5 block text-[0.78rem] text-concrete">{note}</span>
+                </Link>
+              ))}
+            </div>
+          </details>
+          <Link
+            href="/brands/"
+            className="font-mono text-[0.7rem] tracking-[0.16em] text-concrete uppercase transition-colors hover:text-hazard"
+          >
+            Brands
           </Link>
         </nav>
 

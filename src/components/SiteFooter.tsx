@@ -41,23 +41,25 @@ export function SiteFooter() {
           </div>
 
           <div>
-            <p className="font-mono text-[0.65rem] tracking-[0.2em] text-concrete uppercase">Reference</p>
+            <p className="font-mono text-[0.65rem] tracking-[0.2em] text-concrete uppercase">Tools and reference</p>
             <ul className="mt-5 space-y-2.5">
-              <li>
-                <Link href="/forestry-machinery-guide/" className="text-sm text-bone/80 transition-colors hover:text-hazard">
-                  The buyer&rsquo;s guide
-                </Link>
-              </li>
-              <li>
-                <Link href="/compatibility/" className="text-sm text-bone/80 transition-colors hover:text-hazard">
-                  Carrier compatibility matrix
-                </Link>
-              </li>
-              <li>
-                <Link href={SITE.quotePath} className="text-sm text-bone/80 transition-colors hover:text-hazard">
-                  Request a quote
-                </Link>
-              </li>
+              {[
+                ["/forestry-machinery-guide/", "The buyer\u2019s guide"],
+                ["/hydraulic-flow-calculator/", "Flow calculator"],
+                ["/cost-per-stump-calculator/", "Cost per stump calculator"],
+                ["/cost-per-hectare-calculator/", "Cost per hectare calculator"],
+                ["/compatibility/", "Carrier compatibility matrix"],
+                ["/compare/", "Attachment comparisons"],
+                ["/brands/", "Manufacturers"],
+                ["/glossary/", "Glossary"],
+                ["/sources/", "Sources and editorial standards"],
+              ].map(([href, label]) => (
+                <li key={href}>
+                  <Link href={href} className="text-sm text-bone/80 transition-colors hover:text-hazard">
+                    {label}
+                  </Link>
+                </li>
+              ))}
             </ul>
             <p className="mt-8 font-mono text-[0.65rem] tracking-[0.2em] text-concrete uppercase">Supplied from</p>
             <p className="mt-3 text-sm text-bone/80">

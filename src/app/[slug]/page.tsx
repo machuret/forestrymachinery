@@ -5,8 +5,16 @@ import { Faq } from "@/components/Faq";
 import { Toc } from "@/components/Toc";
 import { CategoryGrid } from "@/components/CategoryGrid";
 import { JsonLd } from "@/components/JsonLd";
+import { Photograph } from "@/components/Photograph";
+import { BrandLogo } from "@/components/BrandLogo";
+import { References } from "@/components/References";
+import { RelatedGuides } from "@/components/RelatedGuides";
+import { CircuitDiagram } from "@/components/diagrams/CircuitDiagram";
+import { CarrierBandChart } from "@/components/diagrams/CarrierBandChart";
+import { GrindVsCutDiagram } from "@/components/diagrams/GrindVsCutDiagram";
 import { getAllPages, getPageBySlug } from "@/lib/content";
-import { categoryMeta, CATEGORY_META } from "@/lib/categories";
+import { categoryMeta } from "@/lib/categories";
+import { PHOTOS, photo } from "@/lib/media";
 import { SITE, absoluteUrl } from "@/lib/site";
 
 export const dynamicParams = false;
@@ -15,16 +23,13 @@ export function generateStaticParams() {
   return getAllPages().map((p) => ({ slug: p.slug }));
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const page = getPageBySlug(slug);
   if (!page) return {};
 
   const { meta_title, meta_description, primary_keyword, secondary_keywords } = page.frontmatter;
+  const meta = categoryMeta(page.slug);
 
   return {
     title: { absolute: meta_title },
@@ -36,8 +41,65 @@ export async function generateMetadata({
       description: meta_description,
       url: absoluteUrl(page.href),
       type: "article",
+      // og:image is supplied by the generated card in opengraph-image.tsx.
     },
   };
+}
+
+/** Diagrams that belong to specific guides, keyed by slug. */
+function Diagrams({ slug }: { slug: string }) {
+  if (slug === "forestry-machinery-guide") {
+    return (
+      <>
+        <section className="mt-16">
+          <h2 className="display text-2xl text-bone sm:text-3xl">The four circuit types, side by side</h2>
+          <p className="mt-4 max-w-3xl text-[1rem] leading-relaxed text-concrete">
+            This is where deals go wrong. A machine inside the published weight band still cannot run a tool whose
+            circuit it does not have.
+          </p>
+          <div className="mt-7">
+            <CircuitDiagram />
+          </div>
+        </section>
+        <section className="mt-16">
+          <h2 className="display text-2xl text-bone sm:text-3xl">Every carrier range on one axis</h2>
+          <div className="mt-7">
+            <CarrierBandChart />
+          </div>
+        </section>
+      </>
+    );
+  }
+  if (slug === "stump-grinder-guide" || slug === "stump-cutter-guide") {
+    return (
+      <section className="mt-16">
+        <h2 className="display text-2xl text-bone sm:text-3xl">Grinding and cutting are opposite jobs</h2>
+        <p className="mt-4 max-w-3xl text-[1rem] leading-relaxed text-concrete">
+          The most common category error in this market, drawn rather than described.
+        </p>
+        <div className="mt-7">
+          <GrindVsCutDiagram />
+        </div>
+        <Link
+          href="/compare/stump-grinder-vs-stump-cutter/"
+          className="mt-6 inline-flex items-center gap-2 font-mono text-[0.68rem] tracking-[0.14em] text-moss-400 uppercase hover:text-hazard"
+        >
+          Full comparison →
+        </Link>
+      </section>
+    );
+  }
+  if (slug === "grapple-saw-guide") {
+    return (
+      <section className="mt-16">
+        <h2 className="display text-2xl text-bone sm:text-3xl">Why a grapple saw needs two circuits</h2>
+        <div className="mt-7">
+          <CircuitDiagram />
+        </div>
+      </section>
+    );
+  }
+  return null;
 }
 
 export default async function GuidePage({ params }: { params: Promise<{ slug: string }> }) {
@@ -47,7 +109,6 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
 
   const isPillar = page.frontmatter.page_type === "pillar";
   const meta = categoryMeta(page.slug);
-  const index = CATEGORY_META.findIndex((c) => c.slug === page.slug);
 
   return (
     <>
@@ -59,7 +120,7 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
           className="absolute -top-32 -right-24 h-[26rem] w-[26rem] rounded-full bg-moss-600/12 blur-[110px]"
         />
 
-        <div className="relative mx-auto max-w-[88rem] px-4 pt-10 pb-14 sm:px-6 sm:pt-14 sm:pb-20 lg:px-10">
+        <div className="relative mx-auto max-w-[88rem] px-4 pt-10 pb-14 sm:px-6 sm:pt-14 sm:pb-16 lg:px-10">
           <nav aria-label="Breadcrumb" className="font-mono text-[0.65rem] tracking-[0.16em] text-concrete uppercase">
             <ol className="flex flex-wrap items-center gap-2">
               <li>
@@ -88,39 +149,35 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
             </ol>
           </nav>
 
-          <div className="mt-10 grid gap-12 lg:grid-cols-[minmax(0,1fr)_20rem] lg:items-end">
+          <div className="mt-9 grid gap-10 lg:grid-cols-[minmax(0,1fr)_26rem] lg:items-end">
             <div>
               <p className="eyebrow flex items-center gap-3">
                 <span className="inline-block h-2 w-2 rotate-45 bg-hazard" />
-                {isPillar ? "Pillar guide" : `Category ${meta?.code ?? String(index + 1).padStart(2, "0")} of 08`}
+                {isPillar ? "Pillar guide" : `Category ${meta?.code} of 08`}
               </p>
-              <h1 className="display mt-5 max-w-4xl text-[2.35rem] leading-[0.95] text-bone sm:text-5xl lg:text-[4.1rem]">
+              <h1 className="display mt-5 max-w-4xl text-[2.35rem] leading-[0.95] text-bone sm:text-5xl lg:text-[3.9rem]">
                 {page.title}
               </h1>
               <div
                 className="prose-industrial mt-7 max-w-2xl text-[1.1rem] text-bone/85"
                 dangerouslySetInnerHTML={{ __html: page.leadHtml }}
               />
+
+              <dl className="mt-9 flex flex-wrap gap-3">
+                {[
+                  ["Carrier range", meta?.carrier ?? "1.5–50 t"],
+                  ["Read time", `${page.readingMinutes} min`],
+                  ["Sources cited", String(page.citations.length)],
+                ].map(([k, v]) => (
+                  <div key={k} className="border border-steel-700 bg-steel-850 px-5 py-4">
+                    <dt className="font-mono text-[0.58rem] tracking-[0.18em] text-concrete uppercase">{k}</dt>
+                    <dd className="display mt-1.5 text-xl text-hazard">{v}</dd>
+                  </div>
+                ))}
+              </dl>
             </div>
 
-            <dl className="grid grid-cols-2 gap-px border border-steel-700 bg-steel-700 lg:grid-cols-1">
-              <div className="bg-steel-850 p-5">
-                <dt className="font-mono text-[0.6rem] tracking-[0.18em] text-concrete uppercase">Carrier range</dt>
-                <dd className="display mt-2 text-2xl text-hazard">{meta?.carrier ?? "1.5–50 t"}</dd>
-              </div>
-              <div className="bg-steel-850 p-5">
-                <dt className="font-mono text-[0.6rem] tracking-[0.18em] text-concrete uppercase">Read time</dt>
-                <dd className="display mt-2 text-2xl text-bone">{page.readingMinutes} min</dd>
-              </div>
-              <div className="col-span-2 bg-steel-850 p-5 lg:col-span-1">
-                <dt className="font-mono text-[0.6rem] tracking-[0.18em] text-concrete uppercase">Written for</dt>
-                <dd className="mt-2 text-[0.95rem] leading-snug text-bone/85">
-                  {isPillar
-                    ? "Contractors, councils, arborists and utility crews"
-                    : (meta?.job ?? "Commercial buyers comparing attachments")}
-                </dd>
-              </div>
-            </dl>
+            {meta && <Photograph photo={meta.hero} ratio="4/3" priority sizes="(max-width: 1024px) 100vw, 26rem" />}
           </div>
         </div>
 
@@ -134,7 +191,7 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
             <Toc items={page.toc} />
 
             {meta && (
-              <div className="mt-10 border border-steel-700 bg-steel-900 p-5 lg:sticky lg:top-[28rem]">
+              <div className="mt-10 border border-steel-700 bg-steel-900 p-5">
                 <p className="font-mono text-[0.6rem] tracking-[0.18em] text-concrete uppercase">Ready to buy</p>
                 <p className="display mt-2 text-lg leading-tight text-bone">See the {meta.shortLabel} range</p>
                 <a
@@ -145,30 +202,63 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
                 </a>
               </div>
             )}
+
+            {meta && meta.brands.length > 0 && (
+              <div className="mt-6 border border-steel-700 bg-steel-900 p-5">
+                <p className="font-mono text-[0.6rem] tracking-[0.18em] text-concrete uppercase">Ranges covered</p>
+                <div className="mt-4 flex flex-wrap gap-3">
+                  {meta.brands.map((b) => (
+                    <BrandLogo key={b} slug={b} href={`/brands/${b}/`} />
+                  ))}
+                </div>
+              </div>
+            )}
           </aside>
 
           <article className="order-1 min-w-0 lg:order-2">
+            {/* Key takeaways, above the fold of the article */}
+            {meta && (
+              <section aria-labelledby="takeaways" className="mb-14 border border-steel-700 bg-steel-900">
+                <div className="h-[3px] hazard-stripes-dim" />
+                <div className="p-6 sm:p-8">
+                  <h2 id="takeaways" className="font-mono text-[0.62rem] tracking-[0.2em] text-hazard uppercase">
+                    What to take away
+                  </h2>
+                  <ol className="mt-5 space-y-4">
+                    {meta.takeaways.map((t, i) => (
+                      <li key={t} className="flex gap-4">
+                        <span className="font-mono text-[0.72rem] text-hazard">{String(i + 1).padStart(2, "0")}</span>
+                        <span className="text-[1rem] leading-relaxed text-bone/90">{t}</span>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              </section>
+            )}
+
             <div className="prose-industrial" dangerouslySetInnerHTML={{ __html: page.bodyHtml }} />
+
+            {/* Gallery */}
+            {meta && meta.gallery.length > 0 && (
+              <section className="mt-16">
+                <h2 className="display text-2xl text-bone sm:text-3xl">
+                  {meta.gallery.every((g) => photo(g).cutout) ? "The range, up close" : "In the field"}
+                </h2>
+                <div className={`mt-7 grid gap-4 ${meta.gallery.length > 1 ? "sm:grid-cols-2" : ""}`}>
+                  {meta.gallery.map((g) => (
+                    <Photograph key={g} photo={g} sizes="(max-width: 640px) 100vw, 30rem" />
+                  ))}
+                </div>
+              </section>
+            )}
+
+            <Diagrams slug={page.slug} />
+
             <Faq items={page.faqs} />
 
-            {page.nextLinks.length > 0 && (
-              <nav aria-label="Related guides" className="mt-16 border-t border-steel-700 pt-8">
-                <p className="font-mono text-[0.65rem] tracking-[0.2em] text-concrete uppercase">Keep reading</p>
-                <ul className="mt-5 flex flex-wrap gap-3">
-                  {page.nextLinks.map((l) => (
-                    <li key={l.href}>
-                      <Link
-                        href={l.href}
-                        className="inline-flex items-center gap-2 border border-steel-600 px-4 py-2.5 text-sm text-bone/85 transition-colors hover:border-hazard hover:text-hazard"
-                      >
-                        {l.label}
-                        <span aria-hidden="true">→</span>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </nav>
-            )}
+            <References items={page.citations} />
+
+            <RelatedGuides page={page} />
           </article>
         </div>
       </div>
@@ -187,12 +277,20 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
                 carrier&rsquo;s operating weight, auxiliary flow and working pressure.
               </p>
             </div>
-            <Link
-              href={SITE.quotePath}
-              className="inline-flex shrink-0 items-center gap-2 bg-hazard px-7 py-4 font-mono text-[0.72rem] font-semibold tracking-[0.16em] text-steel-950 uppercase transition-colors hover:bg-moss-400"
-            >
-              Request a quote →
-            </Link>
+            <div className="flex shrink-0 flex-col gap-3">
+              <Link
+                href={SITE.quotePath}
+                className="inline-flex items-center gap-2 bg-hazard px-7 py-4 font-mono text-[0.72rem] font-semibold tracking-[0.16em] text-steel-950 uppercase transition-colors hover:bg-moss-400"
+              >
+                Request a quote →
+              </Link>
+              <Link
+                href="/hydraulic-flow-calculator/"
+                className="inline-flex items-center gap-2 border border-steel-600 px-7 py-4 font-mono text-[0.72rem] tracking-[0.16em] text-bone uppercase transition-colors hover:border-hazard hover:text-hazard"
+              >
+                Check your machine first
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -215,9 +313,16 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
           description: page.frontmatter.meta_description,
           inLanguage: "en-AU",
           mainEntityOfPage: absoluteUrl(page.href),
+          image: meta ? absoluteUrl(PHOTOS[meta.hero].src) : undefined,
           author: { "@type": "Organization", name: SITE.name },
           publisher: { "@type": "Organization", name: SITE.name },
           about: page.frontmatter.primary_keyword,
+          citation: page.citations.map((c) => ({
+            "@type": "CreativeWork",
+            name: c.title,
+            publisher: c.publisher,
+            url: c.url,
+          })),
         }}
       />
       {page.faqs.length > 0 && (
@@ -230,6 +335,23 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
               name: f.question,
               acceptedAnswer: { "@type": "Answer", text: f.answerText },
             })),
+          }}
+        />
+      )}
+      {isPillar && (
+        <JsonLd
+          data={{
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            name: "Forestry attachment categories",
+            itemListElement: getAllPages()
+              .filter((p) => p.frontmatter.page_type !== "pillar")
+              .map((p, i) => ({
+                "@type": "ListItem",
+                position: i + 1,
+                name: categoryMeta(p.slug)?.label ?? p.title,
+                url: absoluteUrl(p.href),
+              })),
           }}
         />
       )}

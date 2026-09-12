@@ -8,6 +8,7 @@ primary_keyword: grapple saw
 secondary_keywords: excavator grapple saw, tree grapple saw attachment, OMEF GS series, Powerhand grapple saw, hydraulic chainsaw attachment
 search_intent: commercial investigation
 parent_page: /forestry-machinery-guide/
+last_reviewed: 2026-09-12
 ---
 
 # Grapple Saws: The Attachment That Takes People Out of the Tree

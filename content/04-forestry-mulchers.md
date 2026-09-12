@@ -8,6 +8,7 @@ primary_keyword: forestry mulchers
 secondary_keywords: excavator mulcher, forestry mulching attachment, brush cutter attachment, excavator mower, land clearing mulcher
 search_intent: commercial investigation
 parent_page: /forestry-machinery-guide/
+last_reviewed: 2026-09-12
 ---
 
 # Forestry Mulchers: Buying by the Hectare, Not by the Brochure

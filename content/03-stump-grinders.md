@@ -8,6 +8,7 @@ primary_keyword: stump grinder
 secondary_keywords: excavator stump grinder, stump grinder attachment, Dipperfox stump grinder, stump removal Australia
 search_intent: commercial investigation
 parent_page: /forestry-machinery-guide/
+last_reviewed: 2026-09-12
 ---
 
 # Stump Grinders for Excavators: Cost Per Stump Is the Only Metric That Matters

@@ -179,6 +179,47 @@ body {
   border-bottom-color: var(--color-moss-400);
 }
 
+/* Glossary terms, auto-linked on first use. Deliberately quieter than a
+   navigational link so a paragraph with three of them still reads as prose. */
+.prose-industrial a.term {
+  color: inherit;
+  border-bottom: 1px dotted var(--color-moss-500);
+  cursor: help;
+}
+
+.prose-industrial a.term:hover {
+  color: var(--color-moss-400);
+  background-color: rgba(156, 204, 101, 0.1);
+  border-bottom-style: solid;
+}
+
+/* Citation markers. */
+.prose-industrial sup.cite {
+  font-size: 0.62em;
+  line-height: 0;
+  vertical-align: super;
+  margin-left: 0.15em;
+}
+
+.prose-industrial sup.cite a {
+  font-family: var(--font-mono);
+  color: var(--color-hazard);
+  border: 0;
+  padding: 0 0.15em;
+}
+
+.prose-industrial sup.cite a::before {
+  content: "[";
+}
+
+.prose-industrial sup.cite a::after {
+  content: "]";
+}
+
+.prose-industrial sup.cite a:hover {
+  background-color: rgba(245, 166, 35, 0.18);
+}
+
 .prose-industrial ul,
 .prose-industrial ol {
   padding-left: 0;

@@ -8,6 +8,7 @@ primary_keyword: tree shears
 secondary_keywords: excavator tree shear, tree shear attachment, felling head, tree cutting attachment Australia
 search_intent: commercial investigation
 parent_page: /forestry-machinery-guide/
+last_reviewed: 2026-09-12
 ---
 
 # Tree Shears: What They Do, What They Cost You, and When They Pay

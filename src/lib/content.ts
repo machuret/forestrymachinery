@@ -8,6 +8,8 @@ import remarkRehype from "remark-rehype";
 import rehypeSlug from "rehype-slug";
 import rehypeStringify from "rehype-stringify";
 import GithubSlugger from "github-slugger";
+import { linkGlossaryTerms, attachCitations } from "./enrich";
+import type { Source } from "./sources";
 
 export { CATEGORY_META, categoryMeta } from "./categories";
 export type { CategoryMeta } from "./categories";
@@ -26,6 +28,8 @@ export interface Frontmatter {
   secondary_keywords: string;
   search_intent: string;
   parent_page?: string;
+  /** Editorial review date, used for lastmod and the visible review line. */
+  last_reviewed: string;
 }
 
 export interface FaqItem {
@@ -59,21 +63,51 @@ export interface GuidePage {
   toc: TocItem[];
   nextLinks: NextLink[];
   readingMinutes: number;
+  /** Sources cited in this page's body, in the order the markers appear. */
+  citations: Source[];
+  /** Glossary term ids linked in this page's body. */
+  terms: string[];
+  lastReviewed: Date;
 }
 
-const processor = unified()
-  .use(remarkParse)
-  .use(remarkGfm)
-  .use(remarkRehype)
-  .use(rehypeSlug)
-  .use(rehypeStringify);
+/** Markdown → hast. Enrichment happens on the tree, before stringifying. */
+const toTree = unified().use(remarkParse).use(remarkGfm).use(remarkRehype).use(rehypeSlug);
+const stringify = unified().use(rehypeStringify);
 
-function toHtml(markdown: string): string {
+interface RenderOptions {
+  /** Link glossary terms and attach citation markers. Off for short fragments. */
+  enrich?: boolean;
+  /** The page's own slug, so a term does not link to the page you are on. */
+  slug?: string;
+}
+
+interface Rendered {
+  html: string;
+  citations: Source[];
+  terms: string[];
+}
+
+function render(markdown: string, options: RenderOptions = {}): Rendered {
+  const tree = toTree.runSync(toTree.parse(markdown));
+
+  let citations: Source[] = [];
+  let terms: string[] = [];
+  if (options.enrich) {
+    citations = attachCitations(tree as never);
+    terms = linkGlossaryTerms(tree as never, options.slug);
+  }
+
   // Wrap tables so wide spec sheets scroll horizontally instead of forcing
   // the whole page to scroll on a phone.
-  return String(processor.processSync(markdown))
+  const html = String(stringify.stringify(tree as never))
     .replace(/<table>/g, '<div class="table-wrap"><table>')
     .replace(/<\/table>/g, "</table></div>");
+
+  return { html, citations, terms };
+}
+
+function toHtml(markdown: string): string {
+  return render(markdown).html;
 }
 
 /** Matches the ids rehype-slug writes into the rendered headings. */
@@ -139,11 +173,11 @@ function parseFile(filename: string): GuidePage {
 
   // Strip the H1 (the hero renders it) and everything from the trailing rule
   // onwards (the "Next:" nav and CTA become designed components).
-  let body = content.replace(/^#\s+.*$/m, "").trim();
-  const nextLinks = parseNextLinks(body);
-  body = body.replace(/\n---\s*\n[\s\S]*$/, "").trim();
+  let markdown = content.replace(/^#\s+.*$/m, "").trim();
+  const nextLinks = parseNextLinks(markdown);
+  markdown = markdown.replace(/\n---\s*\n[\s\S]*$/, "").trim();
 
-  const faqSplit = body.split(/^##\s+Frequently asked questions\s*$/m);
+  const faqSplit = markdown.split(/^##\s+Frequently asked questions\s*$/m);
   const beforeFaq = faqSplit[0].trim();
   const faqs = faqSplit[1] ? parseFaqs(faqSplit[1]) : [];
 
@@ -153,6 +187,7 @@ function parseFile(filename: string): GuidePage {
   const restMarkdown = paragraphs.slice(1).join("\n\n").trim();
 
   const words = content.split(/\s+/).length;
+  const body = render(restMarkdown, { enrich: true, slug });
 
   return {
     slug,
@@ -161,11 +196,14 @@ function parseFile(filename: string): GuidePage {
     frontmatter,
     title: frontmatter.h1,
     leadHtml: toHtml(leadMarkdown),
-    bodyHtml: toHtml(restMarkdown),
+    bodyHtml: body.html,
     faqs,
     toc: parseToc(beforeFaq).concat(faqs.length ? [{ id: "faq", title: "Frequently asked questions" }] : []),
     nextLinks,
     readingMinutes: Math.max(1, Math.round(words / 220)),
+    citations: body.citations,
+    terms: body.terms,
+    lastReviewed: new Date(frontmatter.last_reviewed),
   };
 }
 

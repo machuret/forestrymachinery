@@ -8,6 +8,7 @@ primary_keyword: stump cutter
 secondary_keywords: stump and root cutter, excavator stump cutter, stump splitter attachment, Trevi Benne WE series
 search_intent: commercial investigation
 parent_page: /forestry-machinery-guide/
+last_reviewed: 2026-09-12
 ---
 
 # Stump Cutters: The Attachment Most Buyers Confuse With a Stump Grinder

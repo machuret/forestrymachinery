@@ -8,6 +8,7 @@ primary_keyword: log grab
 secondary_keywords: forestry grab, log grapple, biomass grapple, timber grab excavator, Powerhand EX series, OMEF PFIMX
 search_intent: commercial investigation
 parent_page: /forestry-machinery-guide/
+last_reviewed: 2026-09-12
 ---
 
 # Log and Forestry Grabs: The Highest-Utilisation Attachment You Will Own

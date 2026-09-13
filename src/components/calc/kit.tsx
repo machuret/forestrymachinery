@@ -46,7 +46,7 @@ export function useUrlState<T extends Record<string, string | number | boolean>>
 }
 
 const fieldBase =
-  "mt-2 w-full min-w-0 border border-steel-600 bg-steel-950 px-4 py-3 font-mono text-[0.95rem] text-bone outline-none transition-colors placeholder:text-steel-500 focus:border-hazard";
+  "mt-2 w-full min-w-0 border border-steel-600 bg-steel-950 px-4 py-3 font-mono text-[0.95rem] text-bone outline-none transition-colors placeholder:text-muted focus:border-hazard";
 
 export function NumberField({
   label,
@@ -70,7 +70,7 @@ export function NumberField({
     <div>
       <label htmlFor={id} className="flex items-baseline justify-between gap-2">
         <span className="font-mono text-[0.62rem] tracking-[0.16em] text-concrete uppercase">{label}</span>
-        {unit && <span className="font-mono text-[0.6rem] text-steel-500">{unit}</span>}
+        {unit && <span className="font-mono text-[0.6rem] text-muted">{unit}</span>}
       </label>
       <input
         id={id}
@@ -82,7 +82,7 @@ export function NumberField({
         onChange={(e) => onChange(e.target.value === "" ? 0 : Number(e.target.value))}
         className={fieldBase}
       />
-      {hint && <p className="mt-2 text-[0.78rem] leading-relaxed text-steel-500">{hint}</p>}
+      {hint && <p className="mt-2 text-[0.78rem] leading-relaxed text-muted">{hint}</p>}
     </div>
   );
 }

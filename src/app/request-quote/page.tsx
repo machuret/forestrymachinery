@@ -25,7 +25,7 @@ export default function RequestQuotePage() {
                   Home
                 </Link>
               </li>
-              <li aria-hidden="true" className="text-steel-500">
+              <li aria-hidden="true" className="text-muted">
                 /
               </li>
               <li className="text-hazard">Request a quote</li>

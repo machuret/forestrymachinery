@@ -130,6 +130,9 @@ Two rules hold across every page, and both are deliberate rather than incidental
 - **No claimed first-hand testing.** The site has not tested this equipment. Brand profiles carry a
   visible disclosure saying so, and where a specification could not be verified it is omitted rather
   than estimated.
+- **Figures are worked examples, not market data.** Where a chart shows dollar figures it states its
+  inputs on the figure and derives everything from them, so a reader can vary the assumptions in the
+  matching calculator rather than trusting a number.
 
 Long-form pages are assembled from the shared primitives in `src/components/content.tsx` — `Section`,
 `ShortAnswer`, `NumberedGrid`, `Checklist`, `RedFlags`, `FaqBlock`, `NextSteps` — so structure stays
@@ -143,6 +146,37 @@ npm run dev        # http://localhost:3000
 npm run build
 npm run typecheck
 ```
+
+## Quality gates
+
+Three checks run against a built site. Start it with `npm run build && npm start`,
+then point each script at it. All three are release gates, not advisory:
+
+```bash
+npm run audit        -- http://localhost:3000   # content and SEO
+npm run a11y         -- http://localhost:3000   # accessibility
+npm run check-links                             # cited source URLs
+npm run perf         -- http://localhost:3000   # page weight and paint timing
+```
+
+**`npm run audit`** crawls the sitemap and fails on thin pages (below 700 words of
+main content, with a short allowlist for utility pages where depth is not the job),
+broken internal links, missing or duplicated `h1`, missing canonicals, meta
+descriptions outside 130–165 characters, images without alt text, structured data
+that misrepresents the page — an FAQ answer that duplicates its question, for
+instance — and horizontal overflow at 390px. It exists because a previous round
+shipped seventeen pages below the minimum without anyone noticing.
+
+**`npm run a11y`** runs axe-core over every page at 1440px and 390px against
+WCAG 2.1 AA, and fails on any serious or critical violation.
+
+**`npm run check-links`** confirms every URL in `src/lib/sources.ts` still resolves.
+A 404 fails the run. A 403 or a reset connection is reported separately, because
+ISO, the ATO and agriculture.gov.au all block automated requests and that is not
+evidence the page is gone — each source carries a `verified` date recording when a
+human last confirmed it.
+
+If Chromium is not on the default path, set `CHROMIUM_PATH`.
 
 ## Deploying to Vercel
 

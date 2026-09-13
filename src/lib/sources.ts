@@ -14,16 +14,19 @@ export interface Source {
   supports: string;
   /** Exact strings from the markdown that trigger a marker. */
   anchors: string[];
+  /** ISO date the URL was last confirmed to resolve and support the claim. */
+  verified: string;
 }
 
 export const SOURCES: Source[] = [
   {
     id: "abares-plantation",
     publisher: "ABARES, Department of Agriculture, Fisheries and Forestry",
-    title: "Australian plantation statistics",
-    url: "https://www.agriculture.gov.au/abares/forestsaustralia/forest-data-maps-and-tools/data-by-topic/plantations",
+    title: "State of the Forests Report, Indicator 2.1b: plantation area",
+    url: "https://www.agriculture.gov.au/abares/forestsaustralia/sofr/criterion-2/indicator-2.1b",
     supports: "Plantation area and species composition",
     anchors: ["1.71 million hectares of commercial plantation"],
+    verified: "2026-09-13",
   },
   {
     id: "ibisworld-forestry",
@@ -32,22 +35,25 @@ export const SOURCES: Source[] = [
     url: "https://www.ibisworld.com/australia/industry/forestry-logging/68/",
     supports: "Industry size and trend",
     anchors: ["around 2.0% CAGR between 2021 and 2026"],
+    verified: "2026-09-13",
   },
   {
     id: "nsw-koala-park",
     publisher: "NSW Government",
     title: "Great Koala National Park and the Mid North Coast harvesting moratorium",
-    url: "https://www.nsw.gov.au/departments-and-agencies/dpird/great-koala-national-park",
+    url: "https://www.nsw.gov.au/environment-land-and-water/great-koala-national-park",
     supports: "State-level harvest access constraints",
     anchors: ["176,000 hectares of state forest"],
+    verified: "2026-09-13",
   },
   {
     id: "nsw-ebmp",
     publisher: "NSW Office of Environment and Heritage",
     title: "Enhanced Bushfire Management Program",
-    url: "https://www.nationalparks.nsw.gov.au/conservation-and-heritage/fire",
+    url: "https://www.environment.nsw.gov.au/topics/fire/managing-fire/bushfire-management-program",
     supports: "Hazard-reduction hectare targets",
     anchors: ["135,000 hectares of bushland each year"],
+    verified: "2026-09-13",
   },
   {
     id: "as-4373",
@@ -56,22 +62,25 @@ export const SOURCES: Source[] = [
     url: "https://store.standards.org.au/product/as-4373-2007",
     supports: "Pruning specification written into council and utility contracts",
     anchors: ["Australian Standard AS 4373", "AS 4373 governs the pruning"],
+    verified: "2026-09-13",
   },
   {
     id: "as-4772",
     publisher: "Standards Australia / WorkSafe Victoria",
-    title: "AS 4772 — Earth-moving machinery quick hitches",
-    url: "https://www.worksafe.vic.gov.au/quick-hitches-earthmoving-machinery",
+    title: "Safety alert: semi-automatic quick hitches on excavators",
+    url: "https://www.worksafe.vic.gov.au/safety-alerts/semi-automatic-quick-hitches-excavators",
     supports: "Quick hitch safety system requirement",
     anchors: ["AS 4772-2008"],
+    verified: "2026-09-13",
   },
   {
     id: "iso-8084",
     publisher: "International Organization for Standardization",
-    title: "ISO 8084 — Machinery for forestry, operator protective structures",
-    url: "https://www.iso.org/standard/70560.html",
+    title: "ISO 8084:2003 — Machinery for forestry, operator protective structures",
+    url: "https://www.iso.org/standard/31626.html",
     supports: "Operator protective structures and guarding",
     anchors: ["ISO 8084"],
+    verified: "2026-09-13",
   },
   {
     id: "ato-iawo",
@@ -80,6 +89,7 @@ export const SOURCES: Source[] = [
     url: "https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/depreciation-and-capital-expenses-and-allowances/simpler-depreciation-for-small-business/instant-asset-write-off",
     supports: "Write-off threshold and small business pool rates",
     anchors: ["$20,000 per asset", "15% in the first year and 30%"],
+    verified: "2026-09-13",
   },
 ];
 

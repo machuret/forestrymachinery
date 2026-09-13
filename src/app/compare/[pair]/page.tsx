@@ -103,7 +103,12 @@ export default async function ComparisonPage({ params }: { params: Promise<{ pai
         <section className="mt-16">
           <div className="rule-heavy" />
           <h2 className="display mt-5 text-3xl text-bone sm:text-4xl">Side by side</h2>
-          <div className="relative mt-8 overflow-x-auto border border-steel-700 bg-steel-900">
+          <div
+            className="relative mt-8 overflow-x-auto border border-steel-700 bg-steel-900"
+            tabIndex={0}
+            role="region"
+            aria-label="Scrollable table"
+          >
             <table className="w-full min-w-[44rem] border-collapse text-sm">
               <thead>
                 <tr>
@@ -155,7 +160,12 @@ export default async function ComparisonPage({ params }: { params: Promise<{ pai
           title="What they cost to own and run"
           lead="The feature table settles capability. This settles the part that decides most purchases."
         >
-          <div className="relative overflow-x-auto border border-steel-700 bg-steel-900">
+          <div
+            className="relative overflow-x-auto border border-steel-700 bg-steel-900"
+            tabIndex={0}
+            role="region"
+            aria-label="Scrollable table"
+          >
             <table className="w-full min-w-[44rem] border-collapse text-sm">
               <thead>
                 <tr>

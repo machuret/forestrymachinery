@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
 import { JsonLd } from "@/components/JsonLd";
+import { nodeToText } from "@/lib/node-text";
 import { Section, Prose, ShortAnswer, NumberedGrid, FaqBlock, NextSteps, type Qa } from "@/components/content";
 import { Photograph } from "@/components/Photograph";
 import { COMPARISONS } from "@/lib/comparisons";
@@ -153,7 +154,7 @@ export default function ComparePage() {
           mainEntity: FAQS.map((f) => ({
             "@type": "Question",
             name: f.q,
-            acceptedAnswer: { "@type": "Answer", text: typeof f.a === "string" ? f.a : f.q },
+            acceptedAnswer: { "@type": "Answer", text: nodeToText(f.a) },
           })),
         }}
       />

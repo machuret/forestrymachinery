@@ -14,7 +14,9 @@ const inter = Inter({
 
 const oswald = Oswald({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  // Only 500 (prose h3) and 600 (.display) are used. Loading 400 and 700 as
+  // well shipped two font files nothing referenced.
+  weight: ["500", "600"],
   variable: "--font-oswald",
   display: "swap",
 });

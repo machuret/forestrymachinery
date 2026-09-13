@@ -15,7 +15,7 @@ export function BrandLogo({ slug, href, className = "" }: { slug: string; href?:
     <span className="flex h-14 items-center justify-center bg-[#e9e7e1] px-5 py-3 transition-colors group-hover:bg-white">
       <Image
         src={b.logo}
-        alt={`${b.name} logo`}
+        alt={`${b.name} manufacturer logo — forestry attachment range supplied in Australia`}
         width={b.logoWidth}
         height={b.logoHeight}
         sizes="200px"

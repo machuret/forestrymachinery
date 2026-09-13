@@ -37,7 +37,7 @@ export function PageHero({ eyebrow, title, lead, crumb, trail = [], aside }: Pro
             </li>
             {trail.map((c) => (
               <li key={c.href} className="flex items-center gap-2">
-                <span aria-hidden="true" className="text-steel-500">
+                <span aria-hidden="true" className="text-muted">
                   /
                 </span>
                 <Link href={c.href} className="transition-colors hover:text-hazard">
@@ -45,7 +45,7 @@ export function PageHero({ eyebrow, title, lead, crumb, trail = [], aside }: Pro
                 </Link>
               </li>
             ))}
-            <li aria-hidden="true" className="text-steel-500">
+            <li aria-hidden="true" className="text-muted">
               /
             </li>
             <li className="text-hazard">{crumb}</li>

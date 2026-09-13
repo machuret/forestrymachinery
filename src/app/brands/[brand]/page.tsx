@@ -74,7 +74,12 @@ export default async function BrandPage({ params }: { params: Promise<{ brand: s
         <section className="mt-16">
           <div className="rule-heavy" />
           <h2 className="display mt-5 text-3xl text-bone sm:text-4xl">The range</h2>
-          <div className="relative mt-8 overflow-x-auto border border-steel-700 bg-steel-900">
+          <div
+            className="relative mt-8 overflow-x-auto border border-steel-700 bg-steel-900"
+            tabIndex={0}
+            role="region"
+            aria-label="Scrollable table"
+          >
             <table className="w-full min-w-[44rem] border-collapse text-sm">
               <thead>
                 <tr>

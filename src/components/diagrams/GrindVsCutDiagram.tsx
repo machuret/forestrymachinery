@@ -21,7 +21,7 @@ function Ground({ x }: { x: number }) {
 export function GrindVsCutDiagram() {
   return (
     <figure className="border border-steel-700 bg-steel-900">
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto" tabIndex={0} role="region" aria-label="Stump grinding and cutting diagram, scrollable">
         <svg viewBox="0 0 820 274" role="img" aria-labelledby="gc-title gc-desc" className="w-full min-w-[40rem]">
           <title id="gc-title">Stump grinding compared with stump cutting</title>
           <desc id="gc-desc">

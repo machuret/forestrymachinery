@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
 import { JsonLd } from "@/components/JsonLd";
+import { CapitalPerHourChart } from "@/components/diagrams/CapitalPerHourChart";
+import { nodeToText } from "@/lib/node-text";
 import {
   Section,
   Prose,
@@ -104,7 +106,7 @@ const FAQS: Qa[] = [
       <>
         Usually not, because most forestry attachments cost well above the threshold. The instant asset write-off
         threshold is $20,000 per asset, and the 2026-27 Budget announced it would be made permanent from 1 July 2026 for
-        small businesses with aggregated turnover up to $10 million. As at mid-2026 the enabling legislation had not
+        small businesses with aggregated turnover under $10 million. As at mid-2026 the enabling legislation had not
         passed Parliament, and until it does the standing legislated threshold for assets first used from 1 July 2026 is
         $1,000. Above the threshold the asset joins the small business pool at 15% in the first year and 30% each year
         after. This is general information, not tax advice — confirm your position with your accountant.
@@ -219,11 +221,24 @@ export default function CostsPage() {
         </Section>
 
         <Section
+          id="utilisation-effect"
+          title="Why the invoice stops mattering"
+          lead="The same attachment, the same wear rate, five different levels of use. Only one line moves."
+        >
+          <CapitalPerHourChart />
+        </Section>
+
+        <Section
           id="purchase-drivers"
           title="What moves the purchase price"
           lead="Four variables explain most of the gap between two quotes for what looks like the same attachment."
         >
-          <div className="relative overflow-x-auto border border-steel-700 bg-steel-900">
+          <div
+            className="relative overflow-x-auto border border-steel-700 bg-steel-900"
+            tabIndex={0}
+            role="region"
+            aria-label="Scrollable table"
+          >
             <table className="w-full min-w-[46rem] border-collapse text-sm">
               <thead>
                 <tr>
@@ -284,7 +299,12 @@ export default function CostsPage() {
           title="Wear parts by category"
           lead="The dominant running cost, and the one buyers price last. These are the patterns by category — the figures themselves are specific to your ground and your supplier, which is exactly why you should ask for them in writing."
         >
-          <div className="relative overflow-x-auto border border-steel-700 bg-steel-900">
+          <div
+            className="relative overflow-x-auto border border-steel-700 bg-steel-900"
+            tabIndex={0}
+            role="region"
+            aria-label="Scrollable table"
+          >
             <table className="w-full min-w-[48rem] border-collapse text-sm">
               <thead>
                 <tr>
@@ -400,7 +420,7 @@ export default function CostsPage() {
           <Prose>
             <p>
               The instant asset write-off threshold is $20,000 per asset, and in the 2026-27 Budget it was announced to
-              be made permanent from 1 July 2026 for small businesses with aggregated turnover up to $10 million. As at
+              be made permanent from 1 July 2026 for small businesses with aggregated turnover under $10 million. As at
               mid-2026 the enabling legislation had not passed Parliament, and until it does the standing legislated
               threshold for assets first used from 1 July 2026 is $1,000.
             </p>
@@ -551,7 +571,7 @@ export default function CostsPage() {
           mainEntity: FAQS.map((f) => ({
             "@type": "Question",
             name: f.q,
-            acceptedAnswer: { "@type": "Answer", text: typeof f.a === "string" ? f.a : f.q },
+            acceptedAnswer: { "@type": "Answer", text: nodeToText(f.a) },
           })),
         }}
       />

@@ -13,6 +13,9 @@
   --color-steel-700: #262b27;
   --color-steel-600: #363c37;
   --color-steel-500: #4b524c;
+  /* Dimmest permissible text colour. Verified at 4.8:1 or better against every
+     surface in this palette; steel-500 is a divider colour, not a text one. */
+  --color-muted: #868b84;
   --color-concrete: #8b918a;
   --color-bone: #e9e7e1;
   --color-moss-400: #9ccc65;
@@ -21,6 +24,9 @@
   --color-hazard: #f5a623;
   --color-hazard-dim: #b87a15;
   --color-rust: #c4551e;
+  /* Lighter rust for text; the base tone is a border and accent colour and
+     only reaches 4.2:1 against the darkest surface. */
+  --color-rust-text: #e0703a;
 
   --font-display: var(--font-oswald), "Arial Narrow", ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif;
@@ -29,6 +35,13 @@
 
 :root {
   color-scheme: dark;
+}
+
+/* One visible focus treatment for everything, including the scrollable table
+   regions that are now keyboard-reachable. */
+:focus-visible {
+  outline: 2px solid var(--color-hazard);
+  outline-offset: 2px;
 }
 
 html {
@@ -329,6 +342,30 @@ body {
   background: var(--color-steel-800);
   border: 1px solid var(--color-steel-700);
   padding: 0.1em 0.35em;
+  /* A long unbreakable token must not blow out the column on a phone. */
+  overflow-wrap: anywhere;
+}
+
+/* Fenced blocks are cost formulas in this content, so they get a plate of
+   their own rather than looking like source code. */
+.prose-industrial pre {
+  overflow-x: auto;
+  background: var(--color-steel-900);
+  border: 1px solid var(--color-steel-700);
+  border-left: 3px solid var(--color-hazard);
+  padding: 1.25rem 1.5rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.prose-industrial pre code {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  font-size: inherit;
+  color: var(--color-bone);
+  white-space: pre;
+  overflow-wrap: normal;
 }
 
 /* FAQ disclosure */

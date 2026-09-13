@@ -78,10 +78,10 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-14 flex flex-col gap-4 border-t border-steel-700 pt-8 sm:flex-row sm:items-center sm:justify-between">
-          <p className="font-mono text-[0.65rem] tracking-[0.14em] text-steel-500 uppercase">
+          <p className="font-mono text-[0.65rem] tracking-[0.14em] text-muted uppercase">
             © {new Date().getFullYear()} {SITE.name}. Specifications are indicative and subject to configuration.
           </p>
-          <p className="max-w-md font-mono text-[0.65rem] leading-relaxed tracking-[0.08em] text-steel-500 uppercase">
+          <p className="max-w-md font-mono text-[0.65rem] leading-relaxed tracking-[0.08em] text-muted uppercase">
             Tax and compliance content is general information, not advice.
           </p>
         </div>

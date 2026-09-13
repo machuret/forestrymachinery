@@ -78,7 +78,7 @@ export function CarrierBandChart() {
                   <span className="relative z-10 pl-3 font-mono text-[0.62rem] tracking-[0.12em] text-bone uppercase">
                     {c.shortLabel}
                   </span>
-                  <span className="absolute right-3 z-10 font-mono text-[0.62rem] text-concrete">{r.label}</span>
+                  <span className="absolute right-3 z-10 font-mono text-[0.62rem] text-bone">{r.label}</span>
                 </Link>
               </li>
             );

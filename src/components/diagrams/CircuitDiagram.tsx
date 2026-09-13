@@ -110,7 +110,7 @@ function Panel({ c, x }: { c: Circuit; x: number }) {
 export function CircuitDiagram() {
   return (
     <figure className="border border-steel-700 bg-steel-900">
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto" tabIndex={0} role="region" aria-label="Hydraulic circuit diagram, scrollable">
         <svg viewBox="0 0 1040 250" role="img" aria-labelledby="circuit-title circuit-desc" className="w-full min-w-[46rem]">
           <title id="circuit-title">The four forestry attachment hydraulic circuit types</title>
           <desc id="circuit-desc">
@@ -129,7 +129,7 @@ export function CircuitDiagram() {
           <div key={c.id} className="bg-steel-900 p-4">
             <p className="font-mono text-[0.6rem] tracking-[0.14em] text-hazard uppercase">{c.name}</p>
             <p className="mt-2 text-[0.85rem] leading-relaxed text-concrete">{c.note}</p>
-            <p className="mt-2 font-mono text-[0.6rem] tracking-[0.1em] text-steel-500 uppercase">{c.users}</p>
+            <p className="mt-2 font-mono text-[0.6rem] tracking-[0.1em] text-muted uppercase">{c.users}</p>
           </div>
         ))}
       </figcaption>

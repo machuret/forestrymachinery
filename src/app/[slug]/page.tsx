@@ -128,7 +128,7 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
                   Home
                 </Link>
               </li>
-              <li aria-hidden="true" className="text-steel-500">
+              <li aria-hidden="true" className="text-muted">
                 /
               </li>
               {isPillar ? (
@@ -140,7 +140,7 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
                       Forestry Machinery Guide
                     </Link>
                   </li>
-                  <li aria-hidden="true" className="text-steel-500">
+                  <li aria-hidden="true" className="text-muted">
                     /
                   </li>
                   <li className="text-hazard">{meta?.label ?? page.frontmatter.primary_keyword}</li>

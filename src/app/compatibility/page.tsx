@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
+import { nodeToText } from "@/lib/node-text";
 import { Section, Prose, ShortAnswer, Callout, FaqBlock, NextSteps, Checklist, type Qa } from "@/components/content";
 import { CATEGORY_META, categoryMeta } from "@/lib/categories";
 import { CARRIER_BANDS } from "@/lib/carrier-bands";
@@ -132,7 +133,7 @@ export default function CompatibilityPage() {
                   Home
                 </Link>
               </li>
-              <li aria-hidden="true" className="text-steel-500">
+              <li aria-hidden="true" className="text-muted">
                 /
               </li>
               <li>
@@ -140,7 +141,7 @@ export default function CompatibilityPage() {
                   Forestry Machinery Guide
                 </Link>
               </li>
-              <li aria-hidden="true" className="text-steel-500">
+              <li aria-hidden="true" className="text-muted">
                 /
               </li>
               <li className="text-hazard">Carrier size guide</li>
@@ -164,7 +165,12 @@ export default function CompatibilityPage() {
       </section>
 
       <section className="mx-auto max-w-[88rem] px-4 py-14 sm:px-6 sm:py-20 lg:px-10">
-        <div className="relative overflow-x-auto border border-steel-700 bg-steel-900">
+        <div
+            className="relative overflow-x-auto border border-steel-700 bg-steel-900"
+            tabIndex={0}
+            role="region"
+            aria-label="Scrollable table"
+          >
           <table className="w-full min-w-[52rem] border-collapse text-sm">
             <thead>
               <tr>
@@ -270,7 +276,7 @@ export default function CompatibilityPage() {
                     [
                       ["In range", b.core, "text-moss-400"],
                       ["Edge of range", b.edge, "text-hazard"],
-                      ["Outside range", b.out, "text-steel-500"],
+                      ["Outside range", b.out, "text-muted"],
                     ] as const
                   ).map(([label, slugs, tone]) => (
                     <div key={label} className="bg-steel-950 p-4">
@@ -287,7 +293,7 @@ export default function CompatibilityPage() {
                               <Link
                                 href={`/${slug}/`}
                                 className={`text-[0.88rem] leading-snug hover:text-hazard ${
-                                  label === "Outside range" ? "text-steel-500 line-through" : "text-bone/85"
+                                  label === "Outside range" ? "text-muted line-through" : "text-bone/85"
                                 }`}
                               >
                                 {c.label}
@@ -457,7 +463,7 @@ export default function CompatibilityPage() {
           mainEntity: FAQS.map((f) => ({
             "@type": "Question",
             name: f.q,
-            acceptedAnswer: { "@type": "Answer", text: typeof f.a === "string" ? f.a : f.q },
+            acceptedAnswer: { "@type": "Answer", text: nodeToText(f.a) },
           })),
         }}
       />

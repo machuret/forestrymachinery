@@ -100,8 +100,16 @@ function render(markdown: string, options: RenderOptions = {}): Rendered {
   // Wrap tables so wide spec sheets scroll horizontally instead of forcing
   // the whole page to scroll on a phone.
   const html = String(stringify.stringify(tree as never))
-    .replace(/<table>/g, '<div class="table-wrap"><table>')
-    .replace(/<\/table>/g, "</table></div>");
+    .replace(
+      /<table>/g,
+      // tabindex and role so a keyboard user can scroll a wide spec table.
+      '<div class="table-wrap" tabindex="0" role="region" aria-label="Scrollable specification table"><table>',
+    )
+    .replace(/<\/table>/g, "</table></div>")
+    .replace(
+      /<pre>/g,
+      '<pre tabindex="0" role="region" aria-label="Scrollable formula">',
+    );
 
   return { html, citations, terms };
 }

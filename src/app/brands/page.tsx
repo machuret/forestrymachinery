@@ -3,12 +3,13 @@ import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
 import { BrandLogo } from "@/components/BrandLogo";
 import { JsonLd } from "@/components/JsonLd";
+import { nodeToText } from "@/lib/node-text";
 import { Section, Prose, ShortAnswer, NumberedGrid, FaqBlock, NextSteps, type Qa } from "@/components/content";
 import { BRAND_PROFILES } from "@/lib/brands";
 import { absoluteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: { absolute: "Forestry Attachment Brands in Australia | OMEF, Dipperfox, Powerhand, Trevi Benne" },
+  title: { absolute: "Forestry Attachment Brands in Australia | Manufacturer Guide" },
   description:
     "OMEF, Dipperfox, Powerhand and Trevi Benne forestry attachments in Australia: what each range suits, parts support and honest limitations.",
   alternates: { canonical: absoluteUrl("/brands/") },
@@ -70,7 +71,7 @@ export default function BrandsPage() {
                 <span className="font-mono text-[0.62rem] tracking-[0.14em] text-concrete uppercase">{b.origin}</span>
               </div>
               <p className="mt-3 text-[0.95rem] leading-relaxed text-concrete">{b.positioning}</p>
-              <p className="mt-5 font-mono text-[0.62rem] tracking-[0.14em] text-steel-500 uppercase">
+              <p className="mt-5 font-mono text-[0.62rem] tracking-[0.14em] text-muted uppercase">
                 {b.series.length} series ·{" "}
                 {[...new Set(b.series.map((s) => s.guide))].length} categories
               </p>
@@ -156,7 +157,7 @@ export default function BrandsPage() {
           mainEntity: FAQS.map((f) => ({
             "@type": "Question",
             name: f.q,
-            acceptedAnswer: { "@type": "Answer", text: typeof f.a === "string" ? f.a : f.q },
+            acceptedAnswer: { "@type": "Answer", text: nodeToText(f.a) },
           })),
         }}
       />

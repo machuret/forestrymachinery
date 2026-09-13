@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
 import { JsonLd } from "@/components/JsonLd";
+import { DiagnosticTree } from "@/components/diagrams/DiagnosticTree";
+import { nodeToText } from "@/lib/node-text";
 import {
   Section,
   Prose,
@@ -296,6 +298,14 @@ export default function TroubleshootingPage() {
         </Callout>
 
         <Section
+          id="first-fork"
+          title="Start here"
+          lead="One question splits most of these problems in two, and the answer changes what you check next."
+        >
+          <DiagnosticTree />
+        </Section>
+
+        <Section
           id="symptoms"
           title="Symptom by symptom"
           lead="Work down each list in order. The first check is listed because it eliminates the most likely cause fastest."
@@ -328,7 +338,12 @@ export default function TroubleshootingPage() {
           title="Flow or pressure? The distinction that matters most"
           lead="Two symptoms, two different causes, and a diagnosis that regularly sends buyers to the wrong solution."
         >
-          <div className="relative overflow-x-auto border border-steel-700 bg-steel-900">
+          <div
+            className="relative overflow-x-auto border border-steel-700 bg-steel-900"
+            tabIndex={0}
+            role="region"
+            aria-label="Scrollable table"
+          >
             <table className="w-full min-w-[42rem] border-collapse text-sm">
               <thead>
                 <tr>
@@ -439,7 +454,7 @@ export default function TroubleshootingPage() {
           mainEntity: FAQS.map((f) => ({
             "@type": "Question",
             name: f.q,
-            acceptedAnswer: { "@type": "Answer", text: typeof f.a === "string" ? f.a : f.q },
+            acceptedAnswer: { "@type": "Answer", text: nodeToText(f.a) },
           })),
         }}
       />

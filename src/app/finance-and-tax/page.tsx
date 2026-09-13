@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
 import { JsonLd } from "@/components/JsonLd";
+import { nodeToText } from "@/lib/node-text";
 import {
   Section,
   Prose,
@@ -36,7 +37,7 @@ const FAQS: Qa[] = [
       <>
         Usually not, because most forestry attachments cost well above the threshold. The instant asset write-off
         threshold is $20,000 per asset, and the 2026-27 Budget announced it would be made permanent from 1 July 2026 for
-        small businesses with aggregated turnover up to $10 million. As at mid-2026 the enabling legislation had not
+        small businesses with aggregated turnover under $10 million. As at mid-2026 the enabling legislation had not
         passed Parliament, and until it does the standing legislated threshold for assets first used from 1 July 2026 is
         $1,000.
       </>
@@ -155,7 +156,7 @@ export default function FinanceTaxPage() {
           <Prose>
             <p>
               The instant asset write-off threshold is $20,000 per asset. In the 2026-27 Budget it was announced to be
-              made permanent from 1 July 2026 for small businesses with aggregated turnover up to $10 million. As at
+              made permanent from 1 July 2026 for small businesses with aggregated turnover under $10 million. As at
               mid-2026 the enabling legislation had not passed Parliament, and until it does the standing legislated
               threshold for assets first used from 1 July 2026 is $1,000.
             </p>
@@ -167,7 +168,7 @@ export default function FinanceTaxPage() {
             </p>
           </Prose>
           {ato && (
-            <p className="mt-6 font-mono text-[0.65rem] tracking-[0.1em] text-steel-500 uppercase">
+            <p className="mt-6 font-mono text-[0.65rem] tracking-[0.1em] text-muted uppercase">
               Source:{" "}
               <a href={ato.url} rel="nofollow noopener" target="_blank" className="text-moss-400 hover:text-hazard">
                 {ato.publisher} — {ato.title}
@@ -181,7 +182,12 @@ export default function FinanceTaxPage() {
           title="The small business pool, which is what usually applies"
           lead="For an attachment costing more than the threshold, this is the mechanism."
         >
-          <div className="relative overflow-x-auto border border-steel-700 bg-steel-900">
+          <div
+            className="relative overflow-x-auto border border-steel-700 bg-steel-900"
+            tabIndex={0}
+            role="region"
+            aria-label="Scrollable table"
+          >
             <table className="w-full min-w-[36rem] border-collapse text-sm">
               <thead>
                 <tr>
@@ -310,7 +316,7 @@ export default function FinanceTaxPage() {
           mainEntity: FAQS.map((f) => ({
             "@type": "Question",
             name: f.q,
-            acceptedAnswer: { "@type": "Answer", text: typeof f.a === "string" ? f.a : f.q },
+            acceptedAnswer: { "@type": "Answer", text: nodeToText(f.a) },
           })),
         }}
       />

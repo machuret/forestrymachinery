@@ -49,7 +49,7 @@ export function Callout({
   children: ReactNode;
 }) {
   const border = tone === "warn" ? "border-rust" : "border-moss-500";
-  const text = tone === "warn" ? "text-rust" : "text-moss-400";
+  const text = tone === "warn" ? "text-rust-text" : "text-moss-400";
   return (
     <div className={`border-l-[3px] ${border} bg-steel-900 p-6`}>
       <p className={`font-mono text-[0.62rem] tracking-[0.2em] uppercase ${text}`}>{label}</p>

@@ -25,7 +25,7 @@ export function References({ items }: { items: Source[] }) {
               >
                 {s.publisher} — {s.title}
               </a>
-              <span className="mt-0.5 block text-[0.78rem] text-steel-500">{s.supports}</span>
+              <span className="mt-0.5 block text-[0.78rem] text-muted">{s.supports}</span>
             </span>
           </li>
         ))}

@@ -69,7 +69,12 @@ export function Calc() {
           <Readout label="Stumps per year" value={Math.round(stumpsPerYear).toLocaleString("en-AU")} />
         </div>
 
-        <div className="relative mt-8 overflow-x-auto border border-steel-700 bg-steel-900">
+        <div
+            className="relative mt-8 overflow-x-auto border border-steel-700 bg-steel-900"
+            tabIndex={0}
+            role="region"
+            aria-label="Scrollable table"
+          >
           <table className="w-full min-w-[30rem] border-collapse text-sm">
             <thead>
               <tr>
@@ -120,7 +125,7 @@ export function Calc() {
           </table>
         </div>
 
-        <p className="mt-5 text-[0.88rem] leading-relaxed text-steel-500">
+        <p className="mt-5 text-[0.88rem] leading-relaxed text-muted">
           Every figure above is yours to enter. No attachment prices are published on this site, because attachment
           pricing moves with exchange rate, spec and carrier bracket — a published number would be wrong within a
           quarter.

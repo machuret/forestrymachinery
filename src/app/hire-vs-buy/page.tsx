@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
 import { JsonLd } from "@/components/JsonLd";
+import { nodeToText } from "@/lib/node-text";
 import {
   Section,
   Prose,
@@ -143,7 +144,12 @@ export default function HireVsBuyPage() {
           title="The three utilisation bands"
           lead="These are the bands that matter in practice. They are guidance rather than gospel, and the seasonality and availability notes further down move them."
         >
-          <div className="relative overflow-x-auto border border-steel-700 bg-steel-900">
+          <div
+            className="relative overflow-x-auto border border-steel-700 bg-steel-900"
+            tabIndex={0}
+            role="region"
+            aria-label="Scrollable table"
+          >
             <table className="w-full min-w-[46rem] border-collapse text-sm">
               <thead>
                 <tr>
@@ -246,7 +252,12 @@ export default function HireVsBuyPage() {
           title="It differs by category"
           lead="The general thresholds hold, but some categories tip earlier than others because of what they cost to run or how hard they are to hire."
         >
-          <div className="relative overflow-x-auto border border-steel-700 bg-steel-900">
+          <div
+            className="relative overflow-x-auto border border-steel-700 bg-steel-900"
+            tabIndex={0}
+            role="region"
+            aria-label="Scrollable table"
+          >
             <table className="w-full min-w-[44rem] border-collapse text-sm">
               <thead>
                 <tr>
@@ -417,7 +428,7 @@ export default function HireVsBuyPage() {
           mainEntity: FAQS.map((f) => ({
             "@type": "Question",
             name: f.q,
-            acceptedAnswer: { "@type": "Answer", text: f.q },
+            acceptedAnswer: { "@type": "Answer", text: nodeToText(f.a) },
           })),
         }}
       />

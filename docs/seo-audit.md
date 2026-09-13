@@ -309,3 +309,42 @@ Not built, and none of them P1:
 - Per-model spec pages (for example the Dipperfox 400/600/850 Pro individually). Worth doing only if model-level specifications can be verified; otherwise they would be thin.
 - Application pages — "best attachment for orchard work", "attachments for council parks crews".
 - A used and second-hand attachment guide, which would need care around what can be verified.
+
+
+---
+
+## 11. Quality gates, and why they exist
+
+The audit in this document was run once, by hand, after the fact — which is how seventeen pages shipped below the editorial minimum without anyone noticing. That is now automated and gates a release.
+
+`npm run audit` reproduces every check in section 1 on a built site and exits non-zero on failure: thin pages, broken internal links, duplicate or missing `h1`, missing canonicals, meta descriptions outside 130–165 characters, images without alt text, structured data that misrepresents the page, and horizontal overflow at 390px.
+
+### What running it for the first time found
+
+| Problem | Scope | Status |
+|---|---|---|
+| FAQ structured data emitted the question as its own answer | Every FAQPage on the site, 118 entries | Fixed |
+| Horizontal overflow at 390px from an unbreakable `<pre>` | 2 guide pages | Fixed |
+| Meta descriptions and titles over length | 3 pages | Fixed |
+| Non-descriptive image alt text | Supplier logos across 12 pages | Fixed |
+
+The FAQ schema fault is the one worth dwelling on. Every FAQ answer on the site was being emitted to Google as a copy of its own question, because the JSX-authored answers were falling through a `typeof === "string"` check. It renders correctly for a human and misrepresents the page to a machine, which is the category of error no amount of reading the page would surface.
+
+### Accessibility
+
+`npm run a11y` runs axe-core over all 34 pages at two viewports against WCAG 2.1 AA.
+
+| Violation | Count at first run | Cause | Fix |
+|---|---:|---|---|
+| `color-contrast` | 68 | `steel-500` used as body text at 2.07:1 | New `muted` token at 4.8:1 minimum, verified by calculation against every surface in the palette |
+| `scrollable-region-focusable` | 22 | Scrollable spec tables and formula blocks unreachable by keyboard | `tabindex`, `role="region"` and a label on every scroll container, plus a visible focus ring |
+
+Now zero serious or critical violations.
+
+### Citations
+
+`npm run check-links` checks every source URL. The first run found **one citation pointing at the wrong ISO standard** and four URLs that no longer resolved. All five were corrected against primary sources, and two figures were corrected with them: hardwood plantation area from 0.67 to 0.68 million hectares, and the write-off turnover test from "up to" to "under" $10 million, both to match the publishing body's own wording.
+
+### Performance
+
+Measured at 390px: heaviest page 242 KB, first contentful paint 132–176 ms, largest contentful paint identical to FCP on every page sampled. Two unused Oswald weights were removed. Fonts total 98 KB and are cached across the site, so only the first page pays for them.

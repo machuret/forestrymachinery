@@ -13,7 +13,7 @@ export function Toc({ items }: { items: TocItem[] }) {
               href={`#${item.id}`}
               className="group flex gap-3 border-l-2 border-transparent py-2 pl-4 text-[0.82rem] leading-snug text-concrete transition-colors hover:border-hazard hover:text-bone"
             >
-              <span className="font-mono text-[0.62rem] text-steel-500 group-hover:text-hazard">
+              <span className="font-mono text-[0.62rem] text-muted group-hover:text-hazard">
                 {String(i + 1).padStart(2, "0")}
               </span>
               <span>{item.title}</span>

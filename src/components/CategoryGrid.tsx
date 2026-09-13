@@ -23,7 +23,7 @@ function Card({ c }: { c: CategoryMeta }) {
       <div>
         <div className="flex items-start justify-between gap-4">
           <span className="font-mono text-[0.7rem] tracking-[0.18em] text-hazard">{c.code}</span>
-          <span className="font-mono text-[0.65rem] tracking-[0.12em] text-steel-500 uppercase">{c.carrier}</span>
+          <span className="font-mono text-[0.65rem] tracking-[0.12em] text-muted uppercase">{c.carrier}</span>
         </div>
         <h3 className="display mt-5 text-2xl leading-none text-bone transition-colors group-hover:text-hazard sm:text-[1.75rem]">
           {c.label}

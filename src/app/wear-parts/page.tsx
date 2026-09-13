@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
 import { JsonLd } from "@/components/JsonLd";
+import { nodeToText } from "@/lib/node-text";
 import { Photograph } from "@/components/Photograph";
 import {
   Section,
@@ -252,7 +253,12 @@ export default function WearPartsPage() {
           title="What wears, by category"
           lead="The pattern is stable even though the figures are specific to your ground and your supplier — which is exactly why you should ask for them in writing."
         >
-          <div className="relative overflow-x-auto border border-steel-700 bg-steel-900">
+          <div
+            className="relative overflow-x-auto border border-steel-700 bg-steel-900"
+            tabIndex={0}
+            role="region"
+            aria-label="Scrollable table"
+          >
             <table className="w-full min-w-[52rem] border-collapse text-sm">
               <thead>
                 <tr>
@@ -506,7 +512,7 @@ export default function WearPartsPage() {
           mainEntity: FAQS.map((f) => ({
             "@type": "Question",
             name: f.q,
-            acceptedAnswer: { "@type": "Answer", text: typeof f.a === "string" ? f.a : f.q },
+            acceptedAnswer: { "@type": "Answer", text: nodeToText(f.a) },
           })),
         }}
       />

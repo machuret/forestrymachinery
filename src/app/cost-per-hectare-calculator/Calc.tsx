@@ -89,7 +89,12 @@ export function Calc() {
         </div>
 
         {/* Sensitivity: the whole argument for measuring your own output */}
-        <div className="relative mt-8 overflow-x-auto border border-steel-700 bg-steel-900">
+        <div
+            className="relative mt-8 overflow-x-auto border border-steel-700 bg-steel-900"
+            tabIndex={0}
+            role="region"
+            aria-label="Scrollable table"
+          >
           <table className="w-full min-w-[32rem] border-collapse text-sm">
             <caption className="border-b border-steel-700 bg-steel-800 px-4 py-3 text-left font-mono text-[0.62rem] tracking-[0.16em] text-hazard uppercase">
               If your real productivity is not {state.haPerHour} ha/hr
@@ -127,7 +132,7 @@ export function Calc() {
                     <td className="border-l border-steel-800 px-4 py-3 font-mono text-concrete">{money(sellPerHa)}</td>
                     <td
                       className={`border-l border-steel-800 px-4 py-3 font-mono ${
-                        held < 0 ? "text-rust" : held < 10 ? "text-hazard" : "text-moss-400"
+                        held < 0 ? "text-rust-text" : held < 10 ? "text-hazard" : "text-moss-400"
                       }`}
                     >
                       {Number.isFinite(held) ? `${held.toFixed(0)}%` : "—"}

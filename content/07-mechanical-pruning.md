@@ -2,7 +2,7 @@
 page_type: category_guide
 suggested_slug: /mechanical-pruning-guide/
 h1: "Mechanical Pruning: The Category That Sells Recurring Revenue"
-meta_title: "Mechanical Pruning Attachments | Hedge Trimmers and Forestry Pruners Australia"
+meta_title: "Mechanical Pruning Attachments Australia | Buyer's Guide"
 meta_description: "Hedge trimmers, pruning bars and forestry pruners for excavators: hydraulic requirements, AS 4373 compliance and the recurring-revenue argument."
 primary_keyword: mechanical pruning
 secondary_keywords: hydraulic hedge trimmer excavator, pruning cutting bar, forestry pruner attachment, disc hedge trimmer, roadside vegetation trimming

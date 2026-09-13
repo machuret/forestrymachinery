@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
 import { JsonLd } from "@/components/JsonLd";
+import { nodeToText } from "@/lib/node-text";
 import { Section, Prose, FaqBlock, NextSteps, Checklist, type Qa } from "@/components/content";
 import { GrindVsCutDiagram } from "@/components/diagrams/GrindVsCutDiagram";
 import { Photograph } from "@/components/Photograph";
@@ -209,7 +210,7 @@ export default function CostPerStumpPage() {
           mainEntity: FAQS.map((f) => ({
             "@type": "Question",
             name: f.q,
-            acceptedAnswer: { "@type": "Answer", text: typeof f.a === "string" ? f.a : f.q },
+            acceptedAnswer: { "@type": "Answer", text: nodeToText(f.a) },
           })),
         }}
       />

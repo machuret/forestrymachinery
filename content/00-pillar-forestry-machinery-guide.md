@@ -37,7 +37,7 @@ Detail pages for each sit below this one. Read the category page before you read
 
 ## Why the market is buying right now
 
-Australia has roughly 1.71 million hectares of commercial plantation, according to ABARES, with just over 1 million hectares of exotic softwood (predominantly Pinus radiata) and about 0.67 million hectares of hardwood plantation, mostly eucalypt species. That estate is the visible forestry market. It is not where most attachment demand comes from.
+Australia has roughly 1.71 million hectares of commercial plantation, according to ABARES, with just over 1 million hectares of exotic softwood (predominantly Pinus radiata) and about 0.68 million hectares of hardwood plantation, mostly eucalypt species. That estate is the visible forestry market. It is not where most attachment demand comes from.
 
 The larger and steadier demand sits in three places:
 
@@ -102,7 +102,7 @@ We have deliberately not published dollar figures in this guide, and [what fores
 
 Most forestry attachments cost well above the instant asset write-off threshold, so the write-off is usually not the relevant mechanism.
 
-The instant asset write-off threshold is $20,000 per asset, and in the 2026-27 Budget it was announced to be made permanent from 1 July 2026 for small businesses with aggregated turnover up to $10 million. As at mid-2026 the enabling legislation had not passed Parliament, and until it does the standing legislated threshold for assets first used from 1 July 2026 is $1,000.
+The instant asset write-off threshold is $20,000 per asset, and in the 2026-27 Budget it was announced to be made permanent from 1 July 2026 for small businesses with aggregated turnover under $10 million. As at mid-2026 the enabling legislation had not passed Parliament, and until it does the standing legislated threshold for assets first used from 1 July 2026 is $1,000.
 
 For an attachment costing more than the threshold, the asset joins the small business pool and depreciates at 15% in the first year and 30% in each year after. There is a timing trap worth knowing: the test is that the asset is first used or installed ready for use within the income year, not ordered or paid for. An imported attachment sitting on a wharf on 30 June does not qualify.
 

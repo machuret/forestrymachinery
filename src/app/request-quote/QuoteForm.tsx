@@ -8,7 +8,7 @@ import { submitQuote, type QuoteState } from "./actions";
 const initialState: QuoteState = { status: "idle", message: "" };
 
 const fieldClass =
-  "mt-2 w-full border border-steel-600 bg-steel-950 px-4 py-3 text-[0.95rem] text-bone outline-none transition-colors placeholder:text-steel-500 focus:border-hazard";
+  "mt-2 w-full border border-steel-600 bg-steel-950 px-4 py-3 text-[0.95rem] text-bone outline-none transition-colors placeholder:text-muted focus:border-hazard";
 
 const labelClass = "block font-mono text-[0.62rem] tracking-[0.18em] text-concrete uppercase";
 
@@ -27,7 +27,7 @@ function Submit() {
 
 function Error({ message }: { message?: string }) {
   if (!message) return null;
-  return <p className="mt-2 font-mono text-[0.68rem] text-rust">{message}</p>;
+  return <p className="mt-2 font-mono text-[0.68rem] text-rust-text">{message}</p>;
 }
 
 export function QuoteForm() {
@@ -150,14 +150,14 @@ export function QuoteForm() {
       </fieldset>
 
       {state.status === "error" && (
-        <p className="mt-8 border border-rust/60 bg-rust/10 px-4 py-3 font-mono text-[0.7rem] tracking-[0.1em] text-rust uppercase">
+        <p className="mt-8 border border-rust/60 bg-rust/10 px-4 py-3 font-mono text-[0.7rem] tracking-[0.1em] text-rust-text uppercase">
           {state.message}
         </p>
       )}
 
       <div className="mt-10 flex flex-wrap items-center gap-5">
         <Submit />
-        <p className="font-mono text-[0.62rem] tracking-[0.12em] text-steel-500 uppercase">
+        <p className="font-mono text-[0.62rem] tracking-[0.12em] text-muted uppercase">
           No pricing is published. We quote against your configuration.
         </p>
       </div>

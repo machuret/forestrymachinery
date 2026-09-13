@@ -5,6 +5,7 @@
 **Pages audited:** 28 (every URL in `sitemap.xml`)
 **Total main-content words at audit:** 22,144
 **Total after the P1 round:** 38,078 across 29 pages — see section 9.
+**Total after the P2/P3 round:** 47,018 across 34 pages — see section 10.
 
 ---
 
@@ -258,6 +259,53 @@ Not length for its own sake. Each expanded page gained specific missing elements
 
 Every page now carries at least six inbound internal links; the twenty-two pages in the main navigation and footer carry twenty-eight. The money arm is fed from three directions: a sidebar rail on all nine category guides, the homepage tools block, and contextual links written into the pillar's cost, utilisation and carrier-matching sections.
 
-### Still outstanding
+### Still outstanding after P1
 
-P2 and P3 from section 7 are not built: `/wear-parts/`, `/support-and-parts-australia/`, `/as-4373-mechanised-pruning/`, `/finance-and-tax/`, and the troubleshooting arm. The priority order in section 7 still stands.
+P2 and P3 from section 7 were not built in that round. They were built in the next one — see section 10.
+
+
+---
+
+## 10. What the P2/P3 round delivered
+
+| Metric | At audit | After P1 | After P2/P3 |
+|---|---:|---:|---:|
+| Indexable pages | 28 | 29 | 34 |
+| Total main-content words | 22,144 | 38,078 | 47,018 |
+| Pages below 700 words | 17 | 2 | 2 |
+| Pages with FAQ coverage | 9 | 24 | 29 |
+| Minimum inbound internal links | — | 6 | 6 |
+
+### New pages
+
+| URL | Words | Primary keyword | Journey stage it fills |
+|---|---:|---|---|
+| `/wear-parts/` | 2,337 | mulcher teeth cost | 9 — ownership |
+| `/troubleshooting/` | 1,810 | excavator attachment running slow | 9 — problems |
+| `/as-4373-mechanised-pruning/` | 1,711 | AS 4373 pruning | Compliance, pre-tender |
+| `/support-and-parts-australia/` | 1,599 | forestry attachment parts Australia | 7 — supplier research |
+| `/finance-and-tax/` | 1,283 | instant asset write-off equipment | 5 — commercial research |
+
+Buyer journey coverage (section 6) is now complete across all ten stages. Stages 9 and 10 — ownership and problems — were the last gaps and are covered by `/wear-parts/` and `/troubleshooting/`.
+
+### What each page is grounded in
+
+Every claim traces to the source content rather than to general category knowledge:
+
+- **`/wear-parts/`** uses the per-category wear detail written into each guide: that grinder tooth wear is driven almost entirely by soil rather than timber, that harvester chain runs 0.404″ or 3/4″ pitch and is not chainsaw chain, that ignoring pin and bush wear on a shear lets the jaw track out and destroys blades, and that tooth cost per hour should be tracked per site type rather than averaged.
+- **`/troubleshooting/`** is built on the flow-versus-pressure distinction and the case drain requirement already documented in the guides, organised into seven symptoms with ordered causes.
+- **`/as-4373-mechanised-pruning/`** states what the standard governs and what that means for tool selection and tendering. It deliberately does not reproduce or summarise the standard's clauses, and says so — the standard must be obtained from Standards Australia.
+- **`/support-and-parts-australia/`** is the single national page recommended in section 4 instead of thin city pages. It states the actual supply position (one base, South Windsor NSW, freighting nationally) and covers what genuinely differs by state: freight legs, seasonal windows, ground abrasiveness.
+- **`/finance-and-tax/`** expands the pillar's tax section, stating the threshold with its legislative status and leading with the general-information caveat rather than burying it.
+
+### A note on the location-page decision
+
+`/support-and-parts-australia/` exists precisely so that city pages do not need to. The page says so on the record: with one supply base freighting nationally, the only honest differences between a Sydney page and a Brisbane page are the freight leg and the ground conditions, and both are covered in one place. This is the recommendation from section 4, implemented.
+
+### Remaining opportunities
+
+Not built, and none of them P1:
+
+- Per-model spec pages (for example the Dipperfox 400/600/850 Pro individually). Worth doing only if model-level specifications can be verified; otherwise they would be thin.
+- Application pages — "best attachment for orchard work", "attachments for council parks crews".
+- A used and second-hand attachment guide, which would need care around what can be verified.

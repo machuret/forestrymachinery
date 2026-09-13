@@ -391,6 +391,16 @@ export default function HireVsBuyPage() {
                 why: "There is no point costing a category your machine cannot run.",
               },
               {
+                href: "/wear-parts/",
+                label: "Wear parts guide",
+                why: "If you buy, this is what it costs you every week it works.",
+              },
+              {
+                href: "/finance-and-tax/",
+                label: "Finance and tax",
+                why: "How each route is treated, and why tax should follow the decision rather than drive it.",
+              },
+              {
                 href: "/forestry-machinery-guide/",
                 label: "The full buyer's guide",
                 why: "Start here if you are still choosing between categories.",

@@ -85,6 +85,30 @@ export function SiteHeader() {
               ))}
             </div>
           </details>
+          <details className="group relative">
+            <summary className="flex cursor-pointer list-none items-center gap-1.5 font-mono text-[0.7rem] tracking-[0.16em] text-concrete uppercase transition-colors hover:text-hazard">
+              Owning
+              <span aria-hidden="true" className="text-[0.6rem]">▾</span>
+            </summary>
+            <div className="absolute top-full right-0 mt-3 w-72 border border-steel-700 bg-steel-900 shadow-2xl shadow-black/60">
+              {[
+                ["/wear-parts/", "Wear parts", "Teeth, chains, blades and tips"],
+                ["/troubleshooting/", "Troubleshooting", "Slow, stalling or wearing fast"],
+                ["/support-and-parts-australia/", "Parts and support", "Freight and lead time by state"],
+                ["/finance-and-tax/", "Finance and tax", "Depreciation and the timing trap"],
+                ["/as-4373-mechanised-pruning/", "AS 4373", "Compliance for pruning contracts"],
+              ].map(([href, label, note]) => (
+                <Link
+                  key={href}
+                  href={href}
+                  className="block border-b border-steel-800 px-4 py-3 last:border-b-0 hover:bg-steel-800"
+                >
+                  <span className="display block text-[0.9rem] text-bone">{label}</span>
+                  <span className="mt-0.5 block text-[0.78rem] text-concrete">{note}</span>
+                </Link>
+              ))}
+            </div>
+          </details>
           <Link
             href="/brands/"
             className="font-mono text-[0.7rem] tracking-[0.16em] text-concrete uppercase transition-colors hover:text-hazard"

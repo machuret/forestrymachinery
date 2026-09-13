@@ -324,7 +324,9 @@ export default function CostsPage() {
 
           <Prose className="mt-8">
             <p>
-              The useful question is not &ldquo;what does a set of teeth cost&rdquo; but &ldquo;what does a set of teeth
+              <Link href="/wear-parts/">The wear parts guide</Link> covers each category in detail, including why
+              ground rather than timber decides tooth life. The useful question is not &ldquo;what does a set of teeth
+              cost&rdquo; but &ldquo;what does a set of teeth
               cost, how many hours does a set last in ground like mine, and how long does a replacement set take to
               arrive&rdquo;. A cheaper set that lasts half as long is more expensive, and a cheap set that takes six
               weeks to land is not a set at all.
@@ -493,9 +495,24 @@ export default function CostsPage() {
           <NextSteps
             items={[
               {
+                href: "/wear-parts/",
+                label: "Wear parts in detail",
+                why: "The dominant running cost, category by category, and what drives the rate.",
+              },
+              {
                 href: "/hire-vs-buy/",
                 label: "Hire, buy or subcontract",
                 why: "Work the utilisation decision properly before you price anything.",
+              },
+              {
+                href: "/finance-and-tax/",
+                label: "Finance and tax",
+                why: "Depreciation, the write-off threshold and the first-use timing trap.",
+              },
+              {
+                href: "/support-and-parts-australia/",
+                label: "Parts and support",
+                why: "Freight, lead time and what to hold on your own shelf.",
               },
               {
                 href: "/cost-per-stump-calculator/",

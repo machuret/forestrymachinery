@@ -23,7 +23,7 @@ Vegetation does not stop growing. That is the business model.
 
 Three recurring buyers dominate.
 
-**Electricity network operators.** Distribution businesses run continuous, regulated vegetation programs to maintain clearances and reduce bushfire ignition risk. These are audited and contracted, and compliance is specified. Trimming is generally carried out to meet Australian Standard AS 4373, which can require branches be cut back to growth points. That is a technical specification, not a preference, and it constrains which tools are acceptable.
+**Electricity network operators.** Distribution businesses run continuous, regulated vegetation programs to maintain clearances and reduce bushfire ignition risk. These are audited and contracted, and compliance is specified. Trimming is generally carried out to meet Australian Standard AS 4373, which can require branches be cut back to growth points. [What AS 4373 means for mechanised pruning](/as-4373-mechanised-pruning/) covers how it affects tool selection and tendering. That is a technical specification, not a preference, and it constrains which tools are acceptable.
 
 **Councils and road authorities.** Sight lines, clearance envelopes, footpath access, fire trail maintenance. Scheduled, budgeted, tendered.
 

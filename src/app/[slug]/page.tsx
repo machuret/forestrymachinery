@@ -210,6 +210,8 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
                   ["/costs/", "What it costs to own"],
                   ["/hire-vs-buy/", "Hire, buy or subcontract"],
                   ["/compatibility/", "Will it fit your carrier?"],
+                  ["/wear-parts/", "What it costs to run"],
+                  ["/troubleshooting/", "When it stops performing"],
                 ].map(([href, label]) => (
                   <li key={href}>
                     <Link href={href} className="text-[0.88rem] leading-snug text-moss-400 hover:text-hazard">

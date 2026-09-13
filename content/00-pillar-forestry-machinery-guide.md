@@ -106,7 +106,7 @@ The instant asset write-off threshold is $20,000 per asset, and in the 2026-27 B
 
 For an attachment costing more than the threshold, the asset joins the small business pool and depreciates at 15% in the first year and 30% in each year after. There is a timing trap worth knowing: the test is that the asset is first used or installed ready for use within the income year, not ordered or paid for. An imported attachment sitting on a wharf on 30 June does not qualify.
 
-This is general information, not tax advice. Confirm your own position with your accountant before you time a purchase around it.
+The [finance and tax page](/finance-and-tax/) covers this in full. This is general information, not tax advice. Confirm your own position with your accountant before you time a purchase around it.
 
 ## Safety and compliance you cannot skip
 

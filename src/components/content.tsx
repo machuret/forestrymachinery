@@ -63,7 +63,7 @@ export function NumberedGrid({
   items,
   columns = 3,
 }: {
-  items: Array<{ title: string; body: ReactNode }>;
+  items: Array<{ title: ReactNode; body: ReactNode }>;
   columns?: 2 | 3;
 }) {
   return (
@@ -75,7 +75,7 @@ export function NumberedGrid({
       }`}
     >
       {items.map((n, i) => (
-        <li key={n.title} className="bg-steel-950 p-6 sm:p-7">
+        <li key={i} className="bg-steel-950 p-6 sm:p-7">
           <span className="font-mono text-[0.7rem] tracking-[0.18em] text-hazard">
             {String(i + 1).padStart(2, "0")}
           </span>
@@ -154,7 +154,7 @@ export function FaqBlock({ items, title = "Frequently asked questions" }: { item
 /** Contextual next-step links, with descriptive anchors. */
 export function NextSteps({ items }: { items: Array<{ href: string; label: string; why: string }> }) {
   return (
-    <div className="grid gap-px bg-steel-700 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="grid gap-px bg-steel-700 sm:grid-cols-2 lg:grid-cols-3 [&>*:last-child:nth-child(odd)]:sm:col-span-2 [&>*:last-child:nth-child(3n+2)]:lg:col-span-2 [&>*:last-child:nth-child(3n+1)]:sm:col-span-2 [&>*:last-child:nth-child(3n+1)]:lg:col-span-1">
       {items.map((l) => (
         <Link key={l.href} href={l.href} className="group bg-steel-950 p-6 transition-colors hover:bg-steel-900">
           <span className="display block text-lg leading-tight text-bone group-hover:text-hazard">{l.label}</span>

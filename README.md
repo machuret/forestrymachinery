@@ -1,7 +1,7 @@
 # Forestry Machinery Guide
 
-A Next.js site for the Machinery Specialist forestry attachment content cluster. Twenty-nine pages
-and roughly 38,000 words of editorial content: one pillar guide, eight category guides, a costs
+A Next.js site for the Machinery Specialist forestry attachment content cluster. Thirty-four pages
+and roughly 47,000 words of editorial content: one pillar guide, eight category guides, a costs
 guide, a hire-versus-buy guide, a carrier size guide, four head-to-head comparisons, four brand
 profiles, three calculators, a glossary, a sources page and a quote form — all statically generated,
 all cross-linked.
@@ -88,6 +88,11 @@ Everything that is not markdown is a typed module, so the pages are thin:
 | `/forestry-machinery-guide/` and the eight `/…-guide/` pages | `src/app/[slug]/page.tsx`, from `content/` |
 | `/costs/` | What drives attachment cost, and how to compare quotes |
 | `/hire-vs-buy/` | Utilisation thresholds and the hire/buy/subcontract decision |
+| `/wear-parts/` | What wears by category, and what drives the rate |
+| `/troubleshooting/` | Symptom-by-symptom diagnosis, flow versus pressure |
+| `/support-and-parts-australia/` | Freight, lead time and what differs by state |
+| `/as-4373-mechanised-pruning/` | Compliance for utility and council pruning contracts |
+| `/finance-and-tax/` | Depreciation, thresholds and the first-use timing test |
 | `/compare/` and `/compare/[pair]/` | Four comparisons, from `src/lib/comparisons.ts` |
 | `/brands/` and `/brands/[brand]/` | Four manufacturers, from `src/lib/brands.ts` |
 | `/hydraulic-flow-calculator/` | Which attachments a given carrier can actually run |

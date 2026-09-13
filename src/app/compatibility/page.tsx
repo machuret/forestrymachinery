@@ -12,6 +12,7 @@ export const metadata: Metadata = {
   description:
     "What forestry attachments suit a 3, 5, 8, 13, 20 or 30 tonne excavator. Carrier class by carrier class, with the circuit each tool actually needs.",
   alternates: { canonical: absoluteUrl("/compatibility/") },
+  openGraph: { url: absoluteUrl("/compatibility/") },
   keywords: [
     "attachments for 5 tonne excavator",
     "excavator attachment compatibility",

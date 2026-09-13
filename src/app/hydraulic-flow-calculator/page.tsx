@@ -14,6 +14,7 @@ export const metadata: Metadata = {
   description:
     "Enter your excavator's weight, auxiliary flow and fitted circuits and see which forestry attachment categories it can actually run. Free, no sign-up.",
   alternates: { canonical: absoluteUrl("/hydraulic-flow-calculator/") },
+  openGraph: { url: absoluteUrl("/hydraulic-flow-calculator/") },
 };
 
 const FAQS: Qa[] = [

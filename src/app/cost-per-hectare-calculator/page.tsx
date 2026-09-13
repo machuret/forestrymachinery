@@ -13,6 +13,7 @@ export const metadata: Metadata = {
   description:
     "Price mulching and clearing by the hectare: productivity, wear, mobilisation, overhead and margin, resolved into a tender rate you can defend.",
   alternates: { canonical: absoluteUrl("/cost-per-hectare-calculator/") },
+  openGraph: { url: absoluteUrl("/cost-per-hectare-calculator/") },
 };
 
 const FAQS: Qa[] = [

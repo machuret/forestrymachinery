@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   description:
     "Send your carrier's operating weight, auxiliary flow and working pressure and get a matched forestry attachment shortlist. Supplied across Australia.",
   alternates: { canonical: absoluteUrl(SITE.quotePath) },
+  openGraph: { url: absoluteUrl(SITE.quotePath) },
   robots: { index: true, follow: true },
 };
 

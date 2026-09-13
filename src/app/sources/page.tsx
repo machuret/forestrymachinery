@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   description:
     "Every market, compliance and tax figure in these forestry attachment guides, with the source it came from and how specifications are handled.",
   alternates: { canonical: absoluteUrl("/sources/") },
+  openGraph: { url: absoluteUrl("/sources/") },
 };
 
 export default function SourcesPage() {

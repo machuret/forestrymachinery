@@ -8,7 +8,10 @@ const nextConfig: NextConfig = {
     return [
       // /guides/ duplicated the pillar's job as an index of the same nine
       // guides. One strong hub, not two competing for the same intent.
-      { source: "/guides", destination: "/forestry-machinery-guide", permanent: true },
+      // Destination carries the trailing slash so this resolves in one hop.
+      // Without it, trailingSlash adds a second redirect and the chain wastes crawl.
+      { source: "/guides", destination: "/forestry-machinery-guide/", permanent: true },
+      { source: "/guides/", destination: "/forestry-machinery-guide/", permanent: true },
     ];
   },
 };

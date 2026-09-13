@@ -21,6 +21,7 @@ export const metadata: Metadata = {
   description:
     "When to hire a forestry attachment, when to buy and when to subcontract. Utilisation thresholds, the hidden costs on both sides, and how to test it.",
   alternates: { canonical: absoluteUrl("/hire-vs-buy/") },
+  openGraph: { url: absoluteUrl("/hire-vs-buy/") },
   keywords: [
     "excavator attachment hire australia",
     "forestry mulcher hire or buy",

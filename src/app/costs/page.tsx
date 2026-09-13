@@ -23,6 +23,7 @@ export const metadata: Metadata = {
   description:
     "What drives the price of an excavator forestry attachment in Australia: carrier class, steel, rotation, brackets, wear parts, freight and downtime.",
   alternates: { canonical: absoluteUrl("/costs/") },
+  openGraph: { url: absoluteUrl("/costs/") },
   keywords: [
     "forestry attachment cost australia",
     "excavator attachment price",

@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: { params: Promise<{ pair: str
     title: { absolute: c.metaTitle },
     description: c.metaDescription,
     alternates: { canonical: absoluteUrl(`/compare/${c.slug}/`) },
-    openGraph: { title: c.metaTitle, description: c.metaDescription, type: "article" },
+    openGraph: { url: absoluteUrl(`/compare/${c.slug}/`), title: c.metaTitle, description: c.metaDescription, type: "article" },
   };
 }
 

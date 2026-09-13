@@ -23,6 +23,7 @@ export const metadata: Metadata = {
   description:
     "What AS 4373 means when pruning with an excavator attachment, why utility and council contracts specify it, and how to pick a compliant tool.",
   alternates: { canonical: absoluteUrl("/as-4373-mechanised-pruning/") },
+  openGraph: { url: absoluteUrl("/as-4373-mechanised-pruning/") },
   keywords: [
     "as 4373 pruning",
     "mechanised pruning compliance",

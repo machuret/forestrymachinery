@@ -63,36 +63,55 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SiteHeader />
         <main id="main">{children}</main>
         <SiteFooter />
+        {/* One linked graph rather than two loose nodes, so the Organization and
+            WebSite resolve to stable @ids that page-level schema can reference. */}
         <JsonLd
           data={{
             "@context": "https://schema.org",
-            "@type": "Organization",
-            name: SITE.name,
-            url: SITE.url,
-            areaServed: SITE.region,
-            address: {
-              "@type": "PostalAddress",
-              addressLocality: "South Windsor",
-              addressRegion: "NSW",
-              addressCountry: "AU",
-            },
-            knowsAbout: [
-              "forestry machinery",
-              "excavator attachments",
-              "tree shears",
-              "stump grinders",
-              "forestry mulchers",
-              "grapple saws",
+            "@graph": [
+              {
+                "@type": "Organization",
+                "@id": `${SITE.url}/#organization`,
+                name: SITE.name,
+                url: SITE.url,
+                logo: {
+                  "@type": "ImageObject",
+                  "@id": `${SITE.url}/#logo`,
+                  url: absoluteUrl("/icon.svg"),
+                  contentUrl: absoluteUrl("/icon.svg"),
+                  caption: SITE.name,
+                },
+                image: { "@id": `${SITE.url}/#logo` },
+                areaServed: {
+                  "@type": "Country",
+                  name: SITE.region,
+                },
+                address: {
+                  "@type": "PostalAddress",
+                  addressLocality: "South Windsor",
+                  addressRegion: "NSW",
+                  addressCountry: "AU",
+                },
+                knowsAbout: [
+                  "forestry machinery",
+                  "excavator attachments",
+                  "tree shears",
+                  "stump grinders",
+                  "forestry mulchers",
+                  "grapple saws",
+                  "log grabs",
+                  "mechanical pruning",
+                ],
+              },
+              {
+                "@type": "WebSite",
+                "@id": `${SITE.url}/#website`,
+                name: `${SITE.name} — Forestry Attachment Guide`,
+                url: SITE.url,
+                inLanguage: "en-AU",
+                publisher: { "@id": `${SITE.url}/#organization` },
+              },
             ],
-          }}
-        />
-        <JsonLd
-          data={{
-            "@context": "https://schema.org",
-            "@type": "WebSite",
-            name: `${SITE.name} — Forestry Attachment Guide`,
-            url: absoluteUrl("/"),
-            inLanguage: "en-AU",
           }}
         />
       </body>

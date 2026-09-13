@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   description:
     "Plain definitions for the terms that decide a forestry attachment purchase: auxiliary flow, case drain, dual circuit, chain pitch and AS 4373.",
   alternates: { canonical: absoluteUrl("/glossary/") },
+  openGraph: { url: absoluteUrl("/glossary/") },
 };
 
 export default function GlossaryPage() {

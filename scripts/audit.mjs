@@ -27,6 +27,16 @@ const EXTERNAL_PREFIXES = [
   "/mechanical-pruning/", "/tillage/",
 ];
 
+/**
+ * The origin the built site should be declaring. Defaults to production; pass
+ * --expect-origin to check a preview build against its own host instead.
+ */
+const EXPECT_ORIGIN = (() => {
+  const i = process.argv.indexOf("--expect-origin");
+  if (i !== -1 && process.argv[i + 1]) return process.argv[i + 1].replace(/\/$/, "");
+  return "https://www.forestrymachinery.com.au";
+})();
+
 const errors = [];
 const warnings = [];
 const err = (u, m) => errors.push(`${u}  ${m}`);
@@ -79,6 +89,8 @@ for (const url of urls) {
       title: document.title,
       desc: document.querySelector('meta[name="description"]')?.content ?? "",
       canonical: document.querySelector('link[rel="canonical"]')?.href ?? "",
+      ogUrl: document.querySelector('meta[property="og:url"]')?.content ?? "",
+      robots: document.querySelector('meta[name="robots"]')?.content ?? "",
       ogImage: document.querySelector('meta[property="og:image"]')?.content ?? "",
       imgs: [...main.querySelectorAll("img")].map((i) => ({
         src: i.getAttribute("src"),
@@ -106,7 +118,17 @@ for (const url of urls) {
 
   // --- head
   if (d.h1 !== 1) err(url, `${d.h1} h1 elements (expected exactly 1)`);
+
+  // A canonical is only useful if it names this page on the real origin. The
+  // failure mode this catches is a whole site canonicalising onto a preview host.
   if (!d.canonical) err(url, "no canonical");
+  else {
+    const expected = `${EXPECT_ORIGIN}${url}`;
+    if (d.canonical !== expected) err(url, `canonical is ${d.canonical}, expected ${expected}`);
+  }
+  if (d.ogUrl && d.ogUrl !== `${EXPECT_ORIGIN}${url}`) {
+    warn(url, `og:url is ${d.ogUrl}, expected ${EXPECT_ORIGIN}${url}`);
+  }
   if (!d.desc) err(url, "no meta description");
   else if (d.desc.length < DESC_MIN || d.desc.length > DESC_MAX) {
     err(url, `meta description ${d.desc.length} chars (want ${DESC_MIN}-${DESC_MAX})`);
@@ -146,10 +168,16 @@ for (const url of urls) {
   }
 
   // --- structured data
-  for (const block of d.ld) {
+  const flatten = (b) => (Array.isArray(b["@graph"]) ? b["@graph"] : [b]);
+  for (const block of d.ld.flatMap(flatten)) {
     if (block.__parseError) {
       err(url, "unparseable JSON-LD");
       continue;
+    }
+    if (block["@type"] === "Article" || block["@type"] === "WebPage") {
+      if (block.mainEntityOfPage && block.mainEntityOfPage !== `${EXPECT_ORIGIN}${url}`) {
+        err(url, `schema mainEntityOfPage is ${block.mainEntityOfPage}`);
+      }
     }
     if (block["@type"] === "FAQPage") {
       for (const q of block.mainEntity ?? []) {
@@ -167,6 +195,68 @@ for (const url of urls) {
       });
     }
   }
+}
+
+// --- sitemap integrity
+{
+  const declared = new Set(
+    [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]),
+  );
+
+  for (const loc of declared) {
+    let parsed;
+    try {
+      parsed = new URL(loc);
+    } catch {
+      errors.push(`sitemap  unparseable <loc>: ${loc}`);
+      continue;
+    }
+    if (parsed.origin !== EXPECT_ORIGIN) {
+      errors.push(`sitemap  wrong origin: ${loc} (expected ${EXPECT_ORIGIN})`);
+    }
+    if (parsed.pathname !== "/" && !parsed.pathname.endsWith("/")) {
+      errors.push(`sitemap  missing trailing slash: ${loc}`);
+    }
+    if (parsed.search || parsed.hash) {
+      errors.push(`sitemap  query or fragment in <loc>: ${loc}`);
+    }
+  }
+
+  // Every entry must be reachable directly. A 3xx in a sitemap wastes crawl.
+  for (const loc of declared) {
+    const path = new URL(loc).pathname;
+    const res = await page.goto(BASE + path, { waitUntil: "commit" });
+    const chain = res?.request().redirectedFrom();
+    if (res?.status() !== 200) errors.push(`sitemap  ${loc} returns ${res?.status()}`);
+    if (chain) errors.push(`sitemap  ${loc} redirects before resolving`);
+  }
+
+  // Anything reachable and indexable should be listed.
+  const linked = new Set();
+  for (const r of rows) for (const l of r.links) {
+    if (l.href?.startsWith("/")) linked.add(l.href.split("#")[0].split("?")[0]);
+  }
+  for (const path of linked) {
+    if (EXTERNAL_PREFIXES.includes(path) || path === "") continue;
+    const abs = `${EXPECT_ORIGIN}${path}`;
+    if (!declared.has(abs) && inbound.has(path)) {
+      errors.push(`sitemap  crawlable page missing from sitemap: ${path}`);
+    }
+  }
+
+  // robots.txt must point at the sitemap that actually exists.
+  const robotsRes = await page.goto(`${BASE}/robots.txt`, { waitUntil: "domcontentloaded" });
+  const robotsTxt = await robotsRes.text();
+  const declaredSitemap = robotsTxt.match(/^Sitemap:\s*(\S+)/im)?.[1];
+  if (!declaredSitemap) errors.push("robots.txt  no Sitemap directive");
+  else if (declaredSitemap !== `${EXPECT_ORIGIN}/sitemap.xml`) {
+    errors.push(`robots.txt  Sitemap is ${declaredSitemap}, expected ${EXPECT_ORIGIN}/sitemap.xml`);
+  }
+  if (/^Disallow:\s*\/\s*$/im.test(robotsTxt)) {
+    errors.push("robots.txt  disallows the whole site");
+  }
+
+  console.log(`\nSitemap: ${declared.size} entries, origin ${EXPECT_ORIGIN}`);
 }
 
 // --- inbound links

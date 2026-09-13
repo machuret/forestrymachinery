@@ -180,12 +180,24 @@ If Chromium is not on the default path, set `CHROMIUM_PATH`.
 
 ## Deploying to Vercel
 
-Import the repository; the framework preset, build command and output are all detected. Set one
-environment variable so canonical URLs, Open Graph URLs and the sitemap point at the real domain:
+Import the repository; the framework preset, build command and output are all detected.
 
-```
-NEXT_PUBLIC_SITE_URL=https://your-domain.com.au
-```
+The production origin is **`https://www.forestrymachinery.com.au`**, hard-coded as the default in
+`src/lib/site.ts`. Every canonical, Open Graph URL, sitemap entry and JSON-LD `@id` is built from it.
+
+It is a default rather than a required environment variable on purpose. A missing variable used to
+fall back to a Vercel preview host, which meant the whole site canonicalised onto a URL nobody should
+be indexing — a silent, site-wide fault. Now a missing variable degrades to correct.
+
+Set `NEXT_PUBLIC_SITE_URL` only to override it, for example on a staging domain. Anything set there
+is reduced to its origin, so a trailing slash or a stray path cannot corrupt the canonicals.
+
+### Two domain details that matter
+
+- **Use the `www` host.** The apex `forestrymachinery.com.au` 301s to `www`, so a canonical pointing
+  at the apex would name a URL that redirects. `PRODUCTION_ORIGIN` uses `www` for that reason.
+- **`trailingSlash` is on.** Every path except the root ends in a slash, and `absoluteUrl()` enforces
+  it — except for file paths, so the sitemap is declared as `sitemap.xml`, not `sitemap.xml/`.
 
 ## Before this goes live
 

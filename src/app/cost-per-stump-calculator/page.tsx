@@ -14,6 +14,7 @@ export const metadata: Metadata = {
   description:
     "Work out what a stump costs you to remove: attachment capital, teeth, carrier, operator and fuel, divided by the stumps you complete in an hour.",
   alternates: { canonical: absoluteUrl("/cost-per-stump-calculator/") },
+  openGraph: { url: absoluteUrl("/cost-per-stump-calculator/") },
 };
 
 const FAQS: Qa[] = [

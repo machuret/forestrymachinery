@@ -15,6 +15,7 @@ export const metadata: Metadata = {
   description:
     "Match a forestry attachment to the excavator you already own. Eight category guides, costs, carrier sizing and comparisons for Australian contractors.",
   alternates: { canonical: absoluteUrl("/") },
+  openGraph: { url: absoluteUrl("/") },
 };
 
 const STATS = [

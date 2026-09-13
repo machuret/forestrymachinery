@@ -13,6 +13,7 @@ export const metadata: Metadata = {
   description:
     "Four head-to-head comparisons of the forestry attachment categories Australian buyers most often confuse, with costs, scenarios and checklists.",
   alternates: { canonical: absoluteUrl("/compare/") },
+  openGraph: { url: absoluteUrl("/compare/") },
 };
 
 const FAQS: Qa[] = [

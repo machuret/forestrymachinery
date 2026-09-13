@@ -13,6 +13,7 @@ export const metadata: Metadata = {
   description:
     "OMEF, Dipperfox, Powerhand and Trevi Benne forestry attachments in Australia: what each range suits, parts support and honest limitations.",
   alternates: { canonical: absoluteUrl("/brands/") },
+  openGraph: { url: absoluteUrl("/brands/") },
 };
 
 const FAQS: Qa[] = [

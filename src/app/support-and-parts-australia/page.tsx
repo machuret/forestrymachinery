@@ -21,6 +21,7 @@ export const metadata: Metadata = {
   description:
     "Freight, lead time, parts stock and service coverage for excavator forestry attachments across Australia, and what to ask before you commit.",
   alternates: { canonical: absoluteUrl("/support-and-parts-australia/") },
+  openGraph: { url: absoluteUrl("/support-and-parts-australia/") },
   keywords: [
     "forestry attachment parts australia",
     "excavator attachment freight",

@@ -23,6 +23,7 @@ export const metadata: Metadata = {
   description:
     "What wears on a forestry attachment, what accelerates it, and how to budget for it. Mulcher teeth, grinder teeth, harvester chain, shear blades and grapple tines.",
   alternates: { canonical: absoluteUrl("/wear-parts/") },
+  openGraph: { url: absoluteUrl("/wear-parts/") },
   keywords: [
     "mulcher teeth cost",
     "stump grinder teeth",

@@ -22,6 +22,7 @@ export const metadata: Metadata = {
   description:
     "Why an excavator forestry attachment runs slow, stalls, overheats, wears out early or cracks its bracket, and how to tell flow from pressure.",
   alternates: { canonical: absoluteUrl("/troubleshooting/") },
+  openGraph: { url: absoluteUrl("/troubleshooting/") },
   keywords: [
     "excavator attachment running slow",
     "mulcher not cutting properly",

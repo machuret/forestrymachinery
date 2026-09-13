@@ -348,3 +348,44 @@ Now zero serious or critical violations.
 ### Performance
 
 Measured at 390px: heaviest page 242 KB, first contentful paint 132–176 ms, largest contentful paint identical to FCP on every page sampled. Two unused Oswald weights were removed. Fonts total 98 KB and are cached across the site, so only the first page pays for them.
+
+
+---
+
+## 12. Production domain
+
+The site's production origin is `https://www.forestrymachinery.com.au`.
+
+Setting it surfaced four faults, three of which were live:
+
+| Fault | Effect | Status |
+|---|---|---|
+| Canonical fell back to a Vercel preview host when the env var was unset | Every page told Google the real site was the preview URL | Fixed — production origin is now the default, not the fallback |
+| `og:url` fell back to the site root on 17 pages | Every social share of those pages declared itself as the homepage | Fixed — `og:url` set per page |
+| 16 pages had no `og:image` | No social card on most of the commercial pages | Fixed — a card per page |
+| `/guides/` redirect took two hops | Wasted crawl on a permanent redirect | Fixed — single hop |
+
+The canonical fault is the one worth noting. The check in place only asserted that a canonical tag
+*existed*. It existed on all 34 pages and pointed at the wrong host on all 34. The audit now asserts
+that each canonical equals the page's own absolute URL on the expected origin, which is the check
+that would have caught it.
+
+### Sitemap checks now enforced
+
+`npm run audit` fails if any of these are untrue:
+
+- Every `<loc>` is on the expected origin
+- Every `<loc>` has a trailing slash, except file paths
+- No `<loc>` carries a query string or fragment
+- Every `<loc>` returns 200 **directly**, with no redirect
+- Every crawlable internal page appears in the sitemap
+- `robots.txt` declares the sitemap at its real location, and does not disallow the site
+
+Current state: 34 entries, all on `https://www.forestrymachinery.com.au`, all resolving in one hop.
+
+### Note on the sibling domain
+
+At the time of writing, this build was deployed at `www.forestrymachines.com.au` (machin**es**), while
+`www.forestrymachinery.com.au` (machin**ery**) served a different site whose canonical pointed at
+`forestrymachines.com.au`. Two domains cross-canonicalising is worth resolving deliberately: pick the
+primary, 301 the other to it host-wide, and let one domain hold all the signals.

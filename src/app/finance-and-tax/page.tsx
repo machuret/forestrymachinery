@@ -22,6 +22,7 @@ export const metadata: Metadata = {
   description:
     "How an excavator forestry attachment is treated for tax in Australia: the write-off threshold, the small business pool, and the timing trap that catches importers.",
   alternates: { canonical: absoluteUrl("/finance-and-tax/") },
+  openGraph: { url: absoluteUrl("/finance-and-tax/") },
   keywords: [
     "instant asset write off equipment",
     "excavator attachment depreciation",

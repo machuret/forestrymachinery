@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
+import { EditorialImage } from "@/components/EditorialImage";
 import { JsonLd } from "@/components/JsonLd";
 import { nodeToText } from "@/lib/node-text";
 import { Photograph } from "@/components/Photograph";
@@ -212,6 +213,7 @@ export default function WearPartsPage() {
         crumb="Wear parts"
         trail={[{ label: "Forestry Machinery Guide", href: "/forestry-machinery-guide/" }]}
         lead="Purchase price is a one-off. Teeth, blades, chains and tips are what the attachment costs you every week it works, and they are the number buyers ask for last — usually after the first invoice arrives."
+        aside={<EditorialImage src="/images/field/wear-parts-workbench.webp" alt="Worn and replacement mulcher teeth, chain, pins, bushings and hydraulic hose on a workshop bench" caption="The hourly rate lives in the gap between worn parts and stocked replacements." />}
       />
 
       <article className="mx-auto max-w-[88rem] px-4 py-14 sm:px-6 sm:py-20 lg:px-10">

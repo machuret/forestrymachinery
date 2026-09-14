@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
+import { EditorialImage } from "@/components/EditorialImage";
 import { JsonLd } from "@/components/JsonLd";
 import { CapitalPerHourChart } from "@/components/diagrams/CapitalPerHourChart";
 import { nodeToText } from "@/lib/node-text";
@@ -159,6 +160,7 @@ export default function CostsPage() {
         crumb="Costs"
         trail={[{ label: "Forestry Machinery Guide", href: "/forestry-machinery-guide/" }]}
         lead="Purchase price is the number buyers focus on and the smallest part of the decision. This page covers the five costs that make up an attachment, what moves each of them, and how to compare two quotes that look nothing alike."
+        aside={<EditorialImage src="/images/field/costs-yard.webp" alt="Forestry attachments arranged beside an excavator in an Australian contractor yard" caption="Capital, configuration and support all arrive on the same invoice." />}
       />
 
       <article className="mx-auto max-w-[88rem] px-4 py-14 sm:px-6 sm:py-20 lg:px-10">

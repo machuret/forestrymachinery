@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { CategoryGrid } from "@/components/CategoryGrid";
-import { HeroSchematic } from "@/components/HeroSchematic";
 import { Photograph } from "@/components/Photograph";
 import { BrandLogo } from "@/components/BrandLogo";
 import { CarrierBandChart } from "@/components/diagrams/CarrierBandChart";
@@ -15,7 +15,12 @@ export const metadata: Metadata = {
   description:
     "Match a forestry attachment to the excavator you already own. Eight category guides, costs, carrier sizing and comparisons for Australian contractors.",
   alternates: { canonical: absoluteUrl("/") },
-  openGraph: { url: absoluteUrl("/") },
+  openGraph: {
+    title: "Forestry Attachments Australia | Excavator Buying Guides",
+    description: "Match forestry attachments to carrier weight, hydraulic flow and the work your crew actually performs.",
+    url: absoluteUrl("/"),
+    images: ["/images/editorial/forestry-attachments-australia-hero.webp"],
+  },
 };
 
 const STATS = [
@@ -66,30 +71,67 @@ const QUESTIONS = [
   },
 ];
 
+const FIELD_APPLICATIONS = [
+  {
+    code: "A1",
+    title: "Land clearing",
+    href: "/forestry-mulcher-guide/",
+    image: "/images/editorial/land-clearing-attachments-australia.webp",
+    alt: "Tracked excavator clearing scrub beside a formed access corridor in Australian eucalyptus woodland",
+    note: "Select around the finish: recover timber, mulch in place or prepare the next trade.",
+  },
+  {
+    code: "A2",
+    title: "Utility vegetation",
+    href: "/as-4373-mechanised-pruning/",
+    image: "/images/editorial/utility-vegetation-management-australia.webp",
+    alt: "Compact excavator mechanically pruning eucalyptus regrowth along a regional roadside power corridor",
+    note: "Reach, cut quality and exclusion zones matter more than raw clearing speed.",
+  },
+  {
+    code: "A3",
+    title: "Fuel reduction",
+    href: "/forestry-mulcher-guide/",
+    image: "/images/editorial/bushfire-fuel-reduction-machinery.webp",
+    alt: "Forestry mulcher creating a treated low-fuel strip in Australian eucalyptus bushland",
+    note: "Price treated hectares, terrain and residue—not the most dramatic single pass.",
+  },
+  {
+    code: "A4",
+    title: "Ground rehabilitation",
+    href: "/tillage-guide/",
+    image: "/images/editorial/farm-clearing-ground-rehabilitation.webp",
+    alt: "Excavator drilling and preparing rehabilitated ground on a rolling Australian farm",
+    note: "Carry the clearing job through to access, planting, drilling and productive ground.",
+  },
+];
+
 export default function HomePage() {
   return (
     <>
       {/* ---------------------------------------------------------- Hero */}
-      <section className="relative overflow-hidden border-b border-steel-700 bg-steel-950 plate">
-        <div aria-hidden="true" className="absolute inset-0 bg-grid opacity-70" />
-        <div
-          aria-hidden="true"
-          className="absolute -top-40 left-1/3 h-[34rem] w-[34rem] rounded-full bg-moss-600/14 blur-[130px]"
+      <section className="relative overflow-hidden border-b border-steel-700 bg-steel-950">
+        <Image
+          src="/images/editorial/forestry-attachments-australia-hero.webp"
+          alt="Tracked forestry excavator handling a cut eucalyptus section in Australian bushland"
+          fill
+          priority
+          sizes="100vw"
+          className="field-image object-cover object-[64%_center]"
         />
-        <div
-          aria-hidden="true"
-          className="absolute right-0 -bottom-24 h-[22rem] w-[22rem] rounded-full bg-hazard/8 blur-[120px]"
-        />
+        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-steel-950 via-steel-950/90 to-steel-950/15" />
+        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-steel-950 via-transparent to-steel-950/35" />
+        <div aria-hidden="true" className="absolute inset-0 bg-grid opacity-20" />
 
-        <div className="relative mx-auto max-w-[88rem] px-4 pt-16 pb-0 sm:px-6 sm:pt-24 lg:px-10">
+        <div className="relative mx-auto flex min-h-[42rem] max-w-[88rem] flex-col px-4 pt-12 pb-0 sm:px-6 lg:px-10">
           <p className="eyebrow flex items-center gap-3">
             <span className="inline-block h-2 w-2 rotate-45 bg-hazard" />
             Australian buyer&rsquo;s guide · {new Date().getFullYear()} edition
           </p>
 
-          <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_24rem] lg:items-center">
+          <div className="my-auto grid gap-10 py-8 lg:grid-cols-[minmax(0,1fr)_20rem] lg:items-center">
             <div>
-              <h1 className="display mt-7 text-[2.75rem] leading-[0.92] text-bone sm:text-6xl lg:text-[5rem]">
+              <h1 className="display mt-6 max-w-4xl text-[2.8rem] leading-[0.9] text-bone sm:text-6xl lg:text-[4.25rem]">
                 Forestry attachments,
                 <br />
                 matched to the machine
@@ -97,14 +139,14 @@ export default function HomePage() {
                 <span className="text-hazard">already on your float.</span>
               </h1>
 
-              <p className="mt-8 max-w-2xl text-lg leading-relaxed text-bone/80 sm:text-xl">
+              <p className="mt-6 max-w-2xl text-lg leading-relaxed text-bone/85">
                 Most businesses buying forestry machinery in Australia are not forestry companies. They are civil
                 contractors, arborists, councils, utility crews and farmers. The question is never &ldquo;which
                 attachment is best&rdquo;. It is which one turns an existing carrier into a second revenue line without
                 blowing up the maintenance bill.
               </p>
 
-              <div className="mt-10 flex flex-wrap items-center gap-4">
+              <div className="mt-8 flex flex-wrap items-center gap-4">
                 <Link
                   href="/forestry-machinery-guide/"
                   className="inline-flex items-center gap-2 bg-hazard px-7 py-4 font-mono text-[0.72rem] font-semibold tracking-[0.16em] text-steel-950 uppercase transition-colors hover:bg-moss-400"
@@ -120,10 +162,14 @@ export default function HomePage() {
               </div>
             </div>
 
-            <HeroSchematic className="hidden h-auto w-full opacity-80 lg:block" />
+            <div className="hidden self-end border-l border-bone/20 pl-6 lg:block">
+              <p className="font-mono text-[0.62rem] tracking-[0.18em] text-hazard uppercase">Field rule 01</p>
+              <p className="display mt-3 text-2xl leading-tight text-bone">Start with the carrier. Finish with the job.</p>
+              <p className="mt-3 text-sm leading-relaxed text-bone/65">Weight, flow, pressure and circuit decide what is possible. Terrain and the required finish decide what is profitable.</p>
+            </div>
           </div>
 
-          <dl className="mt-16 grid grid-cols-2 gap-px border-t border-l border-steel-700 bg-steel-700 sm:grid-cols-4">
+          <dl className="mt-8 grid grid-cols-2 gap-px border-t border-l border-steel-700 bg-steel-700 sm:grid-cols-4">
             {STATS.map((s) => (
               <div key={s.label} className="bg-steel-950 px-5 py-7">
                 <dt className="font-mono text-[0.6rem] tracking-[0.18em] text-concrete uppercase">{s.label}</dt>
@@ -153,6 +199,33 @@ export default function HomePage() {
 
         <div className="mt-12">
           <CategoryGrid />
+        </div>
+      </section>
+
+      {/* ------------------------------------------------ Field work */}
+      <section className="border-y border-steel-700 bg-steel-900 plate">
+        <div className="mx-auto max-w-[88rem] px-4 py-20 sm:px-6 sm:py-28 lg:px-10">
+          <div className="mb-12 grid gap-6 lg:grid-cols-[minmax(0,1fr)_27rem] lg:items-end">
+            <div>
+              <p className="eyebrow">Start with the site</p>
+              <h2 className="display mt-4 max-w-3xl text-4xl leading-none text-bone sm:text-5xl">Machinery makes sense in the field, not in a catalogue</h2>
+            </div>
+            <p className="text-[0.97rem] leading-relaxed text-concrete">The operating environment, required finish and material stream decide the attachment sequence.</p>
+          </div>
+          <div className="grid gap-4 md:grid-cols-2">
+            {FIELD_APPLICATIONS.map((item) => (
+              <Link key={item.code} href={item.href} className="group relative min-h-[23rem] overflow-hidden border border-steel-700 bg-steel-950">
+                <Image src={item.image} alt={item.alt} fill sizes="(max-width: 768px) 100vw, 50vw" className="field-image object-cover transition-transform duration-700 group-hover:scale-[1.035]" />
+                <span aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-steel-950 via-steel-950/35 to-transparent" />
+                <span className="absolute inset-x-0 bottom-0 p-6 sm:p-8">
+                  <span className="font-mono text-[0.65rem] tracking-[0.18em] text-hazard">{item.code} · FIELD APPLICATION</span>
+                  <span className="display mt-3 block text-3xl text-bone group-hover:text-hazard sm:text-4xl">{item.title}</span>
+                  <span className="mt-3 block max-w-xl text-sm leading-relaxed text-bone/75">{item.note}</span>
+                  <span className="mt-5 inline-flex font-mono text-[0.62rem] tracking-[0.16em] text-hazard uppercase">Open the field guide →</span>
+                </span>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
+import { EditorialImage } from "@/components/EditorialImage";
 import { JsonLd } from "@/components/JsonLd";
 import { DiagnosticTree } from "@/components/diagrams/DiagnosticTree";
 import { nodeToText } from "@/lib/node-text";
@@ -282,6 +283,7 @@ export default function TroubleshootingPage() {
         crumb="Troubleshooting"
         trail={[{ label: "Forestry Machinery Guide", href: "/forestry-machinery-guide/" }]}
         lead="Most forestry attachment problems are not defects. They are specification mismatches that only become visible under load — and the difference between a flow problem and a pressure problem decides whether the fix costs an hour or a new attachment."
+        aside={<EditorialImage src="/images/field/troubleshooting-hydraulics.webp" alt="Field technician checking hydraulic couplers and pressure on a grounded forestry attachment" caption="Diagnose at the coupler, under the conditions where the problem appears." />}
       />
 
       <article className="mx-auto max-w-[88rem] px-4 py-14 sm:px-6 sm:py-20 lg:px-10">

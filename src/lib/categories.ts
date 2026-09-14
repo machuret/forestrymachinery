@@ -17,6 +17,14 @@ export interface CategoryMeta {
   hero: PhotoKey;
   /** Further photographs shown in the guide body. */
   gallery: PhotoKey[];
+  /** Editorial field scene used to show the category in an Australian operating context. */
+  fieldImage: {
+    src: string;
+    width: number;
+    height: number;
+    alt: string;
+    caption: string;
+  };
   /** Brand slugs whose ranges this category covers. */
   brands: string[];
   /** The three things a buyer should leave the page knowing. */
@@ -34,6 +42,13 @@ export const CATEGORY_META: CategoryMeta[] = [
     code: "01",
     hero: "treeShearBi500",
     gallery: [],
+    fieldImage: {
+      src: "/images/field/tree-shear-field.webp",
+      width: 1536,
+      height: 1024,
+      alt: "Tracked excavator using a hydraulic tree shear to hold a eucalyptus stem during a controlled cut",
+      caption: "Controlled felling starts with the stem held before the cut finishes.",
+    },
     brands: ["omef"],
     takeaways: [
       "A shear grips, cuts and keeps holding in one motion — a chainsaw drops a tree where gravity decides, a shear puts it where the operator wants it.",
@@ -51,6 +66,13 @@ export const CATEGORY_META: CategoryMeta[] = [
     code: "02",
     hero: "stumpCutterWe",
     gallery: [],
+    fieldImage: {
+      src: "/images/field/stump-cutter-field.webp",
+      width: 1536,
+      height: 1024,
+      alt: "Excavator-mounted stump cutter splitting an extracted eucalyptus root ball in a timber processing yard",
+      caption: "A stump cutter works after extraction, reducing transport and processing volume.",
+    },
     brands: ["trevi-benne"],
     takeaways: [
       "A cutter works on stumps that are already out of the ground. It cannot remove one in place.",
@@ -68,6 +90,13 @@ export const CATEGORY_META: CategoryMeta[] = [
     code: "03",
     hero: "stumpGrinderDipperfox",
     gallery: [],
+    fieldImage: {
+      src: "/images/field/stump-grinder-field.webp",
+      width: 1536,
+      height: 1024,
+      alt: "Compact excavator operating a vertical hydraulic stump grinder with fresh chips surrounding the stump",
+      caption: "Grinding destroys the stump in place and leaves chip instead of spoil.",
+    },
     brands: ["dipperfox"],
     takeaways: [
       "Cost per stump, not purchase price, is the number that decides whether the attachment pays.",
@@ -85,6 +114,13 @@ export const CATEGORY_META: CategoryMeta[] = [
     code: "04",
     hero: "mulcherTe",
     gallery: ["mowMower"],
+    fieldImage: {
+      src: "/images/field/forestry-mulcher-field.webp",
+      width: 1536,
+      height: 1024,
+      alt: "Excavator-mounted forestry mulcher working at the boundary between dense regrowth and finished mulch",
+      caption: "The commercial result is the treated ground behind the rotor, not the brochure capacity.",
+    },
     brands: ["omef"],
     takeaways: [
       "Rotor choice is the decision, not the model number — fixed tooth or swinging hammer, open tip or closed tip.",
@@ -102,6 +138,13 @@ export const CATEGORY_META: CategoryMeta[] = [
     code: "05",
     hero: "grappleSawCutting",
     gallery: ["grappleSawGs400", "grappleSawGs800"],
+    fieldImage: {
+      src: "/images/field/grapple-saw-field.webp",
+      width: 1536,
+      height: 1024,
+      alt: "Compact excavator using a grapple saw to hold a eucalyptus limb throughout a controlled cut",
+      caption: "The section stays controlled from first contact until it is placed on the ground.",
+    },
     brands: ["omef", "powerhand"],
     takeaways: [
       "The category exists to take people out of the tree. That is the safety case and the commercial case at once.",
@@ -119,6 +162,13 @@ export const CATEGORY_META: CategoryMeta[] = [
     code: "06",
     hero: "grabPfimxLog",
     gallery: ["grabPowerhandEx36"],
+    fieldImage: {
+      src: "/images/field/log-grab-field.webp",
+      width: 1536,
+      height: 1024,
+      alt: "Tracked excavator using a rotating forestry grab to sort eucalyptus logs and brash into separate piles",
+      caption: "Rotation turns cut material into an organised product stream without repositioning the carrier.",
+    },
     brands: ["omef", "powerhand"],
     takeaways: [
       "It is the highest-utilisation attachment most contractors own, because almost every site has material to move.",
@@ -136,6 +186,13 @@ export const CATEGORY_META: CategoryMeta[] = [
     code: "07",
     hero: "prunerTgHedge",
     gallery: ["prunerCs", "prunerCsCutting"],
+    fieldImage: {
+      src: "/images/field/mechanical-pruning-field.webp",
+      width: 1536,
+      height: 1024,
+      alt: "Compact excavator mechanically pruning eucalyptus regrowth along a regional Australian roadside",
+      caption: "Corridor work rewards repeatable reach, cut quality and a controlled exclusion zone.",
+    },
     brands: ["omef"],
     takeaways: [
       "This is the recurring-revenue category: utility and council vegetation programs are contracted, audited and renewed.",
@@ -153,6 +210,13 @@ export const CATEGORY_META: CategoryMeta[] = [
     code: "08",
     hero: "tillageCompactor",
     gallery: ["tillageAuger"],
+    fieldImage: {
+      src: "/images/field/tillage-field.webp",
+      width: 1536,
+      height: 1024,
+      alt: "Excavator-mounted hydraulic auger drilling planting holes along a rehabilitated Australian farm contour",
+      caption: "The attachment sequence can carry a clearing job through to productive ground.",
+    },
     brands: ["omef"],
     takeaways: [
       "This is how you get paid for the second half of the job: the rehabilitation work after the clearing is done.",

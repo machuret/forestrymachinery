@@ -57,6 +57,20 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+.field-image {
+  filter: saturate(0.88) contrast(1.04);
+}
+
 /* Fine engineering grid, laid under everything. */
 .bg-grid {
   background-image:

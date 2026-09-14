@@ -75,6 +75,14 @@ export default function SourcesPage() {
 
           <aside className="space-y-8 lg:sticky lg:top-28 lg:self-start">
             <div className="border border-steel-700 bg-steel-900 p-6">
+              <p className="font-mono text-[0.62rem] tracking-[0.18em] text-concrete uppercase">Image standards</p>
+              <p className="mt-3 text-[0.92rem] leading-relaxed text-concrete">
+                Product photographs show real supplied equipment and remain the source of truth for attachment detail.
+                Wider field and application scenes are clearly labelled editorial imagery: they explain operating
+                context and do not claim a particular brand, model, customer or completed project.
+              </p>
+            </div>
+            <div className="border border-steel-700 bg-steel-900 p-6">
               <p className="font-mono text-[0.62rem] tracking-[0.18em] text-concrete uppercase">Link checking</p>
               <p className="mt-3 text-[0.92rem] leading-relaxed text-concrete">
                 Every source URL below is checked against the live page, and the date each was last confirmed is shown

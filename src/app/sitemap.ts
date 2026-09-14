@@ -11,19 +11,49 @@ import { absoluteUrl, SITE } from "@/lib/site";
  * Kept explicit rather than read from the filesystem, because a fresh clone
  * rewrites every mtime and a lastmod that changes on every deploy is worthless.
  */
-const REVIEWED = new Date("2026-09-12");
+const REVIEWED = new Date("2026-09-14");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const guides = getAllPages();
-  const heroBySlug = new Map(CATEGORY_META.map((c) => [c.slug, absoluteUrl(PHOTOS[c.hero].src)]));
+  const imagesBySlug = new Map(
+    CATEGORY_META.map((category) => [
+      category.slug,
+      [absoluteUrl(PHOTOS[category.hero].src), absoluteUrl(category.fieldImage.src)],
+    ]),
+  );
 
-  const statics: MetadataRoute.Sitemap = ([
-    { url: absoluteUrl("/"), changeFrequency: "monthly", priority: 1 },
-    { url: absoluteUrl("/costs/"), changeFrequency: "monthly", priority: 0.9 },
-    { url: absoluteUrl("/hire-vs-buy/"), changeFrequency: "yearly", priority: 0.8 },
-    { url: absoluteUrl("/wear-parts/"), changeFrequency: "yearly", priority: 0.8 },
+  const staticEntries: Omit<MetadataRoute.Sitemap[number], "lastModified">[] = [
+    {
+      url: absoluteUrl("/"),
+      changeFrequency: "monthly",
+      priority: 1,
+      images: [absoluteUrl("/images/editorial/forestry-attachments-australia-hero.webp")],
+    },
+    {
+      url: absoluteUrl("/costs/"),
+      changeFrequency: "monthly",
+      priority: 0.9,
+      images: [absoluteUrl("/images/field/costs-yard.webp")],
+    },
+    {
+      url: absoluteUrl("/hire-vs-buy/"),
+      changeFrequency: "yearly",
+      priority: 0.8,
+      images: [absoluteUrl("/images/field/hire-vs-buy-fleet.webp")],
+    },
+    {
+      url: absoluteUrl("/wear-parts/"),
+      changeFrequency: "yearly",
+      priority: 0.8,
+      images: [absoluteUrl("/images/field/wear-parts-workbench.webp")],
+    },
     { url: absoluteUrl("/support-and-parts-australia/"), changeFrequency: "yearly", priority: 0.7 },
-    { url: absoluteUrl("/troubleshooting/"), changeFrequency: "yearly", priority: 0.7 },
+    {
+      url: absoluteUrl("/troubleshooting/"),
+      changeFrequency: "yearly",
+      priority: 0.7,
+      images: [absoluteUrl("/images/field/troubleshooting-hydraulics.webp")],
+    },
     { url: absoluteUrl("/as-4373-mechanised-pruning/"), changeFrequency: "yearly", priority: 0.6 },
     { url: absoluteUrl("/finance-and-tax/"), changeFrequency: "yearly", priority: 0.6 },
     { url: absoluteUrl("/compare/"), changeFrequency: "monthly", priority: 0.8 },
@@ -35,7 +65,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: absoluteUrl("/glossary/"), changeFrequency: "yearly", priority: 0.6 },
     { url: absoluteUrl("/sources/"), changeFrequency: "yearly", priority: 0.4 },
     { url: absoluteUrl(SITE.quotePath), changeFrequency: "yearly", priority: 0.6 },
-  ] as const).map((e) => ({ ...e, lastModified: REVIEWED }));
+  ];
+  const statics: MetadataRoute.Sitemap = staticEntries.map((entry) => ({
+    ...entry,
+    lastModified: REVIEWED,
+  }));
 
   return [
     ...statics,
@@ -44,7 +78,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: p.lastReviewed,
       changeFrequency: "monthly" as const,
       priority: p.frontmatter.page_type === "pillar" ? 0.9 : 0.8,
-      images: heroBySlug.has(p.slug) ? [heroBySlug.get(p.slug)!] : undefined,
+      images: imagesBySlug.get(p.slug),
     })),
     ...COMPARISONS.map((c) => ({
       url: absoluteUrl(`/compare/${c.slug}/`),

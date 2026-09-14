@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Faq } from "@/components/Faq";
@@ -253,6 +254,28 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
                   </ol>
                 </div>
               </section>
+            )}
+
+            {meta && (
+              <figure className="mb-14 overflow-hidden border border-steel-700 bg-steel-900">
+                <div className="relative aspect-[3/2] overflow-hidden">
+                  <Image
+                    src={meta.fieldImage.src}
+                    alt={meta.fieldImage.alt}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 62rem"
+                    className="field-image object-cover"
+                  />
+                  <span aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-steel-950/55 via-transparent to-transparent" />
+                  <span className="absolute top-4 left-4 bg-steel-950/85 px-3 py-2 font-mono text-[0.58rem] tracking-[0.16em] text-hazard uppercase backdrop-blur-sm">
+                    Field context · editorial scene
+                  </span>
+                </div>
+                <figcaption className="flex gap-3 border-t border-steel-700 px-5 py-4 font-mono text-[0.64rem] leading-relaxed tracking-[0.08em] text-concrete uppercase">
+                  <span aria-hidden="true" className="text-hazard">◆</span>
+                  {meta.fieldImage.caption}
+                </figcaption>
+              </figure>
             )}
 
             <div className="prose-industrial" dangerouslySetInnerHTML={{ __html: page.bodyHtml }} />

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
+import { EditorialImage } from "@/components/EditorialImage";
 import { JsonLd } from "@/components/JsonLd";
 import { nodeToText } from "@/lib/node-text";
 import {
@@ -130,6 +131,7 @@ export default function HireVsBuyPage() {
         crumb="Hire vs buy"
         trail={[{ label: "Forestry Machinery Guide", href: "/forestry-machinery-guide/" }]}
         lead="Attachments are cheap compared with carriers, but they are not free, and an attachment running 150 hours a year is usually a hire decision wearing a purchase order. Here is how to tell which side of the line you are on."
+        aside={<EditorialImage src="/images/field/hire-vs-buy-fleet.webp" alt="Two forestry excavators loaded on low-loader trailers at an Australian contractor depot" caption="Utilisation and availability decide which machine earns the trip." />}
       />
 
       <article className="mx-auto max-w-[88rem] px-4 py-14 sm:px-6 sm:py-20 lg:px-10">

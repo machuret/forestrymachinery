@@ -16,6 +16,7 @@ import {
 } from "@/components/content";
 import { SITE, absoluteUrl } from "@/lib/site";
 import { sourceById } from "@/lib/sources";
+import { PoolDeclineChart } from "@/components/diagrams/PoolDeclineChart";
 
 export const metadata: Metadata = {
   title: { absolute: "Forestry Attachment Tax and Depreciation | Australian Guide" },
@@ -218,6 +219,10 @@ export default function FinanceTaxPage() {
               </tbody>
             </table>
           </div>
+          <div className="mt-9">
+            <PoolDeclineChart />
+          </div>
+
           <Prose className="mt-6">
             <p>
               The practical consequence for a buyer is that the deduction arrives over several years rather than in one.

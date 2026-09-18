@@ -1,4 +1,6 @@
 const LINE = "var(--color-steel-500)";
+/** Labels need 4.5:1; the stroke colour does not clear it. */
+const LABEL = "var(--color-concrete)";
 const ACCENT = "var(--color-moss-500)";
 const DIM = "var(--color-hazard)";
 const BONE = "var(--color-bone)";
@@ -58,7 +60,7 @@ function Panel({ c, x }: { c: Circuit; x: number }) {
     <g transform={`translate(${x} 0)`}>
       {/* Pump / carrier block */}
       <rect x="8" y="28" width="52" height="150" fill="none" stroke={LINE} strokeWidth="1.5" />
-      <text x="34" y="20" textAnchor="middle" fill={LINE} fontFamily={MONO} fontSize="9" letterSpacing="1.5">
+      <text x="34" y="20" textAnchor="middle" fill={LABEL} fontFamily={MONO} fontSize="9" letterSpacing="1.5">
         CARRIER
       </text>
 

@@ -116,9 +116,32 @@ The [finance and tax page](/finance-and-tax/) covers this in full. This is gener
 
 **Pruning standards.** AS 4373 governs the pruning of amenity trees and is routinely written into council and utility contracts. Mechanised pruning still has to produce a compliant cut.
 
+## Frequently asked questions
+
+**What forestry attachment do I need for my excavator?**
+Start at the machine, not the catalogue. Your carrier's operating weight, auxiliary flow and working pressure narrow the field before any category question is asked, because every serious forestry attachment publishes a machine range and those ranges are narrow for a reason. Once the carrier is settled, the work decides the category: stem diameter, stem density, terrain, proximity to assets and how much material you are allowed to leave behind. The [carrier size guide](/compatibility/) sets out what each machine class can actually run.
+
+**What three numbers do I need before asking for a quote?**
+Machine operating weight, auxiliary hydraulic flow in litres per minute, and available working pressure in bar. Take the flow and pressure from the machine plate rather than the brochure, and note whether a case drain line is fitted. Most disappointing attachment purchases in this market trace back to a buyer who knew the first number and guessed the other two.
+
+**Should I hire or buy a forestry attachment?**
+It is a utilisation question. Below roughly 200 hours a year, hire or subcontract. Between 200 and 500 hours, buy if the tool unlocks work you currently turn away. Above 500 hours, ownership almost always wins, and wear-part supply matters more than purchase price. [Hire, buy or subcontract](/hire-vs-buy/) works the decision through properly.
+
+**Why are there no prices in this guide?**
+Attachment pricing in Australia moves with exchange rate, specification, rotation options and carrier bracket, so a published figure would be wrong within a quarter and would invite price shopping against a number that is not current. [What forestry attachments actually cost](/costs/) sets out the five cost lines and what moves each of them, which is what you need in order to interrogate a quote.
+
+**Do forestry attachments qualify for the instant asset write-off?**
+Usually not, because most cost well above the threshold. The instant asset write-off threshold is $20,000 per asset, and in the 2026-27 Budget it was announced to be made permanent from 1 July 2026 for small businesses with aggregated turnover under $10 million; as at mid-2026 the enabling legislation had not passed. Above the threshold the asset joins the small business pool at 15% in the first year and 30% after. See [finance and tax](/finance-and-tax/). This is general information, not tax advice.
+
+**What is the difference between a stump grinder and a stump cutter?**
+They are opposite jobs sharing a word. A grinder destroys the stump and root plate in place, below grade, and leaves chip rather than spoil. A cutter sizes a stump that has already been extracted. If you must remove the stump completely and cannot leave spoil, you want [grinding](/stump-grinder-guide/); if you are pulling stumps anyway and need them sized for biomass, you want a [cutter](/stump-cutter-guide/).
+
+**What standards apply to forestry attachments in Australia?**
+Three come up repeatedly. Quick hitches should comply with AS 4772-2008 or an equivalent such as ISO 13031-2016, with a safety system preventing unintentional disconnection. ISO 8084 covers operator protective structures where stems and debris can reach the cab. AS 4373 governs the pruning of amenity trees and is routinely written into council and utility contracts, and a mechanised cut still has to comply — [AS 4373 and mechanised pruning](/as-4373-mechanised-pruning/) covers what that means for tool choice.
+
 ## Where to go next
 
-Each category page below is written to stand alone. Start with the one closest to the work you are quoting.
+Each category page below is written to stand alone. Start with the one closest to the work you are quoting. If two categories look interchangeable from the brochure, the [side-by-side comparisons](/compare/) exist for exactly that, and the [manufacturer profiles](/brands/) cover who builds what.
 
 - [Tree Shears](/tree-shears-guide/)
 - [Stump Cutters](/stump-cutter-guide/)

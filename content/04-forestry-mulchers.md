@@ -83,9 +83,11 @@ Work backwards from the tender, not forwards from the spec sheet.
 Cost per hectare = (machine + operator hourly rate + tooth cost per hour) / hectares per hour
 ```
 
-The term most contractors get wrong is **tooth cost per hour**. In clean ground it is a rounding error. In stony or debris-filled ground it can exceed your fuel cost. Track it as its own line item from day one, per site type, and your second year of quoting will be dramatically more accurate than your first.
+The [cost per hectare calculator](/cost-per-hectare-calculator/) runs that sum against your own figures. The term most contractors get wrong is **tooth cost per hour**. In clean ground it is a rounding error. In stony or debris-filled ground it can exceed your fuel cost. Track it as its own line item from day one, per site type, and your second year of quoting will be dramatically more accurate than your first.
 
 The other term people get wrong is **hectares per hour**. Stem density and stem size drive it far more than machine size does. Two hectares of light regrowth and two hectares of dense scrub with 15 cm stems are different jobs with the same number on the tender document.
+
+Teeth are the largest consumable in this guide, and [wear parts](/wear-parts/) explains what moves the rate. Confirm the tooth supply position before you order: [parts and support across Australia](/support-and-parts-australia/) sets out the questions worth asking.
 
 ## Where mulchers win and where they lose
 

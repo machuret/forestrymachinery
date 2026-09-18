@@ -111,6 +111,8 @@ Specifications are supplier-published and subject to change.
 
 **Consistency.** Machines produce repeatable cut quality across a long run, which matters when the contract specifies an outcome and an auditor checks it.
 
+Blade condition decides whether the cut passes inspection, so it belongs in the running-cost budget rather than the maintenance one; [wear parts](/wear-parts/) works through the sums, and [parts and support across Australia](/support-and-parts-australia/) covers lead time on the replacements.
+
 ## The honest limitations
 
 - **AS 4373 compliance is your responsibility, not the tool's.** A machine can produce a non-compliant cut. Confirm the tool suits the specification before quoting utility or council work.

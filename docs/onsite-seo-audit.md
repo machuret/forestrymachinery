@@ -1,6 +1,6 @@
 # On-site SEO audit — forestrymachinery.com.au
 
-**Audited:** 18 September 2026
+**Audited:** 18 September 2026 · second fixing round applied the same day
 **Scope:** all 34 indexable URLs, measured against the rendered production build (`next build` + `next start`), not against source.
 **Method:** every figure below was measured by script, not estimated. `scripts/audit.mjs` walks the sitemap in a real browser and asserts 14 classes of on-page rule; `scripts/a11y.mjs` runs axe-core at 1440px and 390px; `scripts/check-links.mjs` resolves every outbound citation. A separate measurement pass (word count, heading counts, contextual inbound links, click depth, schema types, images per page) produced the table in §6.
 
@@ -8,20 +8,20 @@
 
 ## 1. Verdict
 
-The technical and metadata layer is clean and gated, and the image layer has
-just been largely closed. The remaining on-site opportunity is concentrated in
-**internal link architecture** and in **six reference pages that still carry no
-visual at all**.
+Two fixing rounds have closed the media gap entirely and lifted the worst of
+the internal linking. What remains is structural rather than remedial: the site
+is still flat, with every page one click from the homepage, and a handful of
+hub and brand pages are thinly supported by body links.
 
 | Layer | State |
 |---|---|
 | Indexation, canonicals, sitemap, robots | Clean, machine-verified every build |
 | Titles, descriptions, headings | Clean, all unique, all in range |
 | Structured data | Clean, every page carries BreadcrumbList + a page-level type |
-| Content depth | Strong — 48,000 words of main content, 32/34 pages over 700 |
+| Content depth | Strong — 49,364 words of main content, 32/34 pages over 700 |
 | Accessibility (an on-site quality signal) | Zero serious/critical axe violations |
-| **Internal linking** | **Weak — flat, nav-driven, equity spread evenly** |
-| **On-page media** | **Partly closed — 6 pages still carry no visual** |
+| Internal linking | Improved — the weakest pages lifted, hierarchy still flat |
+| On-page media | Closed — every substantive page now carries a photograph or a diagram |
 
 ---
 
@@ -45,6 +45,9 @@ These are gated in CI-style scripts, so they cannot silently regress.
 - **Heading hierarchy.** Exactly one `<h1>` per page, no skipped levels.
 - **Intro keyword coverage.** Every page's H1 head terms appear within the first
   120 words of main content — measured, zero gaps.
+- **FAQ coverage.** 29 of the 34 pages carry FAQPage markup. The five that do
+  not are the homepage, glossary, sources and quote form, none of which needs
+  it.
 - **Structured data.** `BreadcrumbList` on all 34 pages plus a page-level type
   (`Article`, `FAQPage`, `CollectionPage`, `ContactPage`, `DefinedTermSet`,
   `WebApplication`, `Brand`) linked through an `@graph`. FAQ answers are
@@ -61,167 +64,152 @@ These are gated in CI-style scripts, so they cannot silently regress.
 
 ---
 
-## 3. P1 — Internal link architecture (biggest single lever)
+## 3. P1 — Internal link architecture (partly addressed, still the main lever)
 
-**Finding: click depth is uniformly 1. Every one of the 34 pages is reachable
-from the homepage in one click**, because the header and footer link to
-essentially everything. That reads as a flat site with no hierarchy, and it
-means internal link equity is sprayed evenly rather than concentrated on the
-pages that should rank.
+**Finding: click depth is uniformly 1.** Every one of the 34 pages is reachable
+from the homepage in one click, because the header and footer link to
+essentially everything. On a 34-page site that is not a crawl problem, but it
+does mean internal link equity is sprayed evenly rather than concentrated on
+the pages that should rank, and it leaves the site with no visible hierarchy.
 
-**Finding: contextual inbound links (body links only, header/footer/nav
-excluded) range from 0 to 28, and the distribution does not match commercial
-value.** The twelve weakest:
+Round two removed the header's five-item "Owning" dropdown, which had been
+putting five reference pages into the primary nav on every page. Depth is
+unchanged, because the footer still reaches them — closing that would mean
+cutting the footer too, which trades a real usability loss for a metric. The
+recommendation below stands, but it is a judgement call rather than a defect.
+
+**Finding: contextual inbound links (body only, header/footer/nav excluded)
+range from 0 to 28, and the distribution does not match commercial value.** The
+twelve weakest as they now stand:
 
 | Page | Words | Contextual inbound |
 |---|---:|---:|
 | `/` | 911 | 0 |
-| `/support-and-parts-australia/` | 1,602 | 2 |
 | `/compare/` | 792 | 2 |
-| `/finance-and-tax/` | 1,281 | 3 |
+| `/finance-and-tax/` | 1,407 | 3 |
 | `/brands/dipperfox/` | 971 | 3 |
 | `/brands/trevi-benne/` | 917 | 3 |
-| `/as-4373-mechanised-pruning/` | 1,711 | 4 |
 | `/compare/grapple-saw-vs-tree-shear/` | 1,206 | 4 |
 | `/compare/grapple-saw-vs-forestry-grab/` | 1,147 | 4 |
-| `/cost-per-stump-calculator/` | 1,136 | 4 |
-| `/cost-per-hectare-calculator/` | 1,050 | 4 |
 | `/brands/powerhand/` | 959 | 4 |
+| `/compare/stump-grinder-vs-stump-cutter/` | 1,204 | 5 |
+| `/cost-per-stump-calculator/` | 1,136 | 5 |
+| `/compare/tree-shear-vs-forestry-mulcher/` | 1,106 | 5 |
+| `/cost-per-hectare-calculator/` | 1,050 | 5 |
 
 (`/` at zero is expected — it is the root, and nothing links down to it.)
 
-`/support-and-parts-australia/` is a 1,602-word page targeting a genuinely
-commercial AU query ("forestry attachment parts Australia") and is supported by
-two body links. `/compare/` is a hub with two. The three calculators — the
-strongest natural link-earning assets on the site — sit at four each.
+Round two lifted the worst offender: `/support-and-parts-australia/` went from
+**2 to 10**, `/as-4373-mechanised-pruning/` from **4 to 7**, and both
+calculators from **4 to 5**, all through sentences written into the guides
+where the subject actually comes up rather than through a template block.
 
-**Recommended actions, in order:**
+**What is still open, in order:**
 
-1. **Introduce a real hierarchy.** Reduce the header to the pillar, the eight
-   category guides and the quote CTA. Move the reference pages (`/glossary/`,
-   `/sources/`, `/finance-and-tax/`, `/as-4373-…/`) out of the primary nav into
-   the footer or into contextual links only. That puts them at depth 2, where
-   they belong, and stops them competing with the money pages for equity.
-2. **Cross-link the eight category guides to each other by decision, not by
-   list.** Each guide should carry 2–3 in-body links to the guides a buyer
-   genuinely cross-shops (mulcher ↔ tillage, shear ↔ grapple saw, stump grinder
-   ↔ stump cutter), with descriptive anchors placed where the decision arises.
-3. **Raise `/support-and-parts-australia/` to 8+ contextual inbound links.**
-   Every guide has a running-cost or wear-parts section; each is a natural,
-   non-forced target.
-4. **Link the calculators from the point of calculation** — inline where a guide
-   discusses cost per stump or per hectare, not only from a related-links block.
-5. **Keep anchor text varied.** Anchors are currently descriptive and unique,
+1. **`/compare/` is a hub with two inbound links.** It sits in the header, so
+   it is reachable, but nothing in the copy sends a reader to it. Each category
+   guide that names a cross-shopped alternative should link the relevant
+   comparison rather than only the other guide.
+2. **The four brand pages sit at 3–4 each.** They are reached through the
+   guides' logo strip, which is markup rather than copy. Where a guide
+   discusses a manufacturer's range, name and link the manufacturer.
+3. **Consider a real hierarchy.** Reduce the header to the pillar, the eight
+   category guides and the quote CTA, and trim the footer to match. That puts
+   the reference pages at depth 2, where they belong. Worth doing if the site
+   grows past the current 34 pages; at this size the gain is modest.
+4. **Keep anchor text varied.** Anchors are currently descriptive and unique,
    which is right; avoid drifting into a repeated exact-match phrase.
 
 ---
 
-## 4. P2 — The six pages that still carry no visual
+## 4. P2 — On-page media (closed)
 
-The eight category guides now average 13 photographs each, and `/costs/`,
-`/hire-vs-buy/`, `/troubleshooting/` and `/wear-parts/` each gained a field
-image. These six did not:
+Every substantive page now carries a photograph or a purpose-built diagram. The
+eight category guides average 13 photographs each; the cross-cutting pages
+carry one diagram each, built in the `src/components/diagrams/` pattern —
+inline SVG, design-system colours, emphasis form (one hue plus grey).
 
-| Page | Words | Photos | Diagrams |
-|---|---:|---:|---:|
-| `/compatibility/` | 2,523 | 0 | 0 |
-| `/support-and-parts-australia/` | 1,602 | 0 | 0 |
-| `/finance-and-tax/` | 1,281 | 0 | 0 |
-| `/glossary/` | 1,094 | 0 | 0 |
-| `/hydraulic-flow-calculator/` | 1,092 | 0 | 1 |
-| `/sources/` | 454 | 0 | 0 |
+| Page | Visual added | Built from |
+|---|---|---|
+| `/compatibility/` | The four compatibility gates, in the order they catch buyers out | The page's own four checks and their failure symptoms |
+| `/support-and-parts-australia/` | The three supply tiers against a downtime axis | The page's own two-day and six-week figures; nothing between them is invented |
+| `/finance-and-tax/` | How a pooled deduction arrives over five years | The 15% and 30% pool rates the page already states, expressed as a share of cost |
+| `/glossary/` | A labelled carrier schematic indexing eight terms | The glossary's own entries, each label linking to its definition |
 
-`/compatibility/` is the second-densest page on the site — 2,523 words and 26
-subheadings — and is pure text.
-
-This matters on-site for three reasons: image results and Discover are
-unreachable without media; dwell time on a 2,500-word wall of text is worse;
-and a diagram is the asset other sites link to, which is how a reference page
-earns the links that make it rank.
-
-**Recommended:** one purpose-made diagram per page, in the existing
-`src/components/diagrams/` pattern (inline SVG, design-system colours, emphasis
-form — one hue plus grey, CVD-validated):
-
-- `/compatibility/` — a carrier-weight-to-attachment matrix.
-- `/support-and-parts-australia/` — a lead-time and stocking decision flow.
-- `/finance-and-tax/` — a depreciation-versus-write-off timeline.
-- `/glossary/` — a labelled attachment schematic anchoring the key terms.
-
-Each must be built from figures already stated and sourced on the page; none
-may introduce a number the page does not already support. `/sources/` and the
-calculators do not need one.
-
----
+The two pages with no visual are `/sources/` (454 words) and `/request-quote/`
+(196 words) — a citation list and a form. Neither needs one.
 
 ## 5. P3 — Smaller items
 
-1. **`/` is 911 words.** It works as a directory and now carries 25 images; it
-   is not currently built to rank for anything itself. That is a legitimate
-   choice — just make it deliberate.
-2. **`/compare/` (792 w) and `/brands/` (818 w)** are hubs just over the
-   threshold. Each would benefit from a short framing section explaining how to
-   use the comparisons rather than only listing them.
-3. **`/request-quote/` (196 w) and `/sources/` (454 w)** are intentionally thin
-   utility pages, allowlisted in the audit gate. Both now carry proper `<h2>`
-   structure (3 and 6) after this pass; previously 0 and 1.
-4. **Field images use `fill` without intrinsic dimensions.** They sit in
-   fixed-aspect containers so layout shift is bounded, but the audit flags them
-   as warnings. Worth setting explicit dimensions where the aspect is known.
+1. **`/` is 911 words.** It works as a directory and carries 25 images; it is
+   not currently built to rank for anything itself. That is a legitimate choice
+   — just make it deliberate.
+2. **`/compare/` (792 w, 2 inbound) and `/brands/` (818 w, 7 inbound)** are hubs
+   just over the word threshold and thinly supported. Each would benefit from a
+   short framing section explaining how to use what it lists, and from more body
+   links pointing at it.
+3. **The four brand pages sit at 3–4 contextual inbound links each.** They are
+   linked from the guides' logo strip, which is markup rather than copy. A
+   sentence naming the manufacturer where a guide discusses its range would be
+   a genuine link.
+4. **`/request-quote/` (196 w) and `/sources/` (454 w)** are intentionally thin
+   utility pages, allowlisted in the audit gate. Both carry proper `<h2>`
+   structure (3 and 6); previously 0 and 1.
 5. **`lastmod` is a hand-set editorial date**, deliberately, so it does not
    churn on every deploy. Update it when content genuinely changes.
-6. **FAQ coverage is uneven.** The eight category guides carry FAQ blocks; most
-   cross-cutting pages do not. `/compatibility/`, `/wear-parts/` and
-   `/hire-vs-buy/` all attract question-shaped queries and would each support
-   4–6 genuine FAQs.
+6. **FAQ coverage is now near-complete.** 29 of 34 pages carry FAQPage markup.
+   The homepage, `/glossary/`, `/sources/` and `/request-quote/` do not need it.
+   The pillar was the one real gap and now carries seven questions.
+
 
 ---
 
 ## 6. Page table
 
 Word counts are main content with nav, footer and scripts stripped. "In" is
-contextual inbound links (body only). "D" is click depth from the homepage.
+contextual inbound links (body only). Every page sits at click depth 1, so that
+column is omitted.
 
-| URL | Words | H2 | H3 | In | D | Imgs |
+| URL | Words | H2 | H3 | In | Photos | Diagrams |
 |---|---:|---:|---:|---:|---:|---:|
 | `/costs/` | 2,962 | 12 | 20 | 28 | 1 | 1 |
-| `/compatibility/` | 2,523 | 7 | 26 | 26 | 1 | 0 |
-| `/wear-parts/` | 2,375 | 10 | 21 | 14 | 1 | 2 |
-| `/forestry-machinery-guide/` | 2,199 | 11 | 12 | 15 | 1 | 8 |
-| `/grapple-saw-guide/` | 2,016 | 16 | 9 | 18 | 1 | 15 |
+| `/forestry-machinery-guide/` | 2,691 | 11 | 12 | 15 | 8 | 1 |
+| `/compatibility/` | 2,670 | 7 | 26 | 26 | 0 | 1 |
+| `/wear-parts/` | 2,375 | 10 | 21 | 14 | 2 | 0 |
+| `/grapple-saw-guide/` | 2,054 | 16 | 9 | 18 | 15 | 1 |
 | `/troubleshooting/` | 2,009 | 7 | 20 | 9 | 1 | 1 |
-| `/stump-grinder-guide/` | 1,772 | 16 | 7 | 17 | 1 | 13 |
-| `/as-4373-mechanised-pruning/` | 1,711 | 9 | 17 | 4 | 1 | 1 |
-| `/log-grab-guide/` | 1,688 | 16 | 9 | 17 | 1 | 14 |
-| `/forestry-mulcher-guide/` | 1,686 | 16 | 7 | 17 | 1 | 13 |
-| `/mechanical-pruning-guide/` | 1,642 | 14 | 12 | 16 | 1 | 14 |
-| `/tillage-guide/` | 1,618 | 15 | 8 | 13 | 1 | 13 |
-| `/support-and-parts-australia/` | 1,602 | 7 | 19 | 2 | 1 | 0 |
-| `/tree-shears-guide/` | 1,594 | 13 | 7 | 15 | 1 | 13 |
-| `/hire-vs-buy/` | 1,571 | 7 | 16 | 20 | 1 | 1 |
-| `/stump-cutter-guide/` | 1,551 | 15 | 7 | 15 | 1 | 12 |
-| `/finance-and-tax/` | 1,281 | 7 | 12 | 3 | 1 | 0 |
-| `/compare/grapple-saw-vs-tree-shear/` | 1,206 | 9 | 1 | 4 | 1 | 2 |
-| `/compare/stump-grinder-vs-stump-cutter/` | 1,204 | 9 | 1 | 5 | 1 | 2 |
-| `/compare/grapple-saw-vs-forestry-grab/` | 1,147 | 9 | 1 | 4 | 1 | 2 |
-| `/brands/omef/` | 1,147 | 9 | 11 | 8 | 1 | 7 |
-| `/cost-per-stump-calculator/` | 1,136 | 6 | 12 | 4 | 1 | 1 |
-| `/compare/tree-shear-vs-forestry-mulcher/` | 1,106 | 9 | 1 | 5 | 1 | 2 |
-| `/glossary/` | 1,094 | 6 | 0 | 14 | 1 | 0 |
-| `/hydraulic-flow-calculator/` | 1,092 | 5 | 10 | 12 | 1 | 0 |
-| `/cost-per-hectare-calculator/` | 1,050 | 5 | 12 | 4 | 1 | 1 |
-| `/brands/dipperfox/` | 971 | 9 | 6 | 3 | 1 | 2 |
-| `/brands/powerhand/` | 959 | 9 | 7 | 4 | 1 | 3 |
-| `/brands/trevi-benne/` | 917 | 9 | 6 | 3 | 1 | 2 |
-| `/` | 911 | 7 | 29 | 0 | 0 | 25 |
-| `/brands/` | 818 | 8 | 9 | 7 | 1 | 4 |
-| `/compare/` | 792 | 8 | 9 | 2 | 1 | 8 |
-| `/sources/` | 454 | 6 | 8 | 7 | 1 | 0 |
-| `/request-quote/` | 196 | 3 | 0 | 28 | 1 | 0 |
+| `/stump-grinder-guide/` | 1,824 | 16 | 7 | 17 | 13 | 1 |
+| `/support-and-parts-australia/` | 1,750 | 7 | 19 | 10 | 0 | 1 |
+| `/forestry-mulcher-guide/` | 1,733 | 16 | 7 | 17 | 13 | 0 |
+| `/log-grab-guide/` | 1,729 | 16 | 9 | 17 | 14 | 0 |
+| `/as-4373-mechanised-pruning/` | 1,711 | 9 | 17 | 7 | 1 | 0 |
+| `/mechanical-pruning-guide/` | 1,680 | 14 | 12 | 16 | 14 | 0 |
+| `/tillage-guide/` | 1,653 | 15 | 8 | 13 | 13 | 0 |
+| `/tree-shears-guide/` | 1,639 | 13 | 7 | 15 | 13 | 0 |
+| `/stump-cutter-guide/` | 1,596 | 15 | 7 | 15 | 12 | 1 |
+| `/hire-vs-buy/` | 1,571 | 7 | 16 | 20 | 1 | 0 |
+| `/finance-and-tax/` | 1,407 | 7 | 12 | 3 | 0 | 1 |
+| `/compare/grapple-saw-vs-tree-shear/` | 1,206 | 9 | 1 | 4 | 2 | 0 |
+| `/glossary/` | 1,204 | 6 | 0 | 14 | 0 | 1 |
+| `/compare/stump-grinder-vs-stump-cutter/` | 1,204 | 9 | 1 | 5 | 2 | 0 |
+| `/compare/grapple-saw-vs-forestry-grab/` | 1,147 | 9 | 1 | 4 | 2 | 0 |
+| `/brands/omef/` | 1,147 | 9 | 11 | 8 | 7 | 0 |
+| `/cost-per-stump-calculator/` | 1,136 | 6 | 12 | 5 | 1 | 1 |
+| `/compare/tree-shear-vs-forestry-mulcher/` | 1,106 | 9 | 1 | 5 | 2 | 0 |
+| `/hydraulic-flow-calculator/` | 1,092 | 5 | 10 | 12 | 0 | 1 |
+| `/cost-per-hectare-calculator/` | 1,050 | 5 | 12 | 5 | 1 | 0 |
+| `/brands/dipperfox/` | 971 | 9 | 6 | 3 | 2 | 0 |
+| `/brands/powerhand/` | 959 | 9 | 7 | 4 | 3 | 0 |
+| `/brands/trevi-benne/` | 917 | 9 | 6 | 3 | 2 | 0 |
+| `/` | 911 | 7 | 29 | 0 | 25 | 0 |
+| `/brands/` | 818 | 8 | 9 | 7 | 4 | 0 |
+| `/compare/` | 792 | 8 | 9 | 2 | 8 | 0 |
+| `/sources/` | 454 | 6 | 8 | 7 | 0 | 0 |
+| `/request-quote/` | 196 | 3 | 0 | 28 | 0 | 0 |
 
 ---
 
-## 7. Fixed in this pass
+## 7. Fixed in round one
 
 - **Card components no longer wrap an entire card in an `<a>`.**
   `CategoryGrid`, `RelatedGuides`, `NextSteps`, the flow-calculator result rows
@@ -238,7 +226,55 @@ contextual inbound links (body only). "D" is click depth from the homepage.
   only (a full publisher-plus-title anchor is correct for an outbound citation
   and wrong for an internal card), and fails on a bare URL used as anchor text.
 
-## 8. How to re-run
+## 8. Fixed in round two
+
+**Content**
+
+- The pillar, `/forestry-machinery-guide/`, had no FAQ block — the one real gap
+  in FAQ coverage, on the page most likely to be asked a question. It now
+  carries seven, all drawn from material already on the page and sourced:
+  what attachment for my excavator, the three numbers to bring, hire or buy,
+  why there are no prices, the write-off position, grinder versus cutter, and
+  which standards apply. The pillar went 2,199 → 2,691 words.
+
+**Internal links**
+
+- Each of the eight category guides now closes its running-cost section with a
+  sentence linking `/wear-parts/` and `/support-and-parts-australia/`, written
+  to that category rather than templated. `/support-and-parts-australia/` went
+  from **2 contextual inbound links to 10**.
+- `AS 4373` was named but not linked in the tree shear and grapple saw guides;
+  both now link it. With the pillar FAQ, `/as-4373-mechanised-pruning/` went
+  **4 → 7**.
+- The stump grinder and mulcher guides now link their calculator at the point
+  the calculation appears, rather than only from a related-links block. Both
+  calculators went **4 → 5**.
+- The pillar's "where to go next" now names `/compare/` and `/brands/`.
+- The header's five-item "Owning" dropdown is gone. It put five reference pages
+  into the primary nav on all 34 pages, which diluted every other header link;
+  those pages are reached from the footer and, now, from the guide copy.
+
+**Media**
+
+- Four purpose-built diagrams, one each for `/compatibility/`,
+  `/support-and-parts-australia/`, `/finance-and-tax/` and `/glossary/` — see
+  §4. Every substantive page now carries a visual.
+- Diagram labels in `CircuitDiagram` and `GrindVsCutDiagram` were drawn in
+  `--color-steel-500`, which is 2.07:1 on the panel background. SVG text is not
+  reliably caught by axe, so this was a contrast failure hiding behind a green
+  gate. Both now use `--color-concrete`.
+- The glossary schematic first put its links inside the `<svg role="img">`,
+  which nests interactive controls inside an image role — axe caught it as a
+  serious violation. The links moved to a real list in the `<figcaption>`.
+
+**Tooling**
+
+- `scripts/audit.mjs` flagged every `fill` image as missing dimensions. An
+  absolutely positioned image is out of flow and cannot shift layout, so the
+  check now skips those and still requires width and height on everything in
+  flow. That cleared 14 false warnings without weakening the rule.
+
+## 9. How to re-run
 
 ```
 npm run build

@@ -68,7 +68,7 @@ Where:
 - **Hourly attachment cost** is purchase price spread over expected life hours, plus wear parts per hour
 - **Stumps per hour** is your realistic figure from the assessment above, not the brochure figure
 
-Then compare that against what you currently pay to subcontract stump removal, or what you currently charge per stump. If the gap is meaningful at your real volume, buy. If the gap only appears at brochure productivity, do not.
+Run your own numbers through the [cost per stump calculator](/cost-per-stump-calculator/), then compare that against what you currently pay to subcontract stump removal, or what you currently charge per stump. If the gap is meaningful at your real volume, buy. If the gap only appears at brochure productivity, do not.
 
 ## Where the money goes in running cost
 
@@ -79,6 +79,8 @@ Then compare that against what you currently pay to subcontract stump removal, o
 **Hydraulic supply.** Grinding is continuous load, not intermittent. It is harder on a carrier's hydraulic system than digging. On smaller machines especially, check oil temperature under sustained load in your conditions.
 
 **Fewer moving parts is a real advantage.** The Dipperfox design uses fewer moving parts than many competitors, and the adjustable transmission allows maximum power at low rotation speed. Fewer parts means fewer failure points, which matters more than headline speed once the machine is two years old.
+
+Tooth life on a grinder is the hourly rate, which is why [wear parts](/wear-parts/) treats it as a budget line rather than a maintenance afterthought, and why [parts and support across Australia](/support-and-parts-australia/) matters before you sign rather than after the first failure.
 
 ## Grinder or cutter? Decide with one question
 

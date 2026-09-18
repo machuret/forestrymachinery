@@ -15,6 +15,7 @@ import {
   type Qa,
 } from "@/components/content";
 import { SITE, absoluteUrl } from "@/lib/site";
+import { SupplyTiers } from "@/components/diagrams/SupplyTiers";
 
 export const metadata: Metadata = {
   title: { absolute: "Forestry Attachment Parts and Support in Australia | Buyer's Guide" },
@@ -188,6 +189,10 @@ export default function SupportPage() {
               invoice price alone is the most expensive decision available.
             </p>
           </Prose>
+
+          <div className="mt-9">
+            <SupplyTiers />
+          </div>
 
           <Callout label="Ask the question in three parts">
             Not &ldquo;how long do parts take?&rdquo; but: what is held in Australia right now, what is air-freighted,

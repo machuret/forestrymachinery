@@ -73,6 +73,8 @@ Three sizing rules worth following:
 
 **Carrier hydraulics.** Shears are double-acting and intermittent, which is gentle by forestry standards. This is one of the few categories that will not punish a standard excavator circuit.
 
+Blade and pin costs are the part of the sum buyers underestimate most; [what wear parts cost to run](/wear-parts/) sets the pattern out across every category, and [parts and support across Australia](/support-and-parts-australia/) covers whether the replacement is on a shelf here or on the water.
+
 ## The honest limitations
 
 Say these out loud before you buy, because a supplier who does not raise them is not your friend.
@@ -92,7 +94,7 @@ Say these out loud before you buy, because a supplier who does not raise them is
 
 ## Compliance notes
 
-Quick hitches carrying a heavy shear must meet AS 4772-2008 or an equivalent such as ISO 13031-2016, including a secondary safety system so the attachment cannot unintentionally release if primary retention fails. Guarding matters too: felling puts stems and debris near the cab, and ISO 8084 covers operator protective structures for exactly this reason. Where the work is amenity or utility pruning rather than removal, AS 4373 governs the cut and you should confirm a shear produces a compliant result before quoting.
+Quick hitches carrying a heavy shear must meet AS 4772-2008 or an equivalent such as ISO 13031-2016, including a secondary safety system so the attachment cannot unintentionally release if primary retention fails. Guarding matters too: felling puts stems and debris near the cab, and ISO 8084 covers operator protective structures for exactly this reason. Where the work is amenity or utility pruning rather than removal, [AS 4373](/as-4373-mechanised-pruning/) governs the cut and you should confirm a shear produces a compliant result before quoting.
 
 ## Questions to ask before you sign
 

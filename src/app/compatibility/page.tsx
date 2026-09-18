@@ -6,6 +6,7 @@ import { Section, Prose, ShortAnswer, Callout, FaqBlock, NextSteps, Checklist, t
 import { CATEGORY_META, categoryMeta } from "@/lib/categories";
 import { CARRIER_BANDS } from "@/lib/carrier-bands";
 import { SITE, absoluteUrl } from "@/lib/site";
+import { CarrierGates } from "@/components/diagrams/CarrierGates";
 
 export const metadata: Metadata = {
   title: { absolute: "What Forestry Attachments Fit Your Excavator? | Size Guide Australia" },
@@ -341,6 +342,10 @@ export default function CompatibilityPage() {
                 <p className="mt-3 text-[0.95rem] leading-relaxed text-concrete">{n.b}</p>
               </div>
             ))}
+          </div>
+
+          <div className="mt-9">
+            <CarrierGates />
           </div>
 
           <Callout label="Case drain is not optional">

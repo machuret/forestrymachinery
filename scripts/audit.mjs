@@ -97,6 +97,10 @@ for (const url of urls) {
         alt: i.getAttribute("alt"),
         w: i.getAttribute("width"),
         h: i.getAttribute("height"),
+        // An absolutely positioned image is out of flow: it never contributes
+        // to layout, so missing width/height cannot shift anything. Everything
+        // in flow still needs the attributes.
+        reserved: getComputedStyle(i).position === "absolute",
       })),
       // Body links exclude header/footer/nav, so boilerplate does not mask a
       // page that nothing in the copy actually points at.
@@ -157,7 +161,9 @@ for (const url of urls) {
   for (const img of d.imgs) {
     if (!img.alt) err(url, `img without alt: ${img.src}`);
     else if (img.alt.length < 15) warn(url, `very short alt: "${img.alt}"`);
-    if (!img.w || !img.h) warn(url, `img without dimensions: ${img.src}`);
+    if (!img.w || !img.h) {
+      if (!img.reserved) warn(url, `img without dimensions: ${img.src}`);
+    }
   }
 
   // --- anchor text quality

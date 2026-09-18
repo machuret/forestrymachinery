@@ -92,6 +92,8 @@ That spread is the reason augers have some of the highest utilisation rates of a
 
 **Carrier.** Compaction transmits vibration back up the stick into the machine. Continuous compaction work does accumulate fatigue on carrier structures. It is not a reason to avoid it, but it is a reason to keep an eye on boom and stick weld inspections.
 
+Ground-engaging tools wear fastest in exactly the conditions you were hired for, and [wear parts](/wear-parts/) explains how to price that. [Parts and support across Australia](/support-and-parts-australia/) covers what to confirm about supply before the season starts.
+
 ## The honest limitations
 
 - **Underground services are the dominant risk.** Augers and compactors both operate below ground. Before You Dig enquiries and physical service location are part of the job.

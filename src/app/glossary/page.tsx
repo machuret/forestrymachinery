@@ -5,6 +5,7 @@ import { PageHero } from "@/components/PageHero";
 import { TERMS, TERM_GROUPS } from "@/lib/glossary";
 import { categoryMeta } from "@/lib/categories";
 import { absoluteUrl } from "@/lib/site";
+import { CarrierSchematic } from "@/components/diagrams/CarrierSchematic";
 
 export const metadata: Metadata = {
   title: { absolute: "Forestry Attachment Glossary | Hydraulics, Specs and Standards" },
@@ -36,6 +37,10 @@ export default function GlossaryPage() {
             </a>
           ))}
         </nav>
+
+        <div className="mt-12">
+          <CarrierSchematic />
+        </div>
 
         <div className="mt-14 space-y-16">
           {TERM_GROUPS.map((group) => {

@@ -111,6 +111,8 @@ The part that does not hold up: grapple saws are not faster than a good climber 
 
 **Hydraulic contamination.** Dual-circuit systems with solenoid control are less forgiving of dirty oil than a simple hammer line. Filtration discipline pays for itself.
 
+Chain, bar and sprocket are a weekly conversation rather than an annual one; [wear parts](/wear-parts/) covers how to budget for that, and [parts and support across Australia](/support-and-parts-australia/) covers whether the correct chain pitch is held in the country.
+
 ## The honest limitations
 
 - **Reach is the real constraint.** Your working envelope is your excavator's envelope. A grapple saw does not make a 5 tonne machine reach 12 metres.
@@ -134,7 +136,7 @@ Quick hitches must meet AS 4772-2008 or an equivalent such as ISO 13031-2016 wit
 
 Operator protection under ISO 8084 is directly relevant because the cut happens in the operator's working plane. Note the standard's limitation, which is worth knowing rather than glossing over: it excludes broken chainsaw teeth from its scope.
 
-Where the work is amenity pruning rather than removal, AS 4373 governs the cut quality and is routinely written into council and utility specifications.
+Where the work is amenity pruning rather than removal, [AS 4373](/as-4373-mechanised-pruning/) governs the cut quality and is routinely written into council and utility specifications.
 
 ## Questions to ask before you sign
 

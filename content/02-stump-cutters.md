@@ -82,6 +82,8 @@ If items 1 and 2 are large on your current work, the cutter pays without needing
 
 **Carrier load.** Double-acting circuit, intermittent cycles. Kinder to a machine than continuous mulching.
 
+Tooth and seal costs behave the same way across the market, and [wear parts](/wear-parts/) works through what drives them. Whether a replacement arrives in two days or six weeks is a supply question rather than a price one, covered in [parts and support across Australia](/support-and-parts-australia/).
+
 ## The honest limitations
 
 - **It does not remove stumps.** You still need an extraction method. The cutter handles what happens after.

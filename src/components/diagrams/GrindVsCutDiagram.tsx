@@ -1,4 +1,6 @@
 const LINE = "var(--color-steel-500)";
+/** Labels need 4.5:1; the stroke colour does not clear it. */
+const LABEL = "var(--color-concrete)";
 const SOIL = "var(--color-steel-700)";
 const WOOD = "var(--color-hazard)";
 const ACCENT = "var(--color-moss-500)";
@@ -57,7 +59,7 @@ export function GrindVsCutDiagram() {
             {[60, 78, 96, 232, 250, 268, 286].map((cx, i) => (
               <rect key={cx} x={cx} y={138 + (i % 3) * 4} width="14" height="5" fill={WOOD} opacity="0.75" transform={`rotate(${i * 24} ${cx} 140)`} />
             ))}
-            <text x="12" y="252" fill={LINE} fontFamily={MONO} fontSize="9" letterSpacing="0.6">
+            <text x="12" y="252" fill={LABEL} fontFamily={MONO} fontSize="9" letterSpacing="0.6">
               OUTPUT: CHIP · NO SPOIL · NO STUMP TO MOVE
             </text>
           </g>
@@ -83,7 +85,7 @@ export function GrindVsCutDiagram() {
             <text x="238" y="112" fill={WOOD} fontFamily={MONO} fontSize="9" letterSpacing="0.6">
               SIZED FOR TRANSPORT
             </text>
-            <text x="12" y="252" fill={LINE} fontFamily={MONO} fontSize="9" letterSpacing="0.6">
+            <text x="12" y="252" fill={LABEL} fontFamily={MONO} fontSize="9" letterSpacing="0.6">
               OUTPUT: SPLIT STUMP · CHIP-READY · SPOIL REMAINS
             </text>
           </g>

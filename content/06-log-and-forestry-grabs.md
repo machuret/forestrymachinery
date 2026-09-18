@@ -106,6 +106,8 @@ The Powerhand EX series supports rigid mounting directly via a tilt rotator or r
 
 Grabs are the cheapest attachment in this guide to run. That is part of why they earn their keep.
 
+Even the cheapest attachment here has a running cost worth planning, and [wear parts](/wear-parts/) sets out how to budget pins, bushes and seals. If you specify rotation, check the seal and hose supply position first in [parts and support across Australia](/support-and-parts-australia/).
+
 ## The honest limitations
 
 - **A grab is not a lifting device.** Handling timber under a grapple is not the same as certified lifting. Do not let it drift into crane work without the right equipment and paperwork.

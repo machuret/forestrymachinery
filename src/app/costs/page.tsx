@@ -159,7 +159,7 @@ export default function CostsPage() {
         title="What forestry attachments actually cost"
         crumb="Costs"
         trail={[{ label: "Forestry Machinery Guide", href: "/forestry-machinery-guide/" }]}
-        lead="Purchase price is the number buyers focus on and the smallest part of the decision. This page covers the five costs that make up an attachment, what moves each of them, and how to compare two quotes that look nothing alike."
+        lead="What a forestry attachment costs in Australia is not one number, and the purchase price is the smallest part of it. This page covers the five costs that make up an attachment, what moves each of them, and how to compare two quotes that look nothing alike."
         aside={<EditorialImage src="/images/field/costs-yard.webp" alt="Forestry attachments arranged beside an excavator in an Australian contractor yard" caption="Capital, configuration and support all arrive on the same invoice." />}
       />
 
@@ -213,7 +213,14 @@ export default function CostsPage() {
               },
               {
                 title: "Downtime",
-                body: "Parts availability in Australia is the difference between a two-day repair and a six-week one. On a machine earning daily, this is the largest hidden cost in the category.",
+                body: (
+                  <>
+                    Parts availability in Australia is the difference between a two-day repair and a six-week one. On a
+                    machine earning daily, this is the largest hidden cost in the category, and{" "}
+                    <Link href="/support-and-parts-australia/">what differs by state</Link> decides how much you should
+                    hold yourself.
+                  </>
+                ),
               },
               {
                 title: "Capital",
@@ -438,8 +445,9 @@ export default function CostsPage() {
           <Callout label="General information, not advice" tone="warn">
             This is a summary of publicly available Australian Taxation Office guidance, written as general information.
             It is not tax advice and does not account for your circumstances. Confirm your own position with your
-            accountant before you time a purchase around it. Thresholds and legislation status change — see the{" "}
-            <Link href="/sources/">sources page</Link> for what this is based on.
+            accountant before you time a purchase around it. <Link href="/finance-and-tax/">Finance and tax</Link>{" "}
+            covers the pool rates and the first-use timing trap in full. Thresholds and legislation status change — see
+            the <Link href="/sources/">sources page</Link> for what this is based on.
           </Callout>
         </Section>
 

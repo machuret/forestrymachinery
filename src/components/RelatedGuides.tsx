@@ -50,15 +50,17 @@ export function RelatedGuides({ page }: { page: GuidePage }) {
       {next.length > 0 && (
         <div className="mt-8 grid gap-px bg-steel-700 sm:grid-cols-2 lg:grid-cols-3">
           {next.map(({ link, meta }) => (
-            <Link key={link.href} href={link.href} className="group flex flex-col bg-steel-950 transition-colors hover:bg-steel-900">
+            <div key={link.href} className="group relative flex flex-col bg-steel-950 transition-colors hover:bg-steel-900">
               <Photograph photo={meta!.hero} ratio="16/9" bare sizes="(max-width: 640px) 100vw, 20rem" className="border-0 border-b" />
               <div className="p-4">
                 <span className="font-mono text-[0.62rem] tracking-[0.16em] text-hazard">{meta!.code}</span>
                 <span className="display mt-1.5 block text-lg leading-tight text-bone group-hover:text-hazard">
-                  {link.label}
+                  <Link href={link.href} className="after:absolute after:inset-0">
+                    {link.label}
+                  </Link>
                 </span>
               </div>
-            </Link>
+            </div>
           ))}
         </div>
       )}

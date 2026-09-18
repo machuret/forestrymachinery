@@ -337,17 +337,22 @@ export default function HomePage() {
                   body: "What a 3, 5, 8, 13, 20 or 30 tonne excavator can actually run, carrier class by carrier class.",
                 },
               ].map((t) => (
-                <Link key={t.href} href={t.href} className="group bg-steel-900 p-7 transition-colors hover:bg-steel-850">
+                <div key={t.href} className="group relative bg-steel-900 p-7 transition-colors hover:bg-steel-850">
                   <span className="font-mono text-[0.7rem] tracking-[0.2em] text-hazard">{t.code}</span>
-                  <h3 className="display mt-4 text-2xl leading-tight text-bone group-hover:text-hazard">{t.title}</h3>
+                  <h3 className="display mt-4 text-2xl leading-tight text-bone group-hover:text-hazard">
+                    <Link href={t.href} className="after:absolute after:inset-0">
+                      {t.title}
+                    </Link>
+                  </h3>
                   <p className="mt-3 text-[0.95rem] leading-relaxed text-concrete">{t.body}</p>
-                  <span className="mt-5 inline-flex items-center gap-2 font-mono text-[0.62rem] tracking-[0.16em] text-bone/70 uppercase group-hover:text-hazard">
+                  <span
+                    aria-hidden="true"
+                    className="mt-5 inline-flex items-center gap-2 font-mono text-[0.62rem] tracking-[0.16em] text-bone/70 uppercase group-hover:text-hazard"
+                  >
                     Open
-                    <span aria-hidden="true" className="transition-transform duration-200 group-hover:translate-x-1">
-                      →
-                    </span>
+                    <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
                   </span>
-                </Link>
+                </div>
               ))}
             </div>
           </div>
@@ -374,14 +379,18 @@ export default function HomePage() {
         <ul className="mt-12 grid gap-px bg-steel-700 sm:grid-cols-2">
           {COMPARISONS.map((c) => (
             <li key={c.slug}>
-              <Link href={`/compare/${c.slug}/`} className="group flex h-full flex-col bg-steel-950 p-6 transition-colors hover:bg-steel-900 sm:p-8">
+              <div className="group relative flex h-full flex-col bg-steel-950 p-6 transition-colors hover:bg-steel-900 sm:p-8">
                 <span className="grid grid-cols-2 gap-3">
                   <Photograph photo={c.a.photo} ratio="4/3" bare sizes="(max-width: 640px) 45vw, 18rem" />
                   <Photograph photo={c.b.photo} ratio="4/3" bare sizes="(max-width: 640px) 45vw, 18rem" />
                 </span>
-                <h3 className="display mt-6 text-2xl leading-tight text-bone group-hover:text-hazard">{c.title}</h3>
+                <h3 className="display mt-6 text-2xl leading-tight text-bone group-hover:text-hazard">
+                  <Link href={`/compare/${c.slug}/`} className="after:absolute after:inset-0">
+                    {c.title}
+                  </Link>
+                </h3>
                 <p className="mt-3 text-[0.93rem] leading-relaxed text-concrete">{c.verdict.split(". ")[0]}.</p>
-              </Link>
+              </div>
             </li>
           ))}
         </ul>

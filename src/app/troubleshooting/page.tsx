@@ -282,7 +282,7 @@ export default function TroubleshootingPage() {
         title="When the attachment is not performing"
         crumb="Troubleshooting"
         trail={[{ label: "Forestry Machinery Guide", href: "/forestry-machinery-guide/" }]}
-        lead="Most forestry attachment problems are not defects. They are specification mismatches that only become visible under load — and the difference between a flow problem and a pressure problem decides whether the fix costs an hour or a new attachment."
+        lead="When an excavator attachment is running slow, stalling or wearing out early, it is usually not a defect. It is a specification mismatch that only becomes visible under load — and telling a flow problem from a pressure problem decides whether the fix costs an hour or a new attachment."
         aside={<EditorialImage src="/images/field/troubleshooting-hydraulics.webp" alt="Field technician checking hydraulic couplers and pressure on a grounded forestry attachment" caption="Diagnose at the coupler, under the conditions where the problem appears." />}
       />
 
@@ -444,6 +444,7 @@ export default function TroubleshootingPage() {
               { href: "/compatibility/", label: "Carrier size guide", why: "Whether the tool was the right size for the machine in the first place." },
               { href: "/wear-parts/", label: "Wear parts guide", why: "What drives wear rates, and when a consumable becomes a repair." },
               { href: "/glossary/", label: "Glossary", why: "Case drain, relief valve, hammer line and the rest, defined plainly." },
+              { href: "/as-4373-mechanised-pruning/", label: "AS 4373 and mechanised pruning", why: "A torn cut fails inspection on compliance-specified work. What the standard means for tool choice." },
               { href: SITE.quotePath, label: "Talk to a specialist", why: "Bring the checklist above and the conversation is a short one." },
             ]}
           />

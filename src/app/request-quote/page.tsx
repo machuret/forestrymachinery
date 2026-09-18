@@ -54,7 +54,7 @@ export default function RequestQuotePage() {
 
           <aside className="space-y-8">
             <div className="border border-steel-700 bg-steel-900 p-6">
-              <p className="font-mono text-[0.62rem] tracking-[0.18em] text-concrete uppercase">Why no prices</p>
+              <h2 className="font-mono text-[0.62rem] tracking-[0.18em] text-concrete uppercase">Why no prices</h2>
               <p className="mt-3 text-[0.92rem] leading-relaxed text-concrete">
                 Attachment pricing moves with exchange rate, spec, rotation options and carrier bracket. A published
                 number would be wrong within a quarter. The guides explain what drives the number so you can interrogate
@@ -62,7 +62,7 @@ export default function RequestQuotePage() {
               </p>
             </div>
             <div className="border border-steel-700 bg-steel-900 p-6">
-              <p className="font-mono text-[0.62rem] tracking-[0.18em] text-concrete uppercase">Before you send</p>
+              <h2 className="font-mono text-[0.62rem] tracking-[0.18em] text-concrete uppercase">Before you send</h2>
               <ul className="mt-3 space-y-3 text-[0.92rem] leading-relaxed text-concrete">
                 <li>Check the auxiliary flow on the machine plate, not the brochure.</li>
                 <li>Note whether you have a case drain line fitted.</li>
@@ -70,7 +70,7 @@ export default function RequestQuotePage() {
               </ul>
             </div>
             <div className="border border-steel-700 bg-steel-900 p-6">
-              <p className="font-mono text-[0.62rem] tracking-[0.18em] text-concrete uppercase">Still deciding</p>
+              <h2 className="font-mono text-[0.62rem] tracking-[0.18em] text-concrete uppercase">Still deciding</h2>
               <Link
                 href="/forestry-machinery-guide/"
                 className="mt-3 inline-flex items-center gap-2 text-[0.92rem] text-moss-400 hover:text-hazard"
@@ -82,6 +82,16 @@ export default function RequestQuotePage() {
         </div>
       </section>
 
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: absoluteUrl("/") },
+            { "@type": "ListItem", position: 2, name: "Request a quote", item: absoluteUrl("/request-quote/") },
+          ],
+        }}
+      />
       <JsonLd
         data={{
           "@context": "https://schema.org",

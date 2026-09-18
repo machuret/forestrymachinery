@@ -75,6 +75,16 @@ export default function GlossaryPage() {
       <JsonLd
         data={{
           "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: absoluteUrl("/") },
+            { "@type": "ListItem", position: 2, name: "Glossary", item: absoluteUrl("/glossary/") },
+          ],
+        }}
+      />
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
           "@type": "DefinedTermSet",
           name: "Forestry attachment glossary",
           url: absoluteUrl("/glossary/"),

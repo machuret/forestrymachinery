@@ -47,9 +47,9 @@ export default function SourcesPage() {
                         href={s.url}
                         rel="nofollow noopener"
                         target="_blank"
-                        className="mt-3 inline-block font-mono text-[0.62rem] tracking-[0.12em] break-all text-moss-400 hover:text-hazard"
+                        className="mt-3 inline-block font-mono text-[0.62rem] tracking-[0.12em] text-moss-400 hover:text-hazard"
                       >
-                        {s.url.replace(/^https:\/\//, "")}
+                        Read it on {new URL(s.url).hostname.replace(/^www\./, "")} ↗
                       </a>
                       <p className="mt-3 font-mono text-[0.6rem] tracking-[0.1em] text-moss-400 uppercase">
                         Link verified{" "}
@@ -75,7 +75,7 @@ export default function SourcesPage() {
 
           <aside className="space-y-8 lg:sticky lg:top-28 lg:self-start">
             <div className="border border-steel-700 bg-steel-900 p-6">
-              <p className="font-mono text-[0.62rem] tracking-[0.18em] text-concrete uppercase">Image standards</p>
+              <h2 className="font-mono text-[0.62rem] tracking-[0.18em] text-concrete uppercase">Image standards</h2>
               <p className="mt-3 text-[0.92rem] leading-relaxed text-concrete">
                 Product photographs show real supplied equipment and remain the source of truth for attachment detail.
                 Wider field and application scenes are clearly labelled editorial imagery: they explain operating
@@ -83,7 +83,7 @@ export default function SourcesPage() {
               </p>
             </div>
             <div className="border border-steel-700 bg-steel-900 p-6">
-              <p className="font-mono text-[0.62rem] tracking-[0.18em] text-concrete uppercase">Link checking</p>
+              <h2 className="font-mono text-[0.62rem] tracking-[0.18em] text-concrete uppercase">Link checking</h2>
               <p className="mt-3 text-[0.92rem] leading-relaxed text-concrete">
                 Every source URL below is checked against the live page, and the date each was last confirmed is shown
                 with it. A citation that no longer resolves, or that no longer supports the claim it is attached to, is
@@ -92,7 +92,7 @@ export default function SourcesPage() {
               </p>
             </div>
             <div className="border border-steel-700 bg-steel-900 p-6">
-              <p className="font-mono text-[0.62rem] tracking-[0.18em] text-concrete uppercase">No published prices</p>
+              <h2 className="font-mono text-[0.62rem] tracking-[0.18em] text-concrete uppercase">No published prices</h2>
               <p className="mt-3 text-[0.92rem] leading-relaxed text-concrete">
                 Attachment pricing moves with exchange rate, spec, rotation options and carrier bracket. A published
                 figure would be wrong within a quarter and would invite price shopping against a number that is not
@@ -100,14 +100,14 @@ export default function SourcesPage() {
               </p>
             </div>
             <div className="border border-steel-700 bg-steel-900 p-6">
-              <p className="font-mono text-[0.62rem] tracking-[0.18em] text-concrete uppercase">Tax content</p>
+              <h2 className="font-mono text-[0.62rem] tracking-[0.18em] text-concrete uppercase">Tax content</h2>
               <p className="mt-3 text-[0.92rem] leading-relaxed text-concrete">
                 Written as general information with an explicit caveat, not as advice. Confirm your own position with
                 your accountant before timing a purchase around it.
               </p>
             </div>
             <div className="border border-steel-700 bg-steel-900 p-6">
-              <p className="font-mono text-[0.62rem] tracking-[0.18em] text-concrete uppercase">Specifications</p>
+              <h2 className="font-mono text-[0.62rem] tracking-[0.18em] text-concrete uppercase">Specifications</h2>
               <p className="mt-3 text-[0.92rem] leading-relaxed text-concrete">
                 Every brand, model, weight, flow figure and carrier range was taken from the live {SITE.name} product
                 pages. Treat published maximums as best-case figures and derate for dense, fibrous or buttressed
@@ -124,6 +124,16 @@ export default function SourcesPage() {
         </div>
       </section>
 
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: absoluteUrl("/") },
+            { "@type": "ListItem", position: 2, name: "Sources", item: absoluteUrl("/sources/") },
+          ],
+        }}
+      />
       <JsonLd
         data={{
           "@context": "https://schema.org",

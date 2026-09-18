@@ -158,7 +158,7 @@ export default function SupportPage() {
         title="Parts, freight and support across Australia"
         crumb="Parts and support"
         trail={[{ label: "Forestry Machinery Guide", href: "/forestry-machinery-guide/" }]}
-        lead="Parts availability is the difference between a two-day repair and a six-week one. On a machine earning daily, that gap outweighs any plausible difference on the purchase invoice — and it is the question buyers ask last."
+        lead="Forestry attachment parts in Australia are the difference between a two-day repair and a six-week one. On a machine earning daily, that gap outweighs any plausible difference on the purchase invoice — and it is the question buyers ask last."
       />
 
       <article className="mx-auto max-w-[88rem] px-4 py-14 sm:px-6 sm:py-20 lg:px-10">

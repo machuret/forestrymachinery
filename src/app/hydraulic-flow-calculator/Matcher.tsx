@@ -157,21 +157,28 @@ export function Matcher() {
         <ul className="mt-6 space-y-3">
           {results.map(({ r, meta, verdict, reason }) => (
             <li key={r.slug}>
-              <Link
-                href={`/${r.slug}/`}
-                className={`flex flex-col gap-3 border-l-[3px] border-y border-r border-y-steel-800 border-r-steel-800 p-5 transition-colors hover:border-r-hazard sm:flex-row sm:items-center sm:justify-between ${VERDICTS[verdict].tone}`}
+              <div
+                className={`relative flex flex-col gap-3 border-y border-r border-l-[3px] border-y-steel-800 border-r-steel-800 p-5 transition-colors hover:border-r-hazard sm:flex-row sm:items-center sm:justify-between ${VERDICTS[verdict].tone}`}
               >
                 <span className="min-w-0">
                   <span className="flex items-center gap-3">
                     <span className="font-mono text-[0.65rem] text-hazard">{meta.code}</span>
-                    <span className="display text-xl text-bone">{meta.label}</span>
+                    {/* Only the category name is the link text; the row stays clickable. */}
+                    <span className="display text-xl text-bone">
+                      <Link href={`/${r.slug}/`} className="after:absolute after:inset-0">
+                        {meta.label}
+                      </Link>
+                    </span>
                   </span>
                   <span className="mt-2 block text-[0.9rem] leading-relaxed text-concrete">{reason}</span>
                 </span>
-                <span className="shrink-0 font-mono text-[0.62rem] tracking-[0.14em] text-bone uppercase">
+                <span
+                  aria-hidden="true"
+                  className="shrink-0 font-mono text-[0.62rem] tracking-[0.14em] text-bone uppercase"
+                >
                   {VERDICTS[verdict].label} →
                 </span>
-              </Link>
+              </div>
             </li>
           ))}
         </ul>

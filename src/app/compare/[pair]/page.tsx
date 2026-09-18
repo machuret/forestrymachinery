@@ -276,7 +276,11 @@ export default async function ComparisonPage({ params }: { params: Promise<{ pai
 
         {/* Other comparisons */}
         <nav aria-label="Other comparisons" className="mt-16 border-t border-steel-700 pt-8">
-          <p className="font-mono text-[0.65rem] tracking-[0.2em] text-concrete uppercase">Other comparisons</p>
+          <p className="font-mono text-[0.65rem] tracking-[0.2em] text-concrete uppercase">
+            <Link href="/compare/" className="hover:text-hazard">
+              Other comparisons
+            </Link>
+          </p>
           <ul className="mt-5 flex flex-wrap gap-3">
             {COMPARISONS.filter((o) => o.slug !== c.slug).map((o) => (
               <li key={o.slug}>

@@ -59,15 +59,16 @@ export default function BrandsPage() {
 
         <div className="mt-12 grid gap-px bg-steel-700 md:grid-cols-2">
           {BRAND_PROFILES.map((b) => (
-            <Link
+            <div
               key={b.slug}
-              href={`/brands/${b.slug}/`}
-              className="group flex flex-col bg-steel-950 p-6 transition-colors hover:bg-steel-900 sm:p-8"
+              className="group relative flex flex-col bg-steel-950 p-6 transition-colors hover:bg-steel-900 sm:p-8"
             >
               <BrandLogo slug={b.slug} className="self-start" />
               <div className="mt-6 flex items-baseline gap-3">
                 <h2 className="display text-2xl text-bone transition-colors group-hover:text-hazard sm:text-3xl">
-                  {b.name}
+                  <Link href={`/brands/${b.slug}/`} className="after:absolute after:inset-0">
+                    {b.name}
+                  </Link>
                 </h2>
                 <span className="font-mono text-[0.62rem] tracking-[0.14em] text-concrete uppercase">{b.origin}</span>
               </div>
@@ -76,13 +77,14 @@ export default function BrandsPage() {
                 {b.series.length} series ·{" "}
                 {[...new Set(b.series.map((s) => s.guide))].length} categories
               </p>
-              <span className="mt-6 inline-flex items-center gap-2 font-mono text-[0.65rem] tracking-[0.16em] text-bone/70 uppercase group-hover:text-hazard">
+              <span
+                aria-hidden="true"
+                className="mt-6 inline-flex items-center gap-2 font-mono text-[0.65rem] tracking-[0.16em] text-bone/70 uppercase group-hover:text-hazard"
+              >
                 See the range
-                <span aria-hidden="true" className="transition-transform duration-200 group-hover:translate-x-1">
-                  →
-                </span>
+                <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
               </span>
-            </Link>
+            </div>
           ))}
         </div>
       </section>
@@ -160,6 +162,16 @@ export default function BrandsPage() {
             name: f.q,
             acceptedAnswer: { "@type": "Answer", text: nodeToText(f.a) },
           })),
+        }}
+      />
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: absoluteUrl("/") },
+            { "@type": "ListItem", position: 2, name: "Brands", item: absoluteUrl("/brands/") },
+          ],
         }}
       />
       <JsonLd

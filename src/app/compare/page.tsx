@@ -58,26 +58,28 @@ export default function ComparePage() {
 
         <div className="mt-12 grid gap-px bg-steel-700 md:grid-cols-2">
           {COMPARISONS.map((c) => (
-            <Link
+            <div
               key={c.slug}
-              href={`/compare/${c.slug}/`}
-              className="group flex flex-col bg-steel-950 p-6 transition-colors hover:bg-steel-900 sm:p-8"
+              className="group relative flex flex-col bg-steel-950 p-6 transition-colors hover:bg-steel-900 sm:p-8"
             >
               <div className="grid grid-cols-2 gap-3">
                 <Photograph photo={c.a.photo} ratio="4/3" bare sizes="(max-width: 768px) 45vw, 20rem" />
                 <Photograph photo={c.b.photo} ratio="4/3" bare sizes="(max-width: 768px) 45vw, 20rem" />
               </div>
               <h2 className="display mt-6 text-2xl leading-tight text-bone transition-colors group-hover:text-hazard sm:text-3xl">
-                {c.title}
+                <Link href={`/compare/${c.slug}/`} className="after:absolute after:inset-0">
+                  {c.title}
+                </Link>
               </h2>
               <p className="mt-3 text-[0.95rem] leading-relaxed text-concrete">{c.verdict.split(". ")[0]}.</p>
-              <span className="mt-6 inline-flex items-center gap-2 font-mono text-[0.65rem] tracking-[0.16em] text-bone/70 uppercase group-hover:text-hazard">
+              <span
+                aria-hidden="true"
+                className="mt-6 inline-flex items-center gap-2 font-mono text-[0.65rem] tracking-[0.16em] text-bone/70 uppercase group-hover:text-hazard"
+              >
                 Read the comparison
-                <span aria-hidden="true" className="transition-transform duration-200 group-hover:translate-x-1">
-                  →
-                </span>
+                <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
               </span>
-            </Link>
+            </div>
           ))}
         </div>
       </section>
@@ -144,6 +146,7 @@ export default function ComparePage() {
             { href: "/forestry-machinery-guide/", label: "The full buyer's guide", why: "All eight categories and what separates them, from the top." },
             { href: "/compatibility/", label: "What suits your carrier", why: "Narrow the field by machine before you compare anything." },
             { href: "/costs/", label: "What attachments cost", why: "The five cost lines, and how to compare two quotes properly." },
+            { href: "/as-4373-mechanised-pruning/", label: "AS 4373 and mechanised pruning", why: "Where a compliance specification, not a comparison, decides the tool." },
           ]}
         />
       </Section>
@@ -157,6 +160,16 @@ export default function ComparePage() {
             name: f.q,
             acceptedAnswer: { "@type": "Answer", text: nodeToText(f.a) },
           })),
+        }}
+      />
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: absoluteUrl("/") },
+            { "@type": "ListItem", position: 2, name: "Comparisons", item: absoluteUrl("/compare/") },
+          ],
         }}
       />
       <JsonLd

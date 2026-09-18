@@ -130,7 +130,7 @@ export default function HireVsBuyPage() {
         title="Hire, buy or subcontract?"
         crumb="Hire vs buy"
         trail={[{ label: "Forestry Machinery Guide", href: "/forestry-machinery-guide/" }]}
-        lead="Attachments are cheap compared with carriers, but they are not free, and an attachment running 150 hours a year is usually a hire decision wearing a purchase order. Here is how to tell which side of the line you are on."
+        lead="Excavator attachment hire costs more per hour and far less per year than ownership, and an attachment running 150 hours a year is usually a hire decision wearing a purchase order. Here is how to tell which side of the line you are on."
         aside={<EditorialImage src="/images/field/hire-vs-buy-fleet.webp" alt="Two forestry excavators loaded on low-loader trailers at an Australian contractor depot" caption="Utilisation and availability decide which machine earns the trip." />}
       />
 

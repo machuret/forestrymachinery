@@ -157,9 +157,10 @@ export default function CompatibilityPage() {
             What forestry attachments fit your excavator?
           </h1>
           <p className="mt-7 max-w-2xl text-lg leading-relaxed text-bone/80">
-            Find your machine&rsquo;s operating weight below and read what opens up, what sits at the edge of its range
-            and what is out of reach. Published ranges are manufacturer figures for the widest model in a series — the
-            right model inside that range is set by your routine work and your lift chart, not by machine weight alone.
+            Whether you run a 3, 5, 8, 13, 20 or 30 tonne excavator, find your operating weight below and read what opens up,
+            what sits at the edge of its range and what is out of reach. Published ranges are manufacturer figures for
+            the widest model in a series — the right model inside that range is set by your routine work and your lift
+            chart, not by machine weight alone.
           </p>
         </div>
         <div className="h-[3px] hazard-stripes-dim" />
@@ -466,6 +467,19 @@ export default function CompatibilityPage() {
             name: f.q,
             acceptedAnswer: { "@type": "Answer", text: nodeToText(f.a) },
           })),
+        }}
+      />
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "Article",
+          headline: "What forestry attachments fit your excavator?",
+          description:
+            "Carrier class by carrier class, from 1.5 to 50 tonnes, with the circuit each category needs.",
+          inLanguage: "en-AU",
+          mainEntityOfPage: absoluteUrl("/compatibility/"),
+          author: { "@type": "Organization", name: SITE.name },
+          publisher: { "@type": "Organization", name: SITE.name },
         }}
       />
       <JsonLd

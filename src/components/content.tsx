@@ -156,13 +156,19 @@ export function NextSteps({ items }: { items: Array<{ href: string; label: strin
   return (
     <div className="grid gap-px bg-steel-700 sm:grid-cols-2 lg:grid-cols-3 [&>*:last-child:nth-child(odd)]:sm:col-span-2 [&>*:last-child:nth-child(3n+2)]:lg:col-span-2 [&>*:last-child:nth-child(3n+1)]:sm:col-span-2 [&>*:last-child:nth-child(3n+1)]:lg:col-span-1">
       {items.map((l) => (
-        <Link key={l.href} href={l.href} className="group bg-steel-950 p-6 transition-colors hover:bg-steel-900">
-          <span className="display block text-lg leading-tight text-bone group-hover:text-hazard">{l.label}</span>
+        // Only the label sits inside the anchor; the card stays clickable via
+        // an inset pseudo-element, so the anchor text is the label alone.
+        <div key={l.href} className="group relative bg-steel-950 p-6 transition-colors hover:bg-steel-900">
+          <span className="display block text-lg leading-tight text-bone group-hover:text-hazard">
+            <Link href={l.href} className="after:absolute after:inset-0">
+              {l.label}
+            </Link>
+          </span>
           <span className="mt-2 block text-[0.9rem] leading-relaxed text-concrete">{l.why}</span>
           <span aria-hidden="true" className="mt-4 block font-mono text-[0.62rem] tracking-[0.16em] text-hazard uppercase">
             Read next →
           </span>
-        </Link>
+        </div>
       ))}
     </div>
   );

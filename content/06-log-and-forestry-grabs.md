@@ -13,7 +13,7 @@ last_reviewed: 2026-09-12
 
 # Log and Forestry Grabs: The Highest-Utilisation Attachment You Will Own
 
-Every other attachment in this guide does one thing. A grab does everything that happens afterwards.
+Every other attachment in this guide does one thing. A log grab does everything that happens afterwards.
 
 Cut a tree and it has to be moved. Clear a site and the brash has to go somewhere. Run a chipper and something has to feed it. Build a log deck and something has to stack it. That is why grabs are the attachment with the highest annual hours in most forestry fleets, and why they are usually the right first purchase for a contractor entering this space.
 

@@ -98,6 +98,14 @@ for (const url of urls) {
         w: i.getAttribute("width"),
         h: i.getAttribute("height"),
       })),
+      // Body links exclude header/footer/nav, so boilerplate does not mask a
+      // page that nothing in the copy actually points at.
+      bodyLinks: (() => {
+        const chrome = new Set([...document.querySelectorAll("header a, footer a, nav a")]);
+        return [...document.querySelectorAll("main a[href^='/']")]
+          .filter((a) => !chrome.has(a))
+          .map((a) => a.getAttribute("href"));
+      })(),
       links: [...document.querySelectorAll("a[href]")].map((a) => ({
         href: a.getAttribute("href"),
         text: (a.textContent || "").trim(),
@@ -150,6 +158,22 @@ for (const url of urls) {
     if (!img.alt) err(url, `img without alt: ${img.src}`);
     else if (img.alt.length < 15) warn(url, `very short alt: "${img.alt}"`);
     if (!img.w || !img.h) warn(url, `img without dimensions: ${img.src}`);
+  }
+
+  // --- anchor text quality
+  for (const l of d.links) {
+    const internal = l.href?.startsWith("/");
+    // A card wrapped entirely in one anchor concatenates every line inside it
+    // into the link text, which wrecks the anchor signal and the screen-reader
+    // announcement alike. Link the heading and overlay the card instead.
+    // External citations are allowed to be long: a full publisher and title is
+    // the correct form for a reference.
+    if (internal && l.text.length > 80) {
+      err(url, `anchor text is ${l.text.length} chars (card wrapped in a link?): "${l.text.slice(0, 50)}…"`);
+    }
+    if (/^(https?:\/\/|www\.)/i.test(l.text)) {
+      err(url, `bare URL as anchor text: "${l.text.slice(0, 50)}…"`);
+    }
   }
 
   // --- links
@@ -259,7 +283,39 @@ for (const url of urls) {
   console.log(`\nSitemap: ${declared.size} entries, origin ${EXPECT_ORIGIN}`);
 }
 
-// --- inbound links
+// --- schema coverage
+{
+  const PAGE_TYPES = [
+    "Article", "WebPage", "CollectionPage", "ContactPage",
+    "WebApplication", "Brand", "DefinedTermSet", "ItemList",
+  ];
+  for (const r of rows) {
+    const types = r.ld.flatMap((b) => (Array.isArray(b["@graph"]) ? b["@graph"] : [b])).map((b) => b["@type"]);
+    if (r.url !== "/" && !types.includes("BreadcrumbList")) {
+      err(r.url, "no BreadcrumbList schema");
+    }
+    if (!types.some((t) => PAGE_TYPES.includes(t))) {
+      err(r.url, `no page-level schema type (has: ${types.join(", ") || "none"})`);
+    }
+  }
+}
+
+// --- inbound links, boilerplate excluded
+{
+  const contextual = new Map(urls.map((u) => [u, new Set()]));
+  for (const r of rows) {
+    for (const href of new Set(r.bodyLinks ?? [])) {
+      const path = href.split("#")[0].split("?")[0];
+      if (contextual.has(path) && path !== r.url) contextual.get(path).add(r.url);
+    }
+  }
+  for (const [url, from] of contextual) {
+    if (url === "/") continue; // the homepage is reached by the logo, not by prose
+    if (from.size === 0) err(url, "no contextual inbound links (nav and footer excluded)");
+    else if (from.size < 2) warn(url, `only ${from.size} contextual inbound link`);
+  }
+}
+
 for (const [url, from] of inbound) {
   if (from.size < MIN_INBOUND) warn(url, `only ${from.size} inbound internal links`);
 }

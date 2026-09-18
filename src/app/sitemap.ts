@@ -15,10 +15,15 @@ const REVIEWED = new Date("2026-09-14");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const guides = getAllPages();
+  /** Every photograph a guide renders: hero, field scene and gallery. */
   const imagesBySlug = new Map(
     CATEGORY_META.map((category) => [
       category.slug,
-      [absoluteUrl(PHOTOS[category.hero].src), absoluteUrl(category.fieldImage.src)],
+      [
+        absoluteUrl(PHOTOS[category.hero].src),
+        absoluteUrl(category.fieldImage.src),
+        ...category.gallery.map((key) => absoluteUrl(PHOTOS[key].src)),
+      ],
     ]),
   );
 

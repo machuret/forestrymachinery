@@ -200,14 +200,18 @@ export default async function BrandPage({ params }: { params: Promise<{ brand: s
           <h2 className="display mt-5 text-3xl text-bone sm:text-4xl">Where {b.name} appears in the guide</h2>
           <div className="mt-8 grid gap-px bg-steel-700 sm:grid-cols-2 lg:grid-cols-3">
             {categories.map((c) => (
-              <Link key={c.slug} href={`/${c.slug}/`} className="group flex flex-col bg-steel-950 transition-colors hover:bg-steel-900">
+              <div key={c.slug} className="group relative flex flex-col bg-steel-950 transition-colors hover:bg-steel-900">
                 <Photograph photo={c.hero} ratio="16/10" bare sizes="(max-width: 1024px) 100vw, 24rem" className="border-0 border-b" />
                 <div className="p-5">
                   <span className="font-mono text-[0.65rem] tracking-[0.18em] text-hazard">{c.code}</span>
-                  <h3 className="display mt-2 text-xl text-bone group-hover:text-hazard">{c.label}</h3>
+                  <h3 className="display mt-2 text-xl text-bone group-hover:text-hazard">
+                    <Link href={`/${c.slug}/`} className="after:absolute after:inset-0">
+                      {c.label}
+                    </Link>
+                  </h3>
                   <p className="mt-2 text-[0.88rem] leading-relaxed text-concrete">{c.job}</p>
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
         </section>

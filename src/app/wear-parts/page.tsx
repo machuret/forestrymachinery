@@ -116,7 +116,8 @@ const FAQS: Qa[] = [
     a: (
       <>
         Ask, rather than assume, and ask the question in three parts: what is held in Australia right now, what is
-        air-freighted, and what is on the water. Parts availability is the difference between a two-day repair and a
+        air-freighted, and what is on the water. <Link href="/support-and-parts-australia/">Parts and support across
+        Australia</Link> covers what differs by state, and how much you should hold on your own shelf. Parts availability is the difference between a two-day repair and a
         six-week one, and on an attachment running 500 hours a year that gap outweighs any plausible difference on the
         purchase invoice.
       </>
@@ -212,7 +213,7 @@ export default function WearPartsPage() {
         title="Wear parts: the cost that decides your hourly rate"
         crumb="Wear parts"
         trail={[{ label: "Forestry Machinery Guide", href: "/forestry-machinery-guide/" }]}
-        lead="Purchase price is a one-off. Teeth, blades, chains and tips are what the attachment costs you every week it works, and they are the number buyers ask for last — usually after the first invoice arrives."
+        lead="Purchase price is a one-off. Mulcher teeth, grinder teeth, saw chain and shear blades are what the attachment costs you every week it works, and their cost is the number buyers ask for last — usually after the first invoice arrives."
         aside={<EditorialImage src="/images/field/wear-parts-workbench.webp" alt="Worn and replacement mulcher teeth, chain, pins, bushings and hydraulic hose on a workshop bench" caption="The hourly rate lives in the gap between worn parts and stocked replacements." />}
       />
 

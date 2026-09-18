@@ -214,16 +214,21 @@ export default function HomePage() {
           </div>
           <div className="grid gap-4 md:grid-cols-2">
             {FIELD_APPLICATIONS.map((item) => (
-              <Link key={item.code} href={item.href} className="group relative min-h-[23rem] overflow-hidden border border-steel-700 bg-steel-950">
+              // Only the title is the link text; the overlay keeps the whole card clickable.
+              <div key={item.code} className="group relative min-h-[23rem] overflow-hidden border border-steel-700 bg-steel-950">
                 <Image src={item.image} alt={item.alt} fill sizes="(max-width: 768px) 100vw, 50vw" className="field-image object-cover transition-transform duration-700 group-hover:scale-[1.035]" />
                 <span aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-steel-950 via-steel-950/35 to-transparent" />
-                <span className="absolute inset-x-0 bottom-0 p-6 sm:p-8">
+                <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8">
                   <span className="font-mono text-[0.65rem] tracking-[0.18em] text-hazard">{item.code} · FIELD APPLICATION</span>
-                  <span className="display mt-3 block text-3xl text-bone group-hover:text-hazard sm:text-4xl">{item.title}</span>
-                  <span className="mt-3 block max-w-xl text-sm leading-relaxed text-bone/75">{item.note}</span>
-                  <span className="mt-5 inline-flex font-mono text-[0.62rem] tracking-[0.16em] text-hazard uppercase">Open the field guide →</span>
-                </span>
-              </Link>
+                  <h3 className="display mt-3 text-3xl text-bone group-hover:text-hazard sm:text-4xl">
+                    <Link href={item.href} className="after:absolute after:inset-0 after:z-10">
+                      {item.title}
+                    </Link>
+                  </h3>
+                  <p className="mt-3 max-w-xl text-sm leading-relaxed text-bone/75">{item.note}</p>
+                  <span aria-hidden="true" className="mt-5 inline-flex font-mono text-[0.62rem] tracking-[0.16em] text-hazard uppercase">Open the field guide →</span>
+                </div>
+              </div>
             ))}
           </div>
         </div>

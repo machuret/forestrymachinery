@@ -9,6 +9,7 @@ import { COMPARISONS } from "@/lib/comparisons";
 import { BRAND_PROFILES } from "@/lib/brands";
 import { JsonLd } from "@/components/JsonLd";
 import { ApplicationGrid } from "@/components/ApplicationGrid";
+import { IndustryGrid } from "@/components/IndustryGrid";
 import { SITE, absoluteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -183,6 +184,35 @@ export default function HomePage() {
             <Link href="/applications/" className="font-mono text-[0.68rem] tracking-[0.16em] text-hazard uppercase hover:text-moss-400">
               Explore machinery by application →
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ---------------------------------------------- Industry profiles */}
+      <section className="border-b border-steel-700 bg-steel-950">
+        <div className="mx-auto max-w-[88rem] px-4 py-20 sm:px-6 sm:py-28 lg:px-10">
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+            <div>
+              <p className="eyebrow">Built around the business</p>
+              <h2 className="display mt-4 max-w-3xl text-4xl leading-none text-bone sm:text-5xl">
+                Different industries make the same attachment pay in different ways
+              </h2>
+            </div>
+            <div className="max-w-md">
+              <p className="text-[0.97rem] leading-relaxed text-concrete">
+                Choose your operating model to connect machinery, carrier fleet, contract risk, production units and
+                support requirements before you compare quotations.
+              </p>
+              <Link
+                href="/industries/"
+                className="mt-5 inline-flex font-mono text-[0.68rem] tracking-[0.16em] text-hazard uppercase hover:text-moss-400"
+              >
+                View all industry profiles →
+              </Link>
+            </div>
+          </div>
+          <div className="mt-12">
+            <IndustryGrid compact />
           </div>
         </div>
       </section>

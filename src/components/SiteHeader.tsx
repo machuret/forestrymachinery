@@ -61,6 +61,12 @@ export function SiteHeader() {
             Applications
           </Link>
           <Link
+            href="/industries/"
+            className="font-mono text-[0.7rem] tracking-[0.16em] text-concrete uppercase transition-colors hover:text-hazard"
+          >
+            Industries
+          </Link>
+          <Link
             href="/compare/"
             className="font-mono text-[0.7rem] tracking-[0.16em] text-concrete uppercase transition-colors hover:text-hazard"
           >

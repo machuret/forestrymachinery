@@ -6,6 +6,7 @@ import { CATEGORY_META } from "@/lib/categories";
 import { PHOTOS } from "@/lib/media";
 import { absoluteUrl, SITE } from "@/lib/site";
 import { APPLICATION_GUIDES } from "@/lib/applications";
+import { INDUSTRY_PROFILES } from "@/lib/industries";
 
 /**
  * Editorial review date for the pages that are not generated from markdown.
@@ -46,6 +47,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.9,
       images: APPLICATION_GUIDES.map((guide) => absoluteUrl(guide.image)),
+    },
+    {
+      url: absoluteUrl("/industries/"),
+      changeFrequency: "monthly",
+      priority: 0.9,
+      images: INDUSTRY_PROFILES.map((profile) => absoluteUrl(profile.image)),
     },
     {
       url: absoluteUrl("/hire-vs-buy/"),
@@ -110,6 +117,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.8,
       images: [absoluteUrl(guide.image)],
+    })),
+    ...INDUSTRY_PROFILES.map((profile) => ({
+      url: absoluteUrl(`/industries/${profile.slug}/`),
+      lastModified: REVIEWED,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+      images: [absoluteUrl(profile.image)],
     })),
   ];
 }

@@ -11,6 +11,7 @@ import { BrandLogo } from "@/components/BrandLogo";
 import { References } from "@/components/References";
 import { RelatedGuides } from "@/components/RelatedGuides";
 import { RelatedApplications } from "@/components/RelatedApplications";
+import { RelatedIndustries } from "@/components/RelatedIndustries";
 import { CircuitDiagram } from "@/components/diagrams/CircuitDiagram";
 import { CarrierBandChart } from "@/components/diagrams/CarrierBandChart";
 import { GrindVsCutDiagram } from "@/components/diagrams/GrindVsCutDiagram";
@@ -282,6 +283,8 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
             <div className="prose-industrial" dangerouslySetInnerHTML={{ __html: page.bodyHtml }} />
 
             {meta && <RelatedApplications categorySlug={page.slug} />}
+
+            {meta && <RelatedIndustries categorySlug={page.slug} />}
 
             {/* Gallery */}
             {meta && meta.gallery.length > 0 && (

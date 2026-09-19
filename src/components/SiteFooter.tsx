@@ -47,6 +47,8 @@ export function SiteFooter() {
                 ["/forestry-machinery-guide/", "The buyer\u2019s guide"],
                 ["/applications/", "Machinery by application"],
                 ["/industries/", "Machinery by industry"],
+                ["/tutorials/", "Field tutorials"],
+                ["/operations/", "Operation and maintenance guides"],
                 ["/costs/", "What attachments cost"],
                 ["/hire-vs-buy/", "Hire, buy or subcontract"],
                 ["/hydraulic-flow-calculator/", "Flow calculator"],

@@ -6,18 +6,26 @@ import { Photograph } from "@/components/Photograph";
 import { JsonLd } from "@/components/JsonLd";
 import { Section, Checklist, RedFlags, NextSteps, Prose } from "@/components/content";
 import { COMPARISONS, comparison, type Side } from "@/lib/comparisons";
+import { PRACTICAL_COMPARISONS, practicalComparison } from "@/lib/practical-comparisons";
+import { PracticalComparisonPage } from "@/components/PracticalComparisonPage";
 import { categoryMeta } from "@/lib/categories";
 import { SITE, absoluteUrl } from "@/lib/site";
 
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return COMPARISONS.map((c) => ({ pair: c.slug }));
+  return [...COMPARISONS, ...PRACTICAL_COMPARISONS].map((c) => ({ pair: c.slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ pair: string }> }): Promise<Metadata> {
   const { pair } = await params;
   const c = comparison(pair);
+  const practical = practicalComparison(pair);
+  if (!c && !practical) return {};
+  if (practical) {
+    const url = absoluteUrl(`/compare/${practical.slug}/`);
+    return { title: { absolute: `${practical.title} | Which Method Fits?` }, description: practical.metaDescription, alternates: { canonical: url }, openGraph: { url, title: practical.title, description: practical.metaDescription, type: "article" } };
+  }
   if (!c) return {};
   return {
     title: { absolute: c.metaTitle },
@@ -75,6 +83,8 @@ function SideCard({ side, letter }: { side: Side; letter: "A" | "B" }) {
 export default async function ComparisonPage({ params }: { params: Promise<{ pair: string }> }) {
   const { pair } = await params;
   const c = comparison(pair);
+  const practical = practicalComparison(pair);
+  if (practical) return <PracticalComparisonPage comparison={practical} />;
   if (!c) notFound();
 
   return (

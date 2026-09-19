@@ -7,6 +7,9 @@ import { PHOTOS } from "@/lib/media";
 import { absoluteUrl, SITE } from "@/lib/site";
 import { APPLICATION_GUIDES } from "@/lib/applications";
 import { INDUSTRY_PROFILES } from "@/lib/industries";
+import { TUTORIALS } from "@/lib/tutorials";
+import { OPERATION_GUIDES } from "@/lib/operations";
+import { PRACTICAL_COMPARISONS } from "@/lib/practical-comparisons";
 
 /**
  * Editorial review date for the pages that are not generated from markdown.
@@ -53,6 +56,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.9,
       images: INDUSTRY_PROFILES.map((profile) => absoluteUrl(profile.image)),
+    },
+    {
+      url: absoluteUrl("/tutorials/"),
+      changeFrequency: "monthly",
+      priority: 0.9,
+      images: TUTORIALS.map((tutorial) => absoluteUrl(tutorial.image)),
+    },
+    {
+      url: absoluteUrl("/operations/"),
+      changeFrequency: "monthly",
+      priority: 0.8,
+      images: OPERATION_GUIDES.map((guide) => absoluteUrl(guide.image)),
     },
     {
       url: absoluteUrl("/hire-vs-buy/"),
@@ -105,12 +120,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "yearly" as const,
       priority: 0.7,
     })),
+    ...PRACTICAL_COMPARISONS.map((comparison) => ({
+      url: absoluteUrl(`/compare/${comparison.slug}/`),
+      lastModified: REVIEWED,
+      changeFrequency: "yearly" as const,
+      priority: 0.7,
+      images: [absoluteUrl(comparison.a.image), absoluteUrl(comparison.b.image)],
+    })),
     ...BRAND_PROFILES.map((b) => ({
       url: absoluteUrl(`/brands/${b.slug}/`),
       lastModified: REVIEWED,
       changeFrequency: "yearly" as const,
       priority: 0.6,
     })),
+    ...BRAND_PROFILES.flatMap((brand) => ["range-guide", "carrier-compatibility"].map((topic) => ({
+      url: absoluteUrl(`/brands/${brand.slug}/${topic}/`),
+      lastModified: REVIEWED,
+      changeFrequency: "yearly" as const,
+      priority: 0.65,
+    }))),
     ...APPLICATION_GUIDES.map((guide) => ({
       url: absoluteUrl(`/applications/${guide.slug}/`),
       lastModified: REVIEWED,
@@ -124,6 +152,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.8,
       images: [absoluteUrl(profile.image)],
+    })),
+    ...TUTORIALS.map((tutorial) => ({
+      url: absoluteUrl(`/tutorials/${tutorial.slug}/`),
+      lastModified: REVIEWED,
+      changeFrequency: "yearly" as const,
+      priority: 0.75,
+      images: [absoluteUrl(tutorial.image)],
+    })),
+    ...OPERATION_GUIDES.map((guide) => ({
+      url: absoluteUrl(`/operations/${guide.slug}/`),
+      lastModified: REVIEWED,
+      changeFrequency: "yearly" as const,
+      priority: 0.7,
+      images: [absoluteUrl(guide.image)],
     })),
   ];
 }

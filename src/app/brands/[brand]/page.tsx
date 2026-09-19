@@ -62,6 +62,11 @@ export default async function BrandPage({ params }: { params: Promise<{ brand: s
       />
 
       <div className="mx-auto max-w-[88rem] px-4 py-14 sm:px-6 sm:py-20 lg:px-10">
+        <div className="grid gap-px bg-steel-700 sm:grid-cols-2">
+          <div className="group relative bg-steel-900 p-7"><p className="eyebrow">Detailed buyer page</p><h2 className="display mt-4 text-3xl text-bone group-hover:text-hazard"><Link href={`/brands/${b.slug}/range-guide/`} className="after:absolute after:inset-0">{b.name} range guide</Link></h2><p className="mt-4 text-[0.95rem] leading-relaxed text-concrete">Series-by-series roles, shortlist logic and the commercial questions that belong in a complete quotation.</p></div>
+          <div className="group relative bg-steel-900 p-7"><p className="eyebrow">Installation brief</p><h2 className="display mt-4 text-3xl text-bone group-hover:text-hazard"><Link href={`/brands/${b.slug}/carrier-compatibility/`} className="after:absolute after:inset-0">Carrier compatibility</Link></h2><p className="mt-4 text-[0.95rem] leading-relaxed text-concrete">Lift, hydraulics, functions, guarding, transport and commissioning checks for the installed system.</p></div>
+        </div>
+
         <Section id="background" title={`Where ${b.name} sits`}>
           <Prose>
             {b.background.map((para) => (

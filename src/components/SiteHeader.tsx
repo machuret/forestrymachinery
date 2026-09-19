@@ -79,6 +79,8 @@ export function SiteHeader() {
             </summary>
             <div className="absolute top-full right-0 mt-3 w-72 border border-steel-700 bg-steel-900 shadow-2xl shadow-black/60">
               {[
+                ["/tutorials/", "Field tutorials", "Setup, commissioning and estimating"],
+                ["/operations/", "Operations guides", "Inspection, transport and hardwood"],
                 ["/costs/", "What they cost", "Cost drivers and quote comparison"],
                 ["/hire-vs-buy/", "Hire or buy?", "The utilisation decision"],
                 ["/compatibility/", "Carrier size guide", "What fits your excavator"],
@@ -125,6 +127,8 @@ export function SiteHeader() {
                     ["/industries/", "Machinery by industry"],
                     ["/compare/", "Attachment comparisons"],
                     ["/brands/", "Manufacturers"],
+                    ["/tutorials/", "Field tutorials"],
+                    ["/operations/", "Operations guides"],
                     ["/costs/", "Costs and ownership"],
                     ["/compatibility/", "Carrier compatibility"],
                   ].map(([href, label]) => (

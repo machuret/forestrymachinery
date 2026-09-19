@@ -87,6 +87,17 @@ export default function BrandsPage() {
             </div>
           ))}
         </div>
+        <div className="mt-10 grid gap-px bg-steel-700 md:grid-cols-2 lg:grid-cols-4">
+          {BRAND_PROFILES.map((brand) => (
+            <div key={brand.slug} className="bg-steel-900 p-5">
+              <p className="font-mono text-[0.62rem] tracking-[0.16em] text-hazard uppercase">{brand.name} buyer pages</p>
+              <div className="mt-4 space-y-3">
+                <Link href={`/brands/${brand.slug}/range-guide/`} className="block text-sm text-bone underline decoration-steel-600 underline-offset-4 hover:text-hazard">Range guide →</Link>
+                <Link href={`/brands/${brand.slug}/carrier-compatibility/`} className="block text-sm text-bone underline decoration-steel-600 underline-offset-4 hover:text-hazard">Carrier compatibility →</Link>
+              </div>
+            </div>
+          ))}
+        </div>
       </section>
 
       <Section

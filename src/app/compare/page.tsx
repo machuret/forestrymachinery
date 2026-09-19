@@ -6,12 +6,14 @@ import { nodeToText } from "@/lib/node-text";
 import { Section, Prose, ShortAnswer, NumberedGrid, FaqBlock, NextSteps, type Qa } from "@/components/content";
 import { Photograph } from "@/components/Photograph";
 import { COMPARISONS } from "@/lib/comparisons";
+import { PRACTICAL_COMPARISONS } from "@/lib/practical-comparisons";
+import Image from "next/image";
 import { absoluteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: { absolute: "Forestry Attachment Comparisons | Which One Your Job Needs" },
   description:
-    "Four head-to-head comparisons of the forestry attachment categories Australian buyers most often confuse, with costs, scenarios and checklists.",
+    "Eight forestry attachment and work-method comparisons for Australian buyers, covering output, carrier fit, costs, scenarios and decision checklists.",
   alternates: { canonical: absoluteUrl("/compare/") },
   openGraph: { url: absoluteUrl("/compare/") },
 };
@@ -83,6 +85,25 @@ export default function ComparePage() {
           ))}
         </div>
       </section>
+
+      <Section
+        id="method-comparisons"
+        title="Compare the complete work method"
+        lead="These decisions sit beyond attachment names: a lighter maintenance head versus a forestry rotor, grinding versus excavation, and mechanised cutting versus conventional crews."
+        className="mx-auto max-w-[88rem] px-4 sm:px-6 lg:px-10"
+      >
+        <div className="grid gap-px bg-steel-700 md:grid-cols-2">
+          {PRACTICAL_COMPARISONS.map((comparison) => (
+            <article key={comparison.slug} className="group relative overflow-hidden bg-steel-900">
+              <div className="grid h-44 grid-cols-2">
+                <div className="relative"><Image src={comparison.a.image} alt={comparison.a.alt} fill sizes="25vw" className="field-image object-cover" /></div>
+                <div className="relative"><Image src={comparison.b.image} alt={comparison.b.alt} fill sizes="25vw" className="field-image object-cover" /></div>
+              </div>
+              <div className="p-7"><h3 className="display text-3xl text-bone group-hover:text-hazard"><Link href={`/compare/${comparison.slug}/`} className="after:absolute after:inset-0">{comparison.title}</Link></h3><p className="mt-4 text-[0.95rem] leading-relaxed text-concrete">{comparison.verdict}</p><span className="mt-5 inline-block font-mono text-[0.62rem] tracking-[0.14em] text-hazard uppercase">Read comparison →</span></div>
+            </article>
+          ))}
+        </div>
+      </Section>
 
       <Section
         id="how-to-compare"
@@ -179,7 +200,7 @@ export default function ComparePage() {
           name: "Forestry attachment comparisons",
           url: absoluteUrl("/compare/"),
           inLanguage: "en-AU",
-          hasPart: COMPARISONS.map((c) => ({
+          hasPart: [...COMPARISONS, ...PRACTICAL_COMPARISONS].map((c) => ({
             "@type": "WebPage",
             name: c.title,
             url: absoluteUrl(`/compare/${c.slug}/`),

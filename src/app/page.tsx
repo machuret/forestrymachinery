@@ -10,6 +10,7 @@ import { BRAND_PROFILES } from "@/lib/brands";
 import { JsonLd } from "@/components/JsonLd";
 import { ApplicationGrid } from "@/components/ApplicationGrid";
 import { IndustryGrid } from "@/components/IndustryGrid";
+import { TutorialGrid } from "@/components/TutorialGrid";
 import { SITE, absoluteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -214,6 +215,17 @@ export default function HomePage() {
           <div className="mt-12">
             <IndustryGrid compact />
           </div>
+        </div>
+      </section>
+
+      {/* ---------------------------------------------------- Tutorials */}
+      <section className="border-b border-steel-700 bg-steel-900 plate">
+        <div className="mx-auto max-w-[88rem] px-4 py-20 sm:px-6 sm:py-28 lg:px-10">
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+            <div><p className="eyebrow">Field tutorials</p><h2 className="display mt-4 max-w-3xl text-4xl leading-none text-bone sm:text-5xl">Measure it, install it and prove it under load</h2></div>
+            <div className="max-w-md"><p className="text-[0.97rem] leading-relaxed text-concrete">Step-by-step procedures for carrier hydraulics, lift checks, commissioning, case drains, used inspections, tender rates and parts planning. The <Link href="/operations/" className="text-bone underline decoration-steel-500 underline-offset-4 hover:text-hazard">operations library</Link> continues into daily inspection, hardwood and transport.</p><Link href="/tutorials/" className="mt-5 inline-flex font-mono text-[0.68rem] tracking-[0.16em] text-hazard uppercase hover:text-moss-400">Browse all tutorials →</Link></div>
+          </div>
+          <div className="mt-12"><TutorialGrid limit={4} /></div>
         </div>
       </section>
 

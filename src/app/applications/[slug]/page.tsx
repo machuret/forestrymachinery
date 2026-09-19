@@ -17,8 +17,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const guide = applicationGuide((await params).slug);
   if (!guide) return {};
   const url = absoluteUrl(`/applications/${guide.slug}/`);
+  const metaLabel = guide.shortTitle.replace(/\b\w/g, (letter) => letter.toUpperCase());
   return {
-    title: { absolute: `${guide.shortTitle} Machinery Guide | Australia` },
+    title: { absolute: `${metaLabel} Machinery Guide | Australia` },
     description: guide.description,
     alternates: { canonical: url },
     openGraph: { title: guide.title, description: guide.description, type: "article", url, images: [guide.image] },

@@ -7,9 +7,8 @@ export function ApplicationGrid({ compact = false, exclude }: { compact?: boolea
   return (
     <div className="grid gap-4 md:grid-cols-2">
       {guides.map((guide) => (
-        <Link
+        <div
           key={guide.slug}
-          href={`/applications/${guide.slug}/`}
           className="group relative min-h-[22rem] overflow-hidden border border-steel-700 bg-steel-900"
         >
           <Image
@@ -26,12 +25,14 @@ export function ApplicationGrid({ compact = false, exclude }: { compact?: boolea
               <span className="font-mono text-[0.58rem] tracking-[0.14em] text-bone/65 uppercase">Field application</span>
             </span>
             <span className="display mt-3 block text-3xl leading-none text-bone group-hover:text-hazard sm:text-4xl">
-              {guide.shortTitle}
+              <Link href={`/applications/${guide.slug}/`} className="after:absolute after:inset-0 after:z-10">
+                {guide.shortTitle}
+              </Link>
             </span>
             {!compact && <span className="mt-3 block max-w-xl text-sm leading-relaxed text-bone/75">{guide.description}</span>}
             <span className="mt-5 inline-flex font-mono text-[0.62rem] tracking-[0.16em] text-hazard uppercase">Plan the job →</span>
           </span>
-        </Link>
+        </div>
       ))}
     </div>
   );

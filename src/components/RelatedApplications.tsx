@@ -17,14 +17,16 @@ export function RelatedApplications({ categorySlug }: { categorySlug: string }) 
       </div>
       <div className={`mt-7 grid gap-4 ${matches.length > 1 ? "sm:grid-cols-2" : ""}`}>
         {matches.map((guide) => (
-          <Link key={guide.slug} href={`/applications/${guide.slug}/`} className="group relative min-h-64 overflow-hidden border border-steel-700">
+          <div key={guide.slug} className="group relative min-h-64 overflow-hidden border border-steel-700">
             <Image src={guide.image} alt={guide.imageAlt} fill sizes="(max-width: 640px) 100vw, 30rem" className="field-image object-cover transition-transform duration-700 group-hover:scale-[1.04]" />
             <span aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-steel-950 via-steel-950/25 to-transparent" />
             <span className="absolute inset-x-0 bottom-0 p-5">
               <span className="font-mono text-[0.6rem] tracking-[0.16em] text-hazard">{guide.code}</span>
-              <span className="display mt-2 block text-2xl text-bone group-hover:text-hazard">{guide.shortTitle}</span>
+              <span className="display mt-2 block text-2xl text-bone group-hover:text-hazard">
+                <Link href={`/applications/${guide.slug}/`} className="after:absolute after:inset-0 after:z-10">{guide.shortTitle}</Link>
+              </span>
             </span>
-          </Link>
+          </div>
         ))}
       </div>
     </section>

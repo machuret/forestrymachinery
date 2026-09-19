@@ -55,6 +55,12 @@ export function SiteHeader() {
             </div>
           </details>
           <Link
+            href="/applications/"
+            className="font-mono text-[0.7rem] tracking-[0.16em] text-concrete uppercase transition-colors hover:text-hazard"
+          >
+            Applications
+          </Link>
+          <Link
             href="/compare/"
             className="font-mono text-[0.7rem] tracking-[0.16em] text-concrete uppercase transition-colors hover:text-hazard"
           >

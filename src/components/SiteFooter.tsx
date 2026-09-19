@@ -45,6 +45,7 @@ export function SiteFooter() {
             <ul className="mt-5 space-y-2.5">
               {[
                 ["/forestry-machinery-guide/", "The buyer\u2019s guide"],
+                ["/applications/", "Machinery by application"],
                 ["/costs/", "What attachments cost"],
                 ["/hire-vs-buy/", "Hire, buy or subcontract"],
                 ["/hydraulic-flow-calculator/", "Flow calculator"],

@@ -8,6 +8,7 @@
  * Every value is printed on the chart, so no data sits behind a hover state and
  * the figure needs no client JavaScript.
  */
+import Link from "next/link";
 
 /** Worked example. Inputs are stated on the figure so the reader can vary them. */
 const PURCHASE = 45_000;
@@ -187,7 +188,7 @@ export function CapitalPerHourChart() {
         <p className="text-[0.88rem] leading-relaxed text-concrete">
           Carrier, operator and fuel are excluded here on purpose — you carry those whether or not you own this
           attachment. Change any of the inputs in the{" "}
-          <a href="/cost-per-stump-calculator/">cost per stump calculator</a> and the same arithmetic runs on your own
+          <Link href="/cost-per-stump-calculator/">cost per stump calculator</Link> and the same arithmetic runs on your own
           figures.
         </p>
       </figcaption>

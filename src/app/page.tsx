@@ -8,6 +8,7 @@ import { CarrierBandChart } from "@/components/diagrams/CarrierBandChart";
 import { COMPARISONS } from "@/lib/comparisons";
 import { BRAND_PROFILES } from "@/lib/brands";
 import { JsonLd } from "@/components/JsonLd";
+import { ApplicationGrid } from "@/components/ApplicationGrid";
 import { SITE, absoluteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -68,41 +69,6 @@ const QUESTIONS = [
     n: "04",
     q: "How many hours a year will it run?",
     a: "Below about 200 hours, hire. Between 200 and 500, buy if the tool unlocks work you currently turn away. Above 500, ownership almost always wins and wear-part supply beats purchase price.",
-  },
-];
-
-const FIELD_APPLICATIONS = [
-  {
-    code: "A1",
-    title: "Land clearing",
-    href: "/forestry-mulcher-guide/",
-    image: "/images/editorial/land-clearing-attachments-australia.webp",
-    alt: "Tracked excavator clearing scrub beside a formed access corridor in Australian eucalyptus woodland",
-    note: "Select around the finish: recover timber, mulch in place or prepare the next trade.",
-  },
-  {
-    code: "A2",
-    title: "Utility vegetation",
-    href: "/as-4373-mechanised-pruning/",
-    image: "/images/editorial/utility-vegetation-management-australia.webp",
-    alt: "Compact excavator mechanically pruning eucalyptus regrowth along a regional roadside power corridor",
-    note: "Reach, cut quality and exclusion zones matter more than raw clearing speed.",
-  },
-  {
-    code: "A3",
-    title: "Fuel reduction",
-    href: "/forestry-mulcher-guide/",
-    image: "/images/editorial/bushfire-fuel-reduction-machinery.webp",
-    alt: "Forestry mulcher creating a treated low-fuel strip in Australian eucalyptus bushland",
-    note: "Price treated hectares, terrain and residue—not the most dramatic single pass.",
-  },
-  {
-    code: "A4",
-    title: "Ground rehabilitation",
-    href: "/tillage-guide/",
-    image: "/images/editorial/farm-clearing-ground-rehabilitation.webp",
-    alt: "Excavator drilling and preparing rehabilitated ground on a rolling Australian farm",
-    note: "Carry the clearing job through to access, planting, drilling and productive ground.",
   },
 ];
 
@@ -212,24 +178,11 @@ export default function HomePage() {
             </div>
             <p className="text-[0.97rem] leading-relaxed text-concrete">The operating environment, required finish and material stream decide the attachment sequence.</p>
           </div>
-          <div className="grid gap-4 md:grid-cols-2">
-            {FIELD_APPLICATIONS.map((item) => (
-              // Only the title is the link text; the overlay keeps the whole card clickable.
-              <div key={item.code} className="group relative min-h-[23rem] overflow-hidden border border-steel-700 bg-steel-950">
-                <Image src={item.image} alt={item.alt} fill sizes="(max-width: 768px) 100vw, 50vw" className="field-image object-cover transition-transform duration-700 group-hover:scale-[1.035]" />
-                <span aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-steel-950 via-steel-950/35 to-transparent" />
-                <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8">
-                  <span className="font-mono text-[0.65rem] tracking-[0.18em] text-hazard">{item.code} · FIELD APPLICATION</span>
-                  <h3 className="display mt-3 text-3xl text-bone group-hover:text-hazard sm:text-4xl">
-                    <Link href={item.href} className="after:absolute after:inset-0 after:z-10">
-                      {item.title}
-                    </Link>
-                  </h3>
-                  <p className="mt-3 max-w-xl text-sm leading-relaxed text-bone/75">{item.note}</p>
-                  <span aria-hidden="true" className="mt-5 inline-flex font-mono text-[0.62rem] tracking-[0.16em] text-hazard uppercase">Open the field guide →</span>
-                </div>
-              </div>
-            ))}
+          <ApplicationGrid />
+          <div className="mt-8 text-right">
+            <Link href="/applications/" className="font-mono text-[0.68rem] tracking-[0.16em] text-hazard uppercase hover:text-moss-400">
+              Explore machinery by application →
+            </Link>
           </div>
         </div>
       </section>

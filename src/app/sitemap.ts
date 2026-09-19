@@ -5,13 +5,14 @@ import { BRAND_PROFILES } from "@/lib/brands";
 import { CATEGORY_META } from "@/lib/categories";
 import { PHOTOS } from "@/lib/media";
 import { absoluteUrl, SITE } from "@/lib/site";
+import { APPLICATION_GUIDES } from "@/lib/applications";
 
 /**
  * Editorial review date for the pages that are not generated from markdown.
  * Kept explicit rather than read from the filesystem, because a fresh clone
  * rewrites every mtime and a lastmod that changes on every deploy is worthless.
  */
-const REVIEWED = new Date("2026-09-14");
+const REVIEWED = new Date("2026-09-19");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const guides = getAllPages();
@@ -39,6 +40,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.9,
       images: [absoluteUrl("/images/field/costs-yard.webp")],
+    },
+    {
+      url: absoluteUrl("/applications/"),
+      changeFrequency: "monthly",
+      priority: 0.9,
+      images: APPLICATION_GUIDES.map((guide) => absoluteUrl(guide.image)),
     },
     {
       url: absoluteUrl("/hire-vs-buy/"),
@@ -96,6 +103,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: REVIEWED,
       changeFrequency: "yearly" as const,
       priority: 0.6,
+    })),
+    ...APPLICATION_GUIDES.map((guide) => ({
+      url: absoluteUrl(`/applications/${guide.slug}/`),
+      lastModified: REVIEWED,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+      images: [absoluteUrl(guide.image)],
     })),
   ];
 }

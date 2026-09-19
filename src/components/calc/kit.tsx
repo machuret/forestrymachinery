@@ -22,9 +22,9 @@ export function useUrlState<T extends Record<string, string | number | boolean>>
           typeof current === "number" ? Number(raw) : typeof current === "boolean" ? raw === "1" : raw
         ) as T[keyof T];
       }
-      setState(next);
+      queueMicrotask(() => setState(next));
     }
-    setHydrated(true);
+    queueMicrotask(() => setHydrated(true));
     // Initial values are a literal defined at module scope; re-running on it is not wanted.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

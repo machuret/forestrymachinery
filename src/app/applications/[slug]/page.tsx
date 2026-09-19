@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!guide) return {};
   const url = absoluteUrl(`/applications/${guide.slug}/`);
   return {
-    title: guide.title,
+    title: { absolute: `${guide.shortTitle} Machinery Guide | Australia` },
     description: guide.description,
     alternates: { canonical: url },
     openGraph: { title: guide.title, description: guide.description, type: "article", url, images: [guide.image] },
@@ -68,16 +68,33 @@ export default async function ApplicationPage({ params }: { params: Promise<{ sl
               ))}
             </div>
 
+            <div className="mt-16 space-y-14">
+              {guide.sections.map((section) => (
+                <section key={section.title}>
+                  <h2 className="display text-3xl text-bone sm:text-4xl">{section.title}</h2>
+                  <div className="mt-6 space-y-5 text-[1rem] leading-relaxed text-concrete">
+                    {section.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+                  </div>
+                </section>
+              ))}
+            </div>
+
+            <section className="mt-16 border-l-4 border-hazard bg-steel-900 p-7 sm:p-9">
+              <p className="font-mono text-[0.65rem] tracking-[0.18em] text-hazard uppercase">The quotation brief</p>
+              <h2 className="display mt-3 text-3xl text-bone">Make recommendations comparable</h2>
+              <p className="mt-5 text-[1rem] leading-relaxed text-concrete">{guide.quoteBrief}</p>
+            </section>
+
             <div className="mt-16">
               <p className="eyebrow">Attachment sequence</p>
               <h2 className="display mt-4 text-4xl text-bone">Match the tool to the constraint</h2>
               <div className="mt-8 divide-y divide-steel-700 border-y border-steel-700">
                 {guide.recommended.map((item) => (
-                  <Link key={item.href} href={item.href} className="group grid gap-3 py-6 sm:grid-cols-[15rem_minmax(0,1fr)_auto] sm:items-center">
-                    <span className="display text-2xl text-bone group-hover:text-hazard">{item.category}</span>
+                  <div key={item.href} className="group relative grid gap-3 py-6 sm:grid-cols-[15rem_minmax(0,1fr)_auto] sm:items-center">
+                    <span className="display text-2xl text-bone group-hover:text-hazard"><Link href={item.href} className="after:absolute after:inset-0">{item.category}</Link></span>
                     <span className="text-[0.95rem] leading-relaxed text-concrete">{item.when}</span>
                     <span className="font-mono text-xs text-hazard">VIEW →</span>
-                  </Link>
+                  </div>
                 ))}
               </div>
             </div>
@@ -107,7 +124,7 @@ export default async function ApplicationPage({ params }: { params: Promise<{ sl
         </div>
       </section>
 
-      <JsonLd data={{ "@context": "https://schema.org", "@type": "Article", headline: guide.title, description: guide.description, image: absoluteUrl(guide.image), url, inLanguage: "en-AU", about: guide.recommended.map((item) => item.category) }} />
+      <JsonLd data={{ "@context": "https://schema.org", "@type": "Article", headline: guide.title, description: guide.description, image: absoluteUrl(guide.image), url, mainEntityOfPage: url, inLanguage: "en-AU", dateModified: "2026-09-19", author: { "@type": "Organization", name: "Machinery Specialist" }, publisher: { "@type": "Organization", name: "Machinery Specialist" }, about: guide.recommended.map((item) => item.category) }} />
       <JsonLd data={{ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
         { "@type": "ListItem", position: 1, name: "Home", item: absoluteUrl("/") },
         { "@type": "ListItem", position: 2, name: "Applications", item: absoluteUrl("/applications/") },
